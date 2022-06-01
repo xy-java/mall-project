@@ -3,27 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Title</title>
-	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
-	<h1>你好</h1>
-	<div>
-		<a onclick="get()" id="more_img">加载更多</a>
-	</div>
-</body>
-<script type="text/javascript">
-	var map = {
-		user_id:"075d585ee8a040a7"
 
-	}
-	function get(){
-		$.ajax({
-			url:"/user/selectById?",
-			data:map,
-			success:function(result){
-				console.log(JSON.stringify(result));
-			},
-		});
-	}
-</script>
+</body>
 </html>
