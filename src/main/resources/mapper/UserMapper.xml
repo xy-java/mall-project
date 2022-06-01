@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ibm.mallproject.dao.UserMapper">
+    <insert id="insert" parameterType="com.ibm.mallproject.entity.UserInfo">
+        insert into user_info(user_id,login_name,passwd,email,user_power,create_time)
+        values (
+            #{user_id,jdbcType=VARCHAR},
+            #{login_name,jdbcType=VARCHAR},
+            #{passwd,jdbcType=VARCHAR},
+            #{email,jdbcType=VARCHAR},
+            #{user_power,jdbcType=VARCHAR},
+            #{create_time,jdbcType=TIMESTAMP}
+        )
+    </insert>
+
+    <delete id="delete" parameterType="com.ibm.mallproject.entity.UserInfo">
+        delete from user_info
+    </delete>
+
+    <delete id="deleteByIds" parameterType="Integer">
+        delete from user_info where user_id in (
+            <foreach collection="list" item="user_id" separator=",">
+                #{user_id,jdbcType=VARCHAR}
+            </foreach>
+        )
+    </delete>
+
+    <update id="update" parameterType="com.ibm.mallproject.entity.UserInfo">
+        update user_info set
+            login_name = #{login_name,jdbcType=VARCHAR},
+            passwd = #{passwd,jdbcType=VARCHAR},
+            email = #{email,jdbcType=VARCHAR},
+            user_power=#{user_power,jdbcType=VARCHAR}
+        where user_id = #{user_id,jdbcType=VARCHAR}
+    </update>
+
+    <select id="selectById" parameterType="com.ibm.mallproject.entity.UserInfo" resultType="com.ibm.mallproject.entity.UserInfo">
+        select user_id,login_name,passwd ,email,user_power,create_time  from user_info where user_id=#{user_id,jdbcType=VARCHAR}
+    </select>
+
+    <select id="login" parameterType="String" resultType="com.ibm.mallproject.entity.UserInfo">
+        select user_id,login_name,passwd ,email,user_power,create_time  from user_info where
+            login_name = #{login_name,jdbcType=VARCHAR} and passwd = #{passwd,jdbcType=VARCHAR} and user_power=#{user_power,jdbcType=VARCHAR}
+    </select>
+
+    <select id="getAllUsers" parameterType="com.ibm.mallproject.entity.UserInfo" resultType="com.ibm.mallproject.entity.UserInfo">
+        select user_id,login_name,passwd ,email,user_power,create_time  from user_info
+    </select>
+
+    <select id="queryByName" parameterType="com.ibm.mallproject.entity.UserInfo" resultType="com.ibm.mallproject.entity.UserInfo">
+        select * from user_info where
+            <if test="login_name !=null">
+                login_name like "%" #{login_name,jdbcType=VARCHAR} "%"
+            </if>
+            <if test="email !=null">
+                and (email like "%" #{email,jdbcType=VARCHAR} "%" or email is null)
+            </if>
+    </select>
+
+    <select id="queryCount" parameterType="String" resultType="Integer">
+        select count(login_name) from user_info where login_name = #{login_name,jdbcType=VARCHAR} and user_id != #{user_id,jdbcType=VARCHAR}
+    </select>
+
+    <select id="queryById" parameterType="com.ibm.mallproject.entity.UserInfo" resultType="com.ibm.mallproject.entity.UserInfo">
+        select * from user_info where user_id = #{user_id,jdbcType=VARCHAR}
+    </select>
+</mapper>
