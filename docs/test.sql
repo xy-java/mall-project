@@ -11,7 +11,7 @@
  Target Server Version : 80019
  File Encoding         : 65001
 
- Date: 01/06/2022 11:10:59
+ Date: 02/06/2022 21:50:25
 */
 
 SET NAMES utf8mb4;
@@ -106,6 +106,29 @@ CREATE TABLE `order_info`  (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for paramter_info
+-- ----------------------------
+DROP TABLE IF EXISTS `paramter_info`;
+CREATE TABLE `paramter_info`  (
+  `parameter_id` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '参数页id',
+  `parameter_height` decimal(10, 0) NULL DEFAULT NULL COMMENT '高度',
+  `parameter_width` decimal(10, 0) NULL DEFAULT NULL COMMENT '宽度',
+  `parameter_thickness` decimal(10, 0) NULL DEFAULT NULL COMMENT '厚度',
+  `parameter_weight` decimal(10, 0) NULL DEFAULT NULL COMMENT '重量',
+  `parameter_cpu` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'cpu',
+  `parameter_gpu` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'gpu',
+  `parameter_battery` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '电池',
+  `parameter_memory` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '内存',
+  `parameter_info` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '其他信息',
+  `create_time` datetime(0) NOT NULL COMMENT '时间',
+  PRIMARY KEY (`parameter_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of paramter_info
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for sku_info
 -- ----------------------------
 DROP TABLE IF EXISTS `sku_info`;
@@ -118,6 +141,8 @@ CREATE TABLE `sku_info`  (
   `salcount` int UNSIGNED NOT NULL DEFAULT 0 COMMENT '销售数量',
   `img` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '图片地址',
   `create_time` datetime(0) NOT NULL COMMENT '商品上架时间',
+  `sku_summary` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '商品图片概述(用逗号分隔)',
+  `parameter_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '参数页详情id',
   PRIMARY KEY (`sku_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
@@ -143,5 +168,7 @@ CREATE TABLE `user_info`  (
 -- Records of user_info
 -- ----------------------------
 INSERT INTO `user_info` VALUES ('945a27d2b1b24c25', 'admin', '123456', '1392055037@qq.com', '2022-05-31 17:20:12', '管理员');
+INSERT INTO `user_info` VALUES ('af10c04a940246a8', 's3', 'qwewqe', 'asd@qq.com', '2022-06-01 22:22:46', '管理员');
+INSERT INTO `user_info` VALUES ('d20313315b424bb0', 's11', '123456', '1392055037@qq.com', '2022-06-01 22:22:24', '管理员');
 
 SET FOREIGN_KEY_CHECKS = 1;
