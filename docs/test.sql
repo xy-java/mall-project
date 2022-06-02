@@ -11,7 +11,7 @@
  Target Server Version : 80019
  File Encoding         : 65001
 
- Date: 02/06/2022 21:50:25
+ Date: 02/06/2022 22:03:30
 */
 
 SET NAMES utf8mb4;
@@ -126,6 +126,21 @@ CREATE TABLE `paramter_info`  (
 
 -- ----------------------------
 -- Records of paramter_info
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for rotation_info
+-- ----------------------------
+DROP TABLE IF EXISTS `rotation_info`;
+CREATE TABLE `rotation_info`  (
+  `rotation_id` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '轮播图id',
+  `rotation_url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '轮播图地址',
+  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY (`rotation_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of rotation_info
 -- ----------------------------
 
 -- ----------------------------
