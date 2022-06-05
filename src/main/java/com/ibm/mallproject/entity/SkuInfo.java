@@ -22,6 +22,9 @@ public class SkuInfo {
 	private String img;
 	//创建时间
 	private Date create_time;
+	//商品图片概述(用逗号分隔)
+	private String sku_summary;
+	//
 
 
 	public SkuInfo() {
