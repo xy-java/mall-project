@@ -25,7 +25,7 @@
     </delete>
     <delete id="deleteSkuById">
         delete from sku_info where sku_id in
-        <foreach collection="ids" item="sku_id" separator="," open="(" close=")">
+        <foreach collection="sku_ids" item="sku_id" separator="," open="(" close=")">
             #{sku_id,jdbcType=VARCHAR}
         </foreach>
     </delete>
@@ -42,10 +42,10 @@
     <select id="selectSkuNamePrice" resultType="com.ibm.mallproject.entity.SkuInfo">
         select * from sku_info
         <where>
-            <if test="name != null and name != ''">
+            <if test="sku_name != null and sku_name != ''">
                 sku_name like "%"#{sku_name,jdbcType=VARCHAR}"%"
             </if>
-            <if test="up != null and low != null">
+            <if test="low_price != null and up_price != null">
                 and price between #{low_price,jdbcType=DECIMAL} and #{up_price,jdbcType=DECIMAL}
             </if>
         </where>
