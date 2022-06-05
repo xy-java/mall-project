@@ -36,7 +36,7 @@ class MallProjectApplicationTests {
 	@Test
 	void test(){
 		HashMap<String, String> map = new HashMap<>();
-		map.put("price","21");
+		map.put("price","2");
 		map.put("sku_name","name221");
 		map.put("sku_desc","desc11");
 		map.put("store","12");
@@ -66,9 +66,9 @@ class MallProjectApplicationTests {
 //		for (SkuInfo skuInfo : me) {
 //			System.out.println(skuInfo);
 //		}
-//		SkuInfo skuInfo = skuService.selectSkuById("dbad521200c347a6");
-//
-//			System.out.println(skuInfo);
+		SkuInfo skuInfo = skuService.selectSkuById("a84e32370963417f");
+
+			System.out.println(skuInfo);
 //		Integer integer = skuService.updateSkuDesc("dbad521200c347a6","aaaaaaaaaaaaaaa");
 //		System.out.println(integer);
 
@@ -77,8 +77,8 @@ class MallProjectApplicationTests {
 //		//strings.add("c43bcef69d0249eb");
 //		Integer integer = skuService.deleteSkuById(strings);
 //		System.out.println(integer);
-		Integer integer = skuService.deleteSkuAll();
-		System.out.println(integer);
+//		Integer integer = skuService.deleteSkuAll();
+//		System.out.println(integer);
 	}
 
 }
