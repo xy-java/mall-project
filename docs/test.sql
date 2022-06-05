@@ -11,7 +11,7 @@
  Target Server Version : 80019
  File Encoding         : 65001
 
- Date: 05/06/2022 12:00:37
+ Date: 05/06/2022 16:21:26
 */
 
 SET NAMES utf8mb4;
@@ -3948,6 +3948,7 @@ CREATE TABLE `paramter_info`  (
   `parameter_memory` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '内存',
   `parameter_info` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '其他信息',
   `create_time` datetime(0) NOT NULL COMMENT '时间',
+  `parameter_img` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '参数图片',
   PRIMARY KEY (`parameter_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
@@ -4010,6 +4011,7 @@ CREATE TABLE `user_info`  (
 -- ----------------------------
 -- Records of user_info
 -- ----------------------------
+INSERT INTO `user_info` VALUES ('1dd79421c73c4dcf', 'test3', '123456', '13920@qq.com', '2022-06-05 12:58:26', '普通用户');
 INSERT INTO `user_info` VALUES ('945a27d2b1b24c25', 'admin', '123456', '1392055037@qq.com', '2022-05-31 17:20:12', '管理员');
 
 SET FOREIGN_KEY_CHECKS = 1;
