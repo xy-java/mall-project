@@ -15,8 +15,8 @@
     </update>
     <update id="updateSkuDesc">
         update sku_info
-        set sku_desc = #{desc}
-        where sku_id = #{id}
+        set sku_desc = #{sku_desc,jdbcType=VARCHAR}
+        where sku_id = #{sku_id,jdbcType=VARCHAR}
     </update>
 
     <delete id="deleteSkuAll">
@@ -30,7 +30,7 @@
         </foreach>
     </delete>
     <select id="selectSkuById" resultType="com.ibm.mallproject.entity.SkuInfo">
-        select * from sku_info where sku_id = #{id}
+        select * from sku_info where sku_id = #{sku_id,jdbcType=VARCHAR}
     </select>
     <select id="selectSkuAll" resultType="com.ibm.mallproject.entity.SkuInfo">
         select * from sku_info
@@ -43,10 +43,10 @@
         select * from sku_info
         <where>
             <if test="name != null and name != ''">
-                sku_name like "%"#{name}"%"
+                sku_name like "%"#{sku_name,jdbcType=VARCHAR}"%"
             </if>
             <if test="up != null and low != null">
-                and price between #{low} and #{up}
+                and price between #{low_price,jdbcType=DECIMAL} and #{up_price,jdbcType=DECIMAL}
             </if>
         </where>
     </select>
@@ -63,6 +63,7 @@
                 #{img,jdbcType=VARCHAR},
                 #{create_time,jdbcType=TIMESTAMP},
                 #{sku_summary,jdbcType=VARCHAR},
-                #{parameter_id,jdbcType=VARCHAR});
+                #{parameter_id,jdbcType=VARCHAR}
+        )
     </insert>
 </mapper>

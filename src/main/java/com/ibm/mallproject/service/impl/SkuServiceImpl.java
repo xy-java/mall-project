@@ -72,14 +72,14 @@ public class SkuServiceImpl implements SkuService {
 
     //通过id 修改 商品描述
     @Override
-    public Integer updateSkuDesc(String id, String desc) {
-        return skuMapper.updateSkuDesc(id, desc);
+    public Integer updateSkuDesc(String sku_id, String sku_desc) {
+        return skuMapper.updateSkuDesc(sku_id, sku_desc);
     }
 
     //查询商品信息ById
     @Override
-    public SkuInfo selectSkuById(String id) {
-        return skuMapper.selectSkuById(id);
+    public SkuInfo selectSkuById(String sku_id) {
+        return skuMapper.selectSkuById(sku_id);
     }
 
     //查询所有商品
@@ -90,13 +90,13 @@ public class SkuServiceImpl implements SkuService {
 
     //按商品名模糊查询，价格(区间)查询,也可查询全部
     @Override
-    public List<SkuInfo> selectSkuNamePrice(String name, Double low, Double up) {
-        double i;
-        if (low > up) {
-            i = low;
-            low = up;
-            up = i;
+    public List<SkuInfo> selectSkuNamePrice(String sku_name, Double low_price, Double up_price) {
+        double temp;
+        if (low_price > up_price) {
+            temp = low_price;
+            low_price = up_price;
+            up_price = temp;
         }
-        return skuMapper.selectSkuNamePrice(name, low, up);
+        return skuMapper.selectSkuNamePrice(sku_name, low_price, up_price);
     }
 }

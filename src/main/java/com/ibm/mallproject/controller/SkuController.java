@@ -35,34 +35,34 @@ public class SkuController {
 
     //新增
     @RequestMapping("/insertSku")
-    public String insertSku(@RequestParam("skuMap") Map<String, String> skuMap) {
+    public String insertSku(@RequestParam Map<String, String> skuMap) {
         return (skuService.insertSku(skuMap) > 0) ? "添加成功" : "添加失败";
     }
 
     //通过id删除(可批量删除)
     @RequestMapping("/deleteSkuById")
-    public String deleteSkuById(@RequestParam("sku_id") List<String> sku_Id) {
+    public String deleteSkuById(@RequestParam List<String> sku_Id) {
         return (skuService.deleteSkuById(sku_Id) > 0) ? "删除成功" : "删除失败";
     }
 
     //修改商品信息
     @RequestMapping("/updateSku")
-    public String updateSku(@RequestParam("skuMap") Map<String, String> skuMap) {
+    public String updateSku(@RequestParam Map<String, String> skuMap) {
         return (skuService.updateSku(skuMap) > 0) ? "修改成功" : "修改失败";
     }
 
     //通过id 修改 商品描述
     @RequestMapping("/updateSkuDesc")
-    public String updateSkuDesc(@RequestParam("id") String id,
-                                @RequestParam("/desc") String desc) {
-        return (skuService.updateSkuDesc(id, desc) > 0) ? "修改成功" : "修改失败";
+    public String updateSkuDesc(@RequestParam String sku_id,
+                                @RequestParam String sku_desc) {
+        return (skuService.updateSkuDesc(sku_id, sku_desc) > 0) ? "修改成功" : "修改失败";
     }
 
 
     //查询商品信息ById
     @RequestMapping("/selectSkuById")
-    public SkuInfo selectSkuById(@RequestParam("id") String id) {
-        return skuService.selectSkuById(id);
+    public SkuInfo selectSkuById(@RequestParam String sku_id) {
+        return skuService.selectSkuById(sku_id);
     }
 
     //查询所有商品
@@ -73,10 +73,10 @@ public class SkuController {
 
     //按商品名模糊查询，价格(区间)查询,也可查询全部
     @RequestMapping("/selectSkuNamePrice")
-    public List<SkuInfo> selectSkuNamePrice(@RequestParam("name") String name,
-                                            @RequestParam("low") Double low,
-                                            @RequestParam("up") Double up) {
-        return skuService.selectSkuNamePrice(name, low, up);
+    public List<SkuInfo> selectSkuNamePrice(@RequestParam String sku_name,
+                                            @RequestParam Double low_price,
+                                            @RequestParam Double up_price) {
+        return skuService.selectSkuNamePrice(sku_name, low_price, up_price);
     }
 
 }

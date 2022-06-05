@@ -28,21 +28,21 @@ public interface SkuMapper {
     Integer insertSku(SkuInfo skuInfo);
 
     //通过id删除(可批量删除)
-    Integer deleteSkuById(@Param("ids") List<String> sku_ids);
+    Integer deleteSkuById(@Param("sku_ids") List<String> sku_ids);
 
     //修改商品信息
     Integer updateSku(SkuInfo skuInfo);
 
     //通过id 修改 商品描述
-    Integer updateSkuDesc(@Param("id") String id, @Param("desc") String desc);
+    Integer updateSkuDesc(@Param("sku_id") String sku_id, @Param("sku_desc") String sku_desc);
 
     //查询商品信息ById
-    SkuInfo selectSkuById(@Param("id") String id);
+    SkuInfo selectSkuById(@Param("sku_id") String sku_id);
 
     //按商品名模糊查询，价格(区间)查询,也可查询全部
-    List<SkuInfo> selectSkuNamePrice(@Param("name") String name,
-                                     @Param("low") Double low,
-                                     @Param("up") Double up);
+    List<SkuInfo> selectSkuNamePrice(@Param("sku_name") String sku_name,
+                                     @Param("low_price") Double low_price,
+                                     @Param("up_price") Double up_price);
 
     //按库存查询(升降)
     //List<SkuInfo> selectSkuStore();
