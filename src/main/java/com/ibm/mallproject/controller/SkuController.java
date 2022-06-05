@@ -27,37 +27,56 @@ public class SkuController {
     @Autowired
     SkuService skuService;
 
-//    //删除所有
-//    Integer deleteSkuAll();
-
-
-//    //新增
-//    Integer insertSku(Map<String,String> skuMap);
-    public String insertSku(@RequestParam("skuMap") Map<String,String> skuMap){
-        Integer integer = skuService.insertSku(skuMap);
-        if (integer > 0){
-            return "添加成功";
-        }else return "添加失败";
+    //删除所有
+    @RequestMapping("/deleteSkuAll")
+    public String deleteSkuAll() {
+        return (skuService.deleteSkuAll() > 0) ? "删除成功" : "删除失败";
     }
 
-//    //通过id删除(可批量删除)
-//    Integer deleteSkuById(List<String> user_Id);
+    //新增
+    @RequestMapping("/insertSku")
+    public String insertSku(@RequestParam("skuMap") Map<String, String> skuMap) {
+        return (skuService.insertSku(skuMap) > 0) ? "添加成功" : "添加失败";
+    }
 
-//    //修改商品信息
-//    Integer updateSku(Map<String,String> skuMap);
+    //通过id删除(可批量删除)
+    @RequestMapping("/deleteSkuById")
+    public String deleteSkuById(@RequestParam("sku_id") List<String> sku_Id) {
+        return (skuService.deleteSkuById(sku_Id) > 0) ? "删除成功" : "删除失败";
+    }
 
-//    //通过id 修改 商品描述
-//    Integer updateSkuDesc(String id, String desc);
+    //修改商品信息
+    @RequestMapping("/updateSku")
+    public String updateSku(@RequestParam("skuMap") Map<String, String> skuMap) {
+        return (skuService.updateSku(skuMap) > 0) ? "修改成功" : "修改失败";
+    }
 
-//    //查询商品信息ById
-//    SkuInfo selectSkuById(String id);
+    //通过id 修改 商品描述
+    @RequestMapping("/updateSkuDesc")
+    public String updateSkuDesc(@RequestParam("id") String id,
+                                @RequestParam("/desc") String desc) {
+        return (skuService.updateSkuDesc(id, desc) > 0) ? "修改成功" : "修改失败";
+    }
 
-//    //查询所有商品
-//    List<SkuInfo> selectSkuAll();
 
-//    //按商品名，价格(区间)查询
-//    List<SkuInfo> selectSkuNamePrice(String name,
-//                                     Double up,
-//                                     Double low);
+    //查询商品信息ById
+    @RequestMapping("/selectSkuById")
+    public SkuInfo selectSkuById(@RequestParam("id") String id) {
+        return skuService.selectSkuById(id);
+    }
+
+    //查询所有商品
+    @RequestMapping("/selectSkuAll")
+    public List<SkuInfo> selectSkuAll() {
+        return skuService.selectSkuAll();
+    }
+
+    //按商品名模糊查询，价格(区间)查询,也可查询全部
+    @RequestMapping("/selectSkuNamePrice")
+    public List<SkuInfo> selectSkuNamePrice(@RequestParam("name") String name,
+                                            @RequestParam("low") Double low,
+                                            @RequestParam("up") Double up) {
+        return skuService.selectSkuNamePrice(name, low, up);
+    }
 
 }

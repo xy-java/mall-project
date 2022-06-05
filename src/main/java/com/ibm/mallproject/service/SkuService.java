@@ -36,7 +36,7 @@ public interface SkuService {
     //查询所有商品
     List<SkuInfo> selectSkuAll();
 
-    //按商品名，价格(区间)查询
+    //按商品名模糊查询，价格(区间)查询,也可查询全部
     List<SkuInfo> selectSkuNamePrice(String name,
                                      Double up,
                                      Double low);

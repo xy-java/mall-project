@@ -24,13 +24,14 @@ public class SkuInfo {
 	private Date create_time;
 	//商品图片概述(用逗号分隔)
 	private String sku_summary;
-	//
+	//参数页详情id
+	private String parameter_id;
 
 
 	public SkuInfo() {
 	}
 
-	public SkuInfo(String sku_id, Double price, String sku_name, String sku_desc, Integer store, Integer salcount, String img, Date create_time) {
+	public SkuInfo(String sku_id, Double price, String sku_name, String sku_desc, Integer store, Integer salcount, String img, Date create_time, String sku_summary, String parameter_id) {
 		this.sku_id = sku_id;
 		this.price = price;
 		this.sku_name = sku_name;
@@ -39,6 +40,8 @@ public class SkuInfo {
 		this.salcount = salcount;
 		this.img = img;
 		this.create_time = create_time;
+		this.sku_summary = sku_summary;
+		this.parameter_id = parameter_id;
 	}
 
 	public String getSku_id() {
@@ -104,4 +107,37 @@ public class SkuInfo {
 	public void setCreate_time(Date create_time) {
 		this.create_time = create_time;
 	}
+
+	public String getSku_summary() {
+		return sku_summary;
+	}
+
+	public void setSku_summary(String sku_summary) {
+		this.sku_summary = sku_summary;
+	}
+
+	public String getParameter_id() {
+		return parameter_id;
+	}
+
+	public void setParameter_id(String parameter_id) {
+		this.parameter_id = parameter_id;
+	}
+
+	@Override
+	public String toString() {
+		return "SkuInfo{" +
+				"sku_id='" + sku_id + '\'' +
+				", price=" + price +
+				", sku_name='" + sku_name + '\'' +
+				", sku_desc='" + sku_desc + '\'' +
+				", store=" + store +
+				", salcount=" + salcount +
+				", img='" + img + '\'' +
+				", create_time=" + create_time +
+				", sku_summary='" + sku_summary + '\'' +
+				", parameter_id='" + parameter_id + '\'' +
+				'}';
+	}
 }
+
