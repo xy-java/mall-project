@@ -46,6 +46,7 @@ public class SkuServiceImpl implements SkuService {
         skuInfo.setCreate_time(new Date());
         skuInfo.setSku_summary(skuMap.get("sku_summary"));
         skuInfo.setParameter_id(skuMap.get("parameter_id"));
+        skuInfo.setSku_type(skuMap.get("sku_type"));
 
         return skuMapper.insertSku(skuInfo);
     }

@@ -27,11 +27,14 @@ public class SkuInfo {
 	//参数页详情id
 	private String parameter_id;
 
+	private String sku_type;
+
 
 	public SkuInfo() {
 	}
 
-	public SkuInfo(String sku_id, Double price, String sku_name, String sku_desc, Integer store, Integer salcount, String img, Date create_time, String sku_summary, String parameter_id) {
+	public SkuInfo(String sku_id, Double price, String sku_name, String sku_desc,
+				   Integer store, Integer salcount, String img, Date create_time, String sku_summary, String parameter_id,String sku_type) {
 		this.sku_id = sku_id;
 		this.price = price;
 		this.sku_name = sku_name;
@@ -42,6 +45,7 @@ public class SkuInfo {
 		this.create_time = create_time;
 		this.sku_summary = sku_summary;
 		this.parameter_id = parameter_id;
+		this.sku_type = sku_type;
 	}
 
 	public String getSku_id() {
@@ -122,6 +126,14 @@ public class SkuInfo {
 
 	public void setParameter_id(String parameter_id) {
 		this.parameter_id = parameter_id;
+	}
+
+	public String getSku_type() {
+		return sku_type;
+	}
+
+	public void setSku_type(String sku_type) {
+		this.sku_type = sku_type;
 	}
 
 	@Override
