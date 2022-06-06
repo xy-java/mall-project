@@ -47,6 +47,13 @@ public class RotationController {
 
 		File dest = new File(path.split("target")[0] + "src\\main\\resources\\static\\images\\" + newfileName);
 		try {
+			List<RotationInfo> list = rotationService.selectAllList();
+			for (int i = 0; i < list.size(); i++) {
+				if(list.get(i).getRotation_id().equals(rotation_id)){
+					new File(path.split("target")[0] + "src\\main\\resources\\static\\images\\" +  list.get(i).getRotation_url()).delete();
+					new File(path + "\\" + list.get(i).getRotation_url()).delete();
+				}
+			}
 			file.transferTo(dest);
 			//拷贝一份在target里
 			CommonUtil.fileCopy(path.split("target")[0] + "src\\main\\resources\\static\\images\\" + newfileName
