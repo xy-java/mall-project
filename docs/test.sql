@@ -11,7 +11,7 @@
  Target Server Version : 80019
  File Encoding         : 65001
 
- Date: 06/06/2022 13:20:17
+ Date: 06/06/2022 13:33:59
 */
 
 SET NAMES utf8mb4;
@@ -3971,7 +3971,7 @@ CREATE TABLE `rotation_info`  (
 -- ----------------------------
 -- Records of rotation_info
 -- ----------------------------
-INSERT INTO `rotation_info` VALUES ('242dcdbe4c874211', '50010DDB70B54AE1.webp', '2022-06-06 09:48:30', '首页');
+INSERT INTO `rotation_info` VALUES ('242dcdbe4c874211', '15CA48B3701D42E5.webp', '2022-06-06 09:48:30', '首页');
 INSERT INTO `rotation_info` VALUES ('3e361f116855431a', 'EDBDBC7CF2284FB3.jpg', '2022-06-05 21:27:41', '首页');
 INSERT INTO `rotation_info` VALUES ('5ecc9ed94f6043da', '43AD7FC394304A42.webp', '2022-06-06 09:48:36', '首页');
 INSERT INTO `rotation_info` VALUES ('e5483c508d8344e2', '0916F7372F804A77.jpg', '2022-06-06 09:48:34', '首页');
