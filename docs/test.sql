@@ -11,7 +11,7 @@
  Target Server Version : 80019
  File Encoding         : 65001
 
- Date: 06/06/2022 17:50:18
+ Date: 06/06/2022 19:57:20
 */
 
 SET NAMES utf8mb4;
@@ -3994,13 +3994,13 @@ CREATE TABLE `sku_info`  (
   `sku_summary` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '商品图片概述(用逗号分隔)',
   `parameter_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '参数页详情id',
   `sku_type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '商品类型',
+  `sku_status` int UNSIGNED NOT NULL DEFAULT 0 COMMENT '商品上架状态（0已上架，1未上架）',
   PRIMARY KEY (`sku_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sku_info
 -- ----------------------------
-INSERT INTO `sku_info` VALUES ('1', 00000110.00, 'test', 'sadsadsad', 1, 1, '../asd/asd', '2022-06-01 20:55:50', '../asdasd', '2', NULL);
 
 -- ----------------------------
 -- Table structure for user_info

@@ -29,12 +29,14 @@ public class SkuInfo {
 
 	private String sku_type;
 
+	private Integer sku_status;
+
 
 	public SkuInfo() {
 	}
 
 	public SkuInfo(String sku_id, Double price, String sku_name, String sku_desc,
-				   Integer store, Integer salcount, String img, Date create_time, String sku_summary, String parameter_id,String sku_type) {
+				   Integer store, Integer salcount, String img, Date create_time, String sku_summary, String parameter_id,String sku_type,Integer sku_status) {
 		this.sku_id = sku_id;
 		this.price = price;
 		this.sku_name = sku_name;
@@ -46,6 +48,15 @@ public class SkuInfo {
 		this.sku_summary = sku_summary;
 		this.parameter_id = parameter_id;
 		this.sku_type = sku_type;
+		this.sku_status = sku_status;
+	}
+
+	public Integer getSku_status() {
+		return sku_status;
+	}
+
+	public void setSku_status(Integer sku_status) {
+		this.sku_status = sku_status;
 	}
 
 	public String getSku_id() {
@@ -127,6 +138,8 @@ public class SkuInfo {
 	public void setParameter_id(String parameter_id) {
 		this.parameter_id = parameter_id;
 	}
+
+
 
 	public String getSku_type() {
 		return sku_type;

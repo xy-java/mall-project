@@ -53,7 +53,7 @@
 
     <insert id="insertSku">
         insert into sku_info (sku_id, price, sku_name, sku_desc, store, salcount, img, create_time, sku_summary,
-                              parameter_id,sku_type)
+                              parameter_id,sku_type,sku_status)
         values (#{sku_id,jdbcType=VARCHAR},
                 #{price,jdbcType=DECIMAL},
                 #{sku_name,jdbcType=VARCHAR},
@@ -64,7 +64,8 @@
                 #{create_time,jdbcType=TIMESTAMP},
                 #{sku_summary,jdbcType=VARCHAR},
                 #{parameter_id,jdbcType=VARCHAR},
-                #{sku_type,jdbcType=VARCHAR}
+                #{sku_type,jdbcType=VARCHAR},
+                #{sku_status,jdbcType=INTEGER}
         )
     </insert>
 </mapper>
