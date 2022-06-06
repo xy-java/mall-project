@@ -4,4 +4,8 @@
     <select id="selectAllList" parameterType="com.ibm.mallproject.entity.RotationInfo" resultType="com.ibm.mallproject.entity.RotationInfo">
         select rotation_id,rotation_url,create_time,rotation_type from rotation_info
     </select>
+
+    <update id="updateById" parameterType="String">
+        update rotation_info set rotation_url = #{rotation_url,jdbcType=VARCHAR} where rotation_id = #{rotation_id,jdbcType=VARCHAR}
+    </update>
 </mapper>

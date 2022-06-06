@@ -12,5 +12,7 @@ public interface RotationMapper {
 	//查询所有轮播图
 	List<RotationInfo> selectAllList();
 
+	//更新轮播图
+	Integer updateById(String rotation_id,String rotation_url);
 
 }

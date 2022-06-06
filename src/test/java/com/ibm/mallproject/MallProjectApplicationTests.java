@@ -23,6 +23,11 @@ class MallProjectApplicationTests {
 	SkuService skuService;
 
 	@Test
+	public static void main(String[] args) {
+		System.out.println(CommonUtil.getUUID());
+	}
+
+	@Test
 	void contextLoads() {
 		//SkuInfo skuInfo = new SkuInfo("1",1.1,"name","desc",1,1,"img",new Date(),"a","b");
 		//Integer integer = skuMapper.insertSku(skuInfo);

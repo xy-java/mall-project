@@ -19,4 +19,9 @@ public class RotationServiceImpl implements RotationService {
 	public List<RotationInfo> selectAllList() {
 		return rotationMapper.selectAllList();
 	}
+
+	@Override
+	public Integer updateById(String rotation_id, String rotation_url) {
+		return rotationMapper.updateById(rotation_id,rotation_url);
+	}
 }
