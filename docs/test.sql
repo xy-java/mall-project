@@ -11,7 +11,7 @@
  Target Server Version : 80019
  File Encoding         : 65001
 
- Date: 05/06/2022 16:21:26
+ Date: 06/06/2022 13:20:17
 */
 
 SET NAMES utf8mb4;
@@ -65,7 +65,7 @@ CREATE TABLE `city_info`  (
   `parent_id` bigint NULL DEFAULT NULL COMMENT '上级id',
   `level_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'level_id',
   PRIMARY KEY (`city_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10003789 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10003790 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of city_info
@@ -3971,6 +3971,12 @@ CREATE TABLE `rotation_info`  (
 -- ----------------------------
 -- Records of rotation_info
 -- ----------------------------
+INSERT INTO `rotation_info` VALUES ('242dcdbe4c874211', '50010DDB70B54AE1.webp', '2022-06-06 09:48:30', '首页');
+INSERT INTO `rotation_info` VALUES ('3e361f116855431a', 'EDBDBC7CF2284FB3.jpg', '2022-06-05 21:27:41', '首页');
+INSERT INTO `rotation_info` VALUES ('5ecc9ed94f6043da', '43AD7FC394304A42.webp', '2022-06-06 09:48:36', '首页');
+INSERT INTO `rotation_info` VALUES ('e5483c508d8344e2', '0916F7372F804A77.jpg', '2022-06-06 09:48:34', '首页');
+INSERT INTO `rotation_info` VALUES ('f38ed2fe1adb4896', 'D2F641D43AE44F67.jpg', '2022-06-06 09:48:38', '首页');
+INSERT INTO `rotation_info` VALUES ('ffe98b2a9be5449c', '8A5949B6EF8E44B6.jpg', '2022-06-06 09:48:32', '首页');
 
 -- ----------------------------
 -- Table structure for sku_info
@@ -3993,6 +3999,7 @@ CREATE TABLE `sku_info`  (
 -- ----------------------------
 -- Records of sku_info
 -- ----------------------------
+INSERT INTO `sku_info` VALUES ('1', 00000110.00, 'test', 'sadsadsad', 1, 1, '../asd/asd', '2022-06-01 20:55:50', '../asdasd', '2');
 
 -- ----------------------------
 -- Table structure for user_info
