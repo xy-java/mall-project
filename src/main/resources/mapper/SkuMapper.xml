@@ -3,6 +3,18 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ibm.mallproject.dao.SkuMapper">
+    <select id="selectSkuByStatus" parameterType="com.ibm.mallproject.entity.SkuInfo" resultType="com.ibm.mallproject.entity.SkuInfo">
+        select * from sku_info where sku_status = #{sku_status,jdbcType=INTEGER}
+
+    </select>
+
+    <select id="queryByName" parameterType="String" resultType="com.ibm.mallproject.entity.SkuInfo">
+        select * from sku_info where
+        <if test="sku_name !=null">
+            sku_name like "%" #{sku_name,jdbcType=VARCHAR} "%"
+        </if>
+    </select>
+
     <update id="updateSku">
         update sku_info
         set price    = #{price,jdbcType=DECIMAL},

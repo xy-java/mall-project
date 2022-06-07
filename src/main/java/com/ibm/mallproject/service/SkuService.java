@@ -14,6 +14,11 @@ import java.util.Map;
  * @Version 1.0
  */
 public interface SkuService {
+    //查询所有商品是否上架
+    List<SkuInfo> selectSkuByStatus(Integer sku_status);
+
+    //通过商品名模糊查询
+    List<SkuInfo> queryByName(String sku_name);
 
     //删除所有
     Integer deleteSkuAll();

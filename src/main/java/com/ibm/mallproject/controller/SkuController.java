@@ -3,6 +3,7 @@ package com.ibm.mallproject.controller;
 import com.ibm.mallproject.entity.SkuInfo;
 import com.ibm.mallproject.service.SkuService;
 import com.ibm.mallproject.util.CommonUtil;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.web.bind.annotation.*;
@@ -31,6 +32,19 @@ public class SkuController {
 
     @Autowired
     SkuService skuService;
+
+    @RequestMapping("/selectSkuByStatus")
+    @ResponseBody
+    public List<SkuInfo> selectSkuByStatus(@RequestParam Integer sku_status) {
+        return skuService.selectSkuByStatus(sku_status);
+    }
+
+    //通过商品名模糊查询
+   @RequestMapping("/queryByName")
+   @ResponseBody
+   public List<SkuInfo> queryByName(@RequestParam String sku_name){
+        return skuService.queryByName(sku_name);
+   }
 
     //删除所有
     @RequestMapping("/deleteSkuAll")

@@ -11,7 +11,7 @@
  Target Server Version : 80019
  File Encoding         : 65001
 
- Date: 06/06/2022 21:58:47
+ Date: 07/06/2022 17:29:43
 */
 
 SET NAMES utf8mb4;
@@ -4001,6 +4001,10 @@ CREATE TABLE `sku_info`  (
 -- ----------------------------
 -- Records of sku_info
 -- ----------------------------
+INSERT INTO `sku_info` VALUES ('51249d587b8b4421', 00002299.00, 'Xiaomi Civi 1S', '原生美肌人像2.0 | 4D光追焕颜美妆技术 | 3200万高清质感自拍 | 升级人眼追焦 | 6400万AI三摄 | 3D曲面OLED柔性屏 | 120Hz+Dolby Vision | 55W有线闪充 | 立体声双扬声器 | 多功能NFC', 200, 0, '1A28C2812DB0418B.jpg', '2022-06-07 15:36:57', NULL, NULL, '手机', 0);
+INSERT INTO `sku_info` VALUES ('b507cdfc1aba4f8e', 00001899.00, 'Redmi K40S', '骁龙870｜三星 E4直屏｜67W旗舰快充｜OIS光学防抖｜电竞级VC液冷｜4500mAh｜杜比全景声｜立体双扬声器｜潮流小立边', 200, 0, '226B8DC66CE34A9E.jpg', '2022-06-07 15:37:31', NULL, NULL, '手机', 0);
+INSERT INTO `sku_info` VALUES ('d6b0904f8a8248e0', 00000999.00, 'Redmi Note 11SE', '天玑700｜18W快充｜5000mAh大电池｜6.5\"FHD+全高清屏｜双卡双5G｜90Hz 四挡变速高刷屏｜4096级 亮度调节｜全系128GB 大内存｜大功率扬声器｜4800万 高清双摄', 200, 0, 'C692FA81B1AD4EBE.jpg', '2022-06-07 15:36:30', NULL, NULL, '手机', 0);
+INSERT INTO `sku_info` VALUES ('eafc875a2db941ba', 00002199.00, 'Redmi Note 11T Pro+', '天玑8100｜144Hz高配LCD屏幕｜6400万像素｜VC液冷散热', 200, 0, '8247C928F4B747E7.jpg', '2022-06-07 15:35:35', NULL, NULL, '手机', 1);
 
 -- ----------------------------
 -- Table structure for user_info
@@ -4019,7 +4023,6 @@ CREATE TABLE `user_info`  (
 -- ----------------------------
 -- Records of user_info
 -- ----------------------------
-INSERT INTO `user_info` VALUES ('1dd79421c73c4dcf', 'test3', '123456', '13920@qq.com', '2022-06-05 12:58:26', '普通用户');
 INSERT INTO `user_info` VALUES ('945a27d2b1b24c25', 'admin', '123456', '1392055037@qq.com', '2022-05-31 17:20:12', '管理员');
 
 SET FOREIGN_KEY_CHECKS = 1;

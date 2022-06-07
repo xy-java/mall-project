@@ -26,6 +26,16 @@ public class SkuServiceImpl implements SkuService {
     @Autowired
     SkuMapper skuMapper;
 
+    @Override
+    public List<SkuInfo> selectSkuByStatus(Integer sku_status) {
+        return skuMapper.selectSkuByStatus(sku_status);
+    }
+
+    @Override
+    public List<SkuInfo> queryByName(String sku_name) {
+        return skuMapper.queryByName(sku_name);
+    }
+
     //删除所有
     @Override
     public Integer deleteSkuAll() {
@@ -47,7 +57,7 @@ public class SkuServiceImpl implements SkuService {
         skuInfo.setSku_summary(skuMap.get("sku_summary"));
         skuInfo.setParameter_id(skuMap.get("parameter_id"));
         skuInfo.setSku_type(skuMap.get("sku_type"));
-        skuInfo.setSku_status(skuMap.get("sku_status").equals("true") ? 0 : 1);
+        skuInfo.setSku_status(Integer.valueOf(skuMap.get("sku_status")));
 
         return skuMapper.insertSku(skuInfo);
     }
