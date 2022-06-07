@@ -47,7 +47,7 @@ public class SkuServiceImpl implements SkuService {
         skuInfo.setSku_summary(skuMap.get("sku_summary"));
         skuInfo.setParameter_id(skuMap.get("parameter_id"));
         skuInfo.setSku_type(skuMap.get("sku_type"));
-        skuInfo.setSku_status(Integer.parseInt(skuMap.get("sku_status")));
+        skuInfo.setSku_status(skuMap.get("sku_status").equals("true") ? 0 : 1);
 
         return skuMapper.insertSku(skuInfo);
     }

@@ -2,13 +2,18 @@ package com.ibm.mallproject.controller;
 
 import com.ibm.mallproject.entity.SkuInfo;
 import com.ibm.mallproject.service.SkuService;
-import org.apache.ibatis.annotations.Param;
+import com.ibm.mallproject.util.CommonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.FileFilter;
+import java.io.FilenameFilter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -20,8 +25,8 @@ import java.util.Map;
  * @Version 1.0
  */
 @RestController
-@CrossOrigin
 @RequestMapping("/sku")
+@CrossOrigin
 public class SkuController {
 
     @Autowired
@@ -36,6 +41,7 @@ public class SkuController {
     //新增
     @RequestMapping("/insertSku")
     public String insertSku(@RequestParam Map<String, String> skuMap) {
+
         return (skuService.insertSku(skuMap) > 0) ? "添加成功" : "添加失败";
     }
 
@@ -78,5 +84,40 @@ public class SkuController {
                                             @RequestParam Double up_price) {
         return skuService.selectSkuNamePrice(sku_name, low_price, up_price);
     }
+
+    @RequestMapping("/upload")
+    @ResponseBody
+    public String  upload(@RequestParam MultipartFile file) throws IOException {
+
+        if(file.isEmpty()){
+            return "上传失败";
+        }
+        String fileName = file.getOriginalFilename();
+        String suffixName = fileName.substring(fileName.lastIndexOf("."));
+        String newfileName = CommonUtil.getUUID().toUpperCase() + suffixName;
+
+        ClassPathResource resource = new ClassPathResource("static/");
+        String path = resource.getFile().getPath();
+
+        File dest = new File(path.split("target")[0] + "src\\main\\resources\\static\\" + newfileName);
+        try {
+
+            file.transferTo(dest);
+            //拷贝一份在target里
+            CommonUtil.fileCopy(path.split("target")[0] + "src\\main\\resources\\static\\" + newfileName
+                    ,path+"\\" + newfileName);
+
+            System.out.println("上传成功");
+            return newfileName;
+        } catch (IOException e) {
+            System.out.println("上传失败");
+            System.out.println(e.getMessage());
+        }
+
+
+        return "上传失败！";
+    }
+
+
 
 }

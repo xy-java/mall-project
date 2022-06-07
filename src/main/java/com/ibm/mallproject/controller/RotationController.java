@@ -33,7 +33,7 @@ public class RotationController {
 
 	@RequestMapping("/upload")
 	@ResponseBody
-	public String  upload(@RequestParam MultipartFile file,@RequestParam  String rotation_id) throws IOException {
+	public String upload(@RequestParam MultipartFile file,@RequestParam  String rotation_id) throws IOException {
 
 		if(file.isEmpty()){
 			return "上传失败";
@@ -71,6 +71,5 @@ public class RotationController {
 
 		return "上传失败！";
 	}
-
 
 }
