@@ -19,9 +19,6 @@ import java.util.List;
 @Repository
 public interface SkuMapper {
 
-    //删除所有
-    Integer deleteSkuAll();
-
     //查询所有商品
     List<SkuInfo> selectSkuAll();
 
@@ -31,11 +28,21 @@ public interface SkuMapper {
     //查询所有商品是否上架
     List<SkuInfo> selectSkuByStatus(Integer sku_status);
 
+    //删除所有
+    Integer deleteSkuAll();
+
     //新增
     Integer insertSku(SkuInfo skuInfo);
 
     //通过id删除(可批量删除)
-    Integer deleteSkuById(@Param("sku_ids") List<String> sku_ids);
+    Integer deleteSkuById(List<String> sku_id);
+
+
+    //通过id上架(可批量上架)
+    Integer updateStatusById(@Param("sku_ids") List<String> sku_id,String sku_status);
+
+    //通过id批量查找
+    List<SkuInfo> selectByIds(List<String> sku_id);
 
     //修改商品信息
     Integer updateSku(SkuInfo skuInfo);

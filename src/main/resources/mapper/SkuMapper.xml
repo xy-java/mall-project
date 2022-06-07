@@ -35,17 +35,37 @@
         delete
         from sku_info
     </delete>
-    <delete id="deleteSkuById">
-        delete from sku_info where sku_id in
-        <foreach collection="sku_ids" item="sku_id" separator="," open="(" close=")">
-            #{sku_id,jdbcType=VARCHAR}
-        </foreach>
+    <delete id="deleteSkuById" parameterType="String">
+        delete from sku_info where sku_id in (
+            <foreach collection="list" item="sku_id" separator=",">
+                #{sku_id,jdbcType=VARCHAR}
+            </foreach>
+        )
     </delete>
+
+    <update id="updateStatusById" parameterType="com.ibm.mallproject.entity.UserInfo">
+        update sku_info set sku_status = #{sku_status,jdbcType=VARCHAR} where sku_id in (
+            <foreach collection="sku_ids" item="sku_id" separator=",">
+                #{sku_id,jdbcType=VARCHAR}
+            </foreach>
+        )
+    </update>
+
+    <select id="selectByIds" resultType="com.ibm.mallproject.entity.SkuInfo">
+        select * from sku_info where sku_id in (
+            <foreach collection="list" item="sku_id" separator=",">
+                #{sku_id,jdbcType=VARCHAR}
+            </foreach>
+        )
+    </select>
+
     <select id="selectSkuById" resultType="com.ibm.mallproject.entity.SkuInfo">
         select * from sku_info where sku_id = #{sku_id,jdbcType=VARCHAR}
     </select>
+
+
     <select id="selectSkuAll" resultType="com.ibm.mallproject.entity.SkuInfo">
-        select * from sku_info
+        select * from sku_info where sku_status = 0
     </select>
 <!--    //按商品名，价格(区间)查询-->
 <!--    List<SkuInfo> selectSkuNamePrice(@Param("name") String name,-->

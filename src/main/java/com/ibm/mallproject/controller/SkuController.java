@@ -46,6 +46,28 @@ public class SkuController {
         return skuService.queryByName(sku_name);
    }
 
+    //查询所有商品
+    @RequestMapping("/selectSkuAll")
+    @ResponseBody
+    public List<SkuInfo> selectSkuAll() {
+        return skuService.selectSkuAll();
+    }
+
+    //通过id删除(可批量删除)
+    @RequestMapping("/deleteSkuById")
+    @ResponseBody
+    public String deleteSkuById(@RequestParam List<String> sku_id) {
+        return (skuService.deleteSkuById(sku_id) > 0) ? "删除成功" : "删除失败";
+    }
+
+    //通过id上下架
+    @RequestMapping("/updateStatusById")
+    @ResponseBody
+    public String updateStatusById(@RequestParam List<String> sku_id, @RequestParam String sku_status){
+        String temp = sku_status.equals("0") ? "1" : "0";
+        return skuService.updateStatusById(sku_id,temp)>0 ? "上下架成功" : "上下架失败";
+    }
+
     //删除所有
     @RequestMapping("/deleteSkuAll")
     public String deleteSkuAll() {
@@ -59,11 +81,7 @@ public class SkuController {
         return (skuService.insertSku(skuMap) > 0) ? "添加成功" : "添加失败";
     }
 
-    //通过id删除(可批量删除)
-    @RequestMapping("/deleteSkuById")
-    public String deleteSkuById(@RequestParam List<String> sku_Id) {
-        return (skuService.deleteSkuById(sku_Id) > 0) ? "删除成功" : "删除失败";
-    }
+
 
     //修改商品信息
     @RequestMapping("/updateSku")
@@ -85,11 +103,6 @@ public class SkuController {
         return skuService.selectSkuById(sku_id);
     }
 
-    //查询所有商品
-    @RequestMapping("/selectSkuAll")
-    public List<SkuInfo> selectSkuAll() {
-        return skuService.selectSkuAll();
-    }
 
     //按商品名模糊查询，价格(区间)查询,也可查询全部
     @RequestMapping("/selectSkuNamePrice")

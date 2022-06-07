@@ -5,9 +5,12 @@ import com.ibm.mallproject.entity.SkuInfo;
 import com.ibm.mallproject.service.SkuService;
 import com.ibm.mallproject.util.CommonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -35,7 +38,13 @@ public class SkuServiceImpl implements SkuService {
     public List<SkuInfo> queryByName(String sku_name) {
         return skuMapper.queryByName(sku_name);
     }
+    //查询所有商品
+    @Override
+    public List<SkuInfo> selectSkuAll() {
+        return skuMapper.selectSkuAll();
+    }
 
+    //未使用
     //删除所有
     @Override
     public Integer deleteSkuAll() {
@@ -64,8 +73,34 @@ public class SkuServiceImpl implements SkuService {
 
     //通过id删除(可批量删除)
     @Override
-    public Integer deleteSkuById(List<String> user_Id) {
-        return skuMapper.deleteSkuById(user_Id);
+    public Integer deleteSkuById(List<String> sku_id) {
+        //查找对应的图片信息，从staic删除
+        List<SkuInfo> list = skuMapper.selectByIds(sku_id);
+        ClassPathResource resource = new ClassPathResource("static/");
+        String path = null;
+        try {
+            path = resource.getFile().getPath();
+            for (int i = 0; i < list.size(); i++) {
+                new File(path.split("target")[0] + "src\\main\\resources\\static\\" + list.get(i).getImg()).delete();
+                new File(path+"\\" + list.get(i).getImg()).delete();
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return skuMapper.deleteSkuById(sku_id);
+    }
+
+    @Override
+    public Integer updateStatusById(List<String> sku_id, String sku_status) {
+        return skuMapper.updateStatusById(sku_id,sku_status);
+    }
+
+
+    @Override
+    public List<SkuInfo> selectByIds(List<String> sku_id) {
+        return skuMapper.selectByIds(sku_id);
     }
 
     //修改商品信息
@@ -94,11 +129,6 @@ public class SkuServiceImpl implements SkuService {
         return skuMapper.selectSkuById(sku_id);
     }
 
-    //查询所有商品
-    @Override
-    public List<SkuInfo> selectSkuAll() {
-        return skuMapper.selectSkuAll();
-    }
 
     //按商品名模糊查询，价格(区间)查询,也可查询全部
     @Override
