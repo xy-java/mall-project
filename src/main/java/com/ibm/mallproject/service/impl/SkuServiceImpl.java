@@ -38,6 +38,12 @@ public class SkuServiceImpl implements SkuService {
     public List<SkuInfo> queryByName(String sku_name) {
         return skuMapper.queryByName(sku_name);
     }
+
+    @Override
+    public List<SkuInfo> queryByNameStatus(String sku_name) {
+        return skuMapper.queryByNameStatus(sku_name);
+    }
+
     //查询所有商品
     @Override
     public List<SkuInfo> selectSkuAll() {
@@ -103,6 +109,11 @@ public class SkuServiceImpl implements SkuService {
         return skuMapper.selectByIds(sku_id);
     }
 
+    @Override
+    public List<SkuInfo> searchSkuName() {
+        return skuMapper.searchSkuName();
+    }
+
     //修改商品信息
     @Override
     public Integer updateSku(Map<String, String> skuMap) {
@@ -145,6 +156,7 @@ public class SkuServiceImpl implements SkuService {
     public SkuInfo selectSkuById(String sku_id) {
         return skuMapper.selectSkuById(sku_id);
     }
+
 
 
     //按商品名模糊查询，价格(区间)查询,也可查询全部

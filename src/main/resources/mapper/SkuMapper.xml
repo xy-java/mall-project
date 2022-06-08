@@ -15,6 +15,13 @@
         </if>
     </select>
 
+    <select id="queryByNameStatus" parameterType="String" resultType="com.ibm.mallproject.entity.SkuInfo">
+        select * from sku_info where
+        <if test="sku_name !=null">
+            sku_name like "%" #{sku_name,jdbcType=VARCHAR} "%"
+        </if> and sku_status = 0
+    </select>
+
     <update id="updateSku">
         update sku_info
         set price    = #{price,jdbcType=DECIMAL},
@@ -68,6 +75,10 @@
 
     <select id="selectSkuAll" resultType="com.ibm.mallproject.entity.SkuInfo">
         select * from sku_info where sku_status = 0
+    </select>
+
+    <select id="searchSkuName" resultType="com.ibm.mallproject.entity.SkuInfo">
+        select sku_id,sku_name from sku_info where sku_status = 0
     </select>
 <!--    //按商品名，价格(区间)查询-->
 <!--    List<SkuInfo> selectSkuNamePrice(@Param("name") String name,-->

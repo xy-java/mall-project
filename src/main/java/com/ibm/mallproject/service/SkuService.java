@@ -19,6 +19,8 @@ public interface SkuService {
 
     //通过商品名模糊查询
     List<SkuInfo> queryByName(String sku_name);
+    //通过商品名模糊查询
+    List<SkuInfo> queryByNameStatus(String sku_name);
 
     //查询所有商品
     List<SkuInfo> selectSkuAll();
@@ -38,6 +40,10 @@ public interface SkuService {
 
     //通过id批量查找
     List<SkuInfo> selectByIds(List<String> sku_id);
+
+
+    List<SkuInfo> searchSkuName();
+
 
     //修改商品信息
     Integer updateSku(Map<String,String> skuMap);

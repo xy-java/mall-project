@@ -13,10 +13,7 @@ import java.io.File;
 import java.io.FileFilter;
 import java.io.FilenameFilter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @ClassName SkuController
@@ -46,7 +43,15 @@ public class SkuController {
         return skuService.queryByName(sku_name);
    }
 
-   @RequestMapping("/selectByIds")
+    //通过商品名模糊查询已上架
+    @RequestMapping("/queryByNameStatus")
+    @ResponseBody
+    public List<SkuInfo> queryByNameStatus(@RequestParam String sku_name){
+        return skuService.queryByNameStatus(sku_name);
+    }
+
+
+    @RequestMapping("/selectByIds")
    @ResponseBody
    public List<SkuInfo> selectByIds(@RequestParam List<String> sku_id){
         return skuService.selectByIds(sku_id);
@@ -58,6 +63,14 @@ public class SkuController {
     public List<SkuInfo> selectSkuAll() {
         return skuService.selectSkuAll();
     }
+
+    //查询所有商品
+    @RequestMapping("/searchSkuName")
+    @ResponseBody
+    public List<SkuInfo> searchSkuName() {
+        return skuService.searchSkuName();
+    }
+
 
     //通过id删除(可批量删除)
     @RequestMapping("/deleteSkuById")
