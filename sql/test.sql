@@ -11,7 +11,7 @@
  Target Server Version : 80019
  File Encoding         : 65001
 
- Date: 07/06/2022 21:17:59
+ Date: 08/06/2022 09:27:25
 */
 
 SET NAMES utf8mb4;
@@ -4001,6 +4001,7 @@ CREATE TABLE `sku_info`  (
 -- ----------------------------
 -- Records of sku_info
 -- ----------------------------
+INSERT INTO `sku_info` VALUES ('1ad1eb604f0e418f', 00002010.00, 'Xiaomi Watch S1', '蓝宝石玻璃镜面 | 不锈钢中框 | 1.43”AMOLED大屏幕1', 100, 0, '9900C81B80A54B58.jpg', '2022-06-08 09:12:53', NULL, NULL, '电脑', 0);
 INSERT INTO `sku_info` VALUES ('d6b0904f8a8248e0', 00000999.00, 'Redmi Note 11SE', '天玑700｜18W快充｜5000mAh大电池｜6.5\"FHD+全高清屏｜双卡双5G｜90Hz 四挡变速高刷屏｜4096级 亮度调节｜全系128GB 大内存｜大功率扬声器｜4800万 高清双摄', 200, 0, 'C692FA81B1AD4EBE.jpg', '2022-06-07 15:36:30', NULL, NULL, '手机', 0);
 INSERT INTO `sku_info` VALUES ('eafc875a2db941ba', 00002199.00, 'Redmi Note 11T Pro+', '天玑8100｜144Hz高配LCD屏幕｜6400万像素｜VC液冷散热', 200, 0, '8247C928F4B747E7.jpg', '2022-06-07 15:35:35', NULL, NULL, '手机', 1);
 

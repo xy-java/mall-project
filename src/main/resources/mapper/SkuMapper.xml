@@ -20,8 +20,10 @@
         set price    = #{price,jdbcType=DECIMAL},
             sku_name = #{sku_name,jdbcType=VARCHAR},
             sku_desc = #{sku_desc,jdbcType=VARCHAR},
-            store    = #{store,jdbcType=INTEGER},
-            salcount = #{salcount,jdbcType=INTEGER}
+            store = #{store,jdbcType=INTEGER},
+            img = #{img,jdbcType=VARCHAR},
+            sku_type = #{sku_type,jdbcType=VARCHAR},
+            sku_status = #{sku_status,jdbcType=INTEGER}
         where sku_id = #{sku_id,jdbcType=VARCHAR}
 
     </update>

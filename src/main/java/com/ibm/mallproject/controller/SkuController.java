@@ -46,6 +46,12 @@ public class SkuController {
         return skuService.queryByName(sku_name);
    }
 
+   @RequestMapping("/selectByIds")
+   @ResponseBody
+   public List<SkuInfo> selectByIds(@RequestParam List<String> sku_id){
+        return skuService.selectByIds(sku_id);
+   }
+
     //查询所有商品
     @RequestMapping("/selectSkuAll")
     @ResponseBody

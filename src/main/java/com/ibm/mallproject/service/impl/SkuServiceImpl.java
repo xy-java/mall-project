@@ -112,7 +112,24 @@ public class SkuServiceImpl implements SkuService {
         skuInfo.setSku_name(skuMap.get("sku_name"));
         skuInfo.setSku_desc(skuMap.get("sku_desc"));
         skuInfo.setStore(Integer.parseInt(skuMap.get("store")));
-        skuInfo.setSalcount(Integer.parseInt(skuMap.get("salcount")));
+		skuInfo.setImg(skuMap.get("img"));
+		skuInfo.setSku_type(skuMap.get("sku_type"));
+		skuInfo.setSku_status(Integer.valueOf(skuMap.get("sku_status")));
+
+		//删除之前的图片
+		SkuInfo sku = skuMapper.selectSkuById(skuMap.get("sku_id"));
+		String img = sku.getImg();
+
+		ClassPathResource resource = new ClassPathResource("static/");
+		String path = null;
+		try {
+			path = resource.getFile().getPath();
+			new File(path.split("target")[0] + "src\\main\\resources\\static\\" + img).delete();
+			new File(path+"\\" + img).delete();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 
         return skuMapper.updateSku(skuInfo);
     }
