@@ -11,7 +11,7 @@
  Target Server Version : 80019
  File Encoding         : 65001
 
- Date: 08/06/2022 19:05:05
+ Date: 09/06/2022 11:25:50
 */
 
 SET NAMES utf8mb4;
@@ -3938,23 +3938,18 @@ CREATE TABLE `order_info`  (
 DROP TABLE IF EXISTS `paramter_info`;
 CREATE TABLE `paramter_info`  (
   `parameter_id` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '参数页id',
-  `parameter_height` decimal(10, 0) NULL DEFAULT NULL COMMENT '高度',
-  `parameter_width` decimal(10, 0) NULL DEFAULT NULL COMMENT '宽度',
-  `parameter_thickness` decimal(10, 0) NULL DEFAULT NULL COMMENT '厚度',
-  `parameter_weight` decimal(10, 0) NULL DEFAULT NULL COMMENT '重量',
-  `parameter_cpu` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'cpu',
-  `parameter_gpu` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'gpu',
-  `parameter_battery` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '电池',
-  `parameter_memory` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '内存',
-  `parameter_info` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '其他信息',
   `create_time` datetime(0) NOT NULL COMMENT '时间',
-  `parameter_img` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '参数图片',
+  `parameter_versions` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '手机版本',
+  `parameter_color` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '手机颜色',
+  `parameter_cp` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '电脑配置',
+  `parameter_series` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '表系列',
   PRIMARY KEY (`parameter_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of paramter_info
 -- ----------------------------
+INSERT INTO `paramter_info` VALUES ('b4ff02f06e834f5b', '2022-06-09 11:23:50', '8GB+128GB,8GB+256GB,8GB+520GB', '亮黑,雪白', 'sada', '');
 
 -- ----------------------------
 -- Table structure for rotation_info
@@ -4001,9 +3996,7 @@ CREATE TABLE `sku_info`  (
 -- ----------------------------
 -- Records of sku_info
 -- ----------------------------
-INSERT INTO `sku_info` VALUES ('1ad1eb604f0e418f', 00002010.00, 'Xiaomi Watch S1', '蓝宝石玻璃镜面 | 不锈钢中框 | 1.43”AMOLED大屏幕1', 100, 0, '9900C81B80A54B58.jpg', '2022-06-08 09:12:53', NULL, NULL, '电脑', 1);
-INSERT INTO `sku_info` VALUES ('d6b0904f8a8248e0', 00000999.00, 'Redmi Note 11SE', '天玑700｜18W快充｜5000mAh大电池｜6.5\"FHD+全高清屏｜双卡双5G｜90Hz 四挡变速高刷屏｜4096级 亮度调节｜全系128GB 大内存｜大功率扬声器｜4800万 高清双摄', 200, 0, 'C692FA81B1AD4EBE.jpg', '2022-06-07 15:36:30', NULL, NULL, '手机', 0);
-INSERT INTO `sku_info` VALUES ('eafc875a2db941ba', 00002199.00, 'Redmi Note 11T Pro+', '天玑8100｜144Hz高配LCD屏幕｜6400万像素｜VC液冷散热', 200, 0, '8247C928F4B747E7.jpg', '2022-06-07 15:35:35', NULL, NULL, '手机', 0);
+INSERT INTO `sku_info` VALUES ('6b35aa76a7954205', 00002191.00, 'Redmi K40S', '骁龙870｜三星 E4直屏', 200, 0, '8DDEA5842F8446E6.jpg', '2022-06-09 09:56:09', NULL, 'b4ff02f06e834f5b', '电脑', 0);
 
 -- ----------------------------
 -- Table structure for user_info

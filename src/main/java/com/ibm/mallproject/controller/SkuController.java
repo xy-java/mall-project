@@ -50,10 +50,16 @@ public class SkuController {
         return skuService.queryByNameStatus(sku_name);
     }
 
+    @RequestMapping("/selectParamter")
+    @ResponseBody
+    public List<Map> selectParamter(@RequestParam List<String> sku_id){
+        return skuService.selectParamter(sku_id);
+    }
+
 
     @RequestMapping("/selectByIds")
-   @ResponseBody
-   public List<SkuInfo> selectByIds(@RequestParam List<String> sku_id){
+    @ResponseBody
+    public List<SkuInfo> selectByIds(@RequestParam List<String> sku_id){
         return skuService.selectByIds(sku_id);
    }
 

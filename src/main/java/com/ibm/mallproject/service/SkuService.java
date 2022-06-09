@@ -41,6 +41,9 @@ public interface SkuService {
     //通过id批量查找
     List<SkuInfo> selectByIds(List<String> sku_id);
 
+    //通过id批量查找
+    List<Map> selectParamter(List<String> sku_id);
+
 
     List<SkuInfo> searchSkuName();
 
