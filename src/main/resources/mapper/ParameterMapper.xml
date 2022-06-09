@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ibm.mallproject.dao.ParameterMapper">
+    <insert id="insertParameter" parameterType="com.ibm.mallproject.entity.ParamterInfo">
+        insert into paramter_info(parameter_id,parameter_versions,parameter_color,parameter_cp,parameter_series,create_time)
+        values (
+                #{parameter_id,jdbcType=VARCHAR},
+                #{parameter_versions,jdbcType=VARCHAR},
+                #{parameter_color,jdbcType=VARCHAR},
+                #{parameter_cp,jdbcType=VARCHAR},
+                #{parameter_series,jdbcType=VARCHAR},
+                #{create_time,jdbcType=TIMESTAMP}
+               )
+
+    </insert>
+
+    <select id="selectBySkuId" parameterType="String" resultType="com.ibm.mallproject.entity.ParamterInfo">
+        select * from paramter_info where parameter_id = #{parameter_id,jdbcType=VARCHAR}
+    </select>
+
+    <update id="updateParameter">
+        update paramter_info set parameter_versions=#{parameter_versions,jdbcType=VARCHAR},
+                                 parameter_color = #{parameter_color,jdbcType=VARCHAR},
+                                 parameter_cp = #{parameter_cp,jdbcType=VARCHAR},
+                                 parameter_series = #{parameter_series,jdbcType=VARCHAR},
+                                 create_time = #{create_time,jdbcType=TIMESTAMP}
+                where parameter_id = #{parameter_id,jdbcType=VARCHAR}
+
+    </update>
+</mapper>
