@@ -15,4 +15,8 @@ public interface ParameterMapper {
 	List<ParamterInfo> selectBySkuId(String parameter_id);
 
 	Integer updateParameter(ParamterInfo paramterInfo);
+
+
+	//通过id删除(可批量删除)
+	Integer deleteParameterById(List<String> sku_id);
 }

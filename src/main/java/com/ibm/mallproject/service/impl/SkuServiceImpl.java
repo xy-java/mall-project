@@ -96,15 +96,18 @@ public class SkuServiceImpl implements SkuService {
     public Integer deleteSkuById(List<String> sku_id) {
         //查找对应的图片信息，从staic删除
         List<SkuInfo> list = skuMapper.selectByIds(sku_id);
+        List<String> list1 = new ArrayList<String>();
         ClassPathResource resource = new ClassPathResource("static/");
+        ParamterInfo paramterInfo = new ParamterInfo();
         String path = null;
         try {
             path = resource.getFile().getPath();
             for (int i = 0; i < list.size(); i++) {
                 new File(path.split("target")[0] + "src\\main\\resources\\static\\" + list.get(i).getImg()).delete();
                 new File(path+"\\" + list.get(i).getImg()).delete();
+                list1.add(list.get(i).getParameter_id());
             }
-
+            parameterMapper.deleteParameterById(list1);
         } catch (IOException e) {
             e.printStackTrace();
         }

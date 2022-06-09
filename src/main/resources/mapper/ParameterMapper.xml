@@ -27,4 +27,12 @@
                 where parameter_id = #{parameter_id,jdbcType=VARCHAR}
 
     </update>
+
+    <delete id="deleteParameterById" parameterType="String">
+        delete from paramter_info where parameter_id in (
+        <foreach collection="list" item="parameter_id" separator=",">
+            #{parameter_id,jdbcType=VARCHAR}
+        </foreach>
+        )
+    </delete>
 </mapper>
