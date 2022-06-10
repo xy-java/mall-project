@@ -11,7 +11,7 @@
  Target Server Version : 80019
  File Encoding         : 65001
 
- Date: 09/06/2022 12:04:48
+ Date: 10/06/2022 15:23:19
 */
 
 SET NAMES utf8mb4;
@@ -65,7 +65,7 @@ CREATE TABLE `city_info`  (
   `parent_id` bigint NULL DEFAULT NULL COMMENT '上级id',
   `level_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'level_id',
   PRIMARY KEY (`city_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10003790 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10003789 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of city_info
@@ -3949,7 +3949,7 @@ CREATE TABLE `paramter_info`  (
 -- ----------------------------
 -- Records of paramter_info
 -- ----------------------------
-INSERT INTO `paramter_info` VALUES ('b4ff02f06e834f5b', '2022-06-09 11:23:50', '8GB+128GB,8GB+256GB,8GB+520GB', '亮黑,雪白', 'sada', '');
+INSERT INTO `paramter_info` VALUES ('b4ff02f06e834f5b', '2022-06-10 13:56:24', '8GB+128GB,8GB+256GB,8GB+520GB', '亮黑,雪白', 'sada', '');
 
 -- ----------------------------
 -- Table structure for rotation_info
@@ -3996,7 +3996,7 @@ CREATE TABLE `sku_info`  (
 -- ----------------------------
 -- Records of sku_info
 -- ----------------------------
-INSERT INTO `sku_info` VALUES ('6b35aa76a7954205', 00002191.00, 'Redmi K40S', '骁龙870｜三星 E4直屏', 200, 0, '8DDEA5842F8446E6.jpg', '2022-06-09 09:56:09', NULL, 'b4ff02f06e834f5b', '电脑', 0);
+INSERT INTO `sku_info` VALUES ('6b35aa76a7954205', 00002191.00, 'Redmi K40S', '骁龙870｜三星 E4直屏', 200, 0, 'EB1E6879DCBD4E4A.jpg', '2022-06-09 09:56:09', NULL, 'b4ff02f06e834f5b', '手机', 0);
 
 -- ----------------------------
 -- Table structure for user_info
