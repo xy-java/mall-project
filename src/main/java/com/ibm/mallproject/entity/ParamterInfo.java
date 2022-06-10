@@ -57,4 +57,16 @@ public class ParamterInfo {
 	public void setParameter_series(String parameter_series) {
 		this.parameter_series = parameter_series;
 	}
+
+	@Override
+	public String toString() {
+		return "ParamterInfo{" +
+				"parameter_id='" + parameter_id + '\'' +
+				", create_time=" + create_time +
+				", parameter_versions='" + parameter_versions + '\'' +
+				", parameter_color='" + parameter_color + '\'' +
+				", parameter_cp='" + parameter_cp + '\'' +
+				", parameter_series='" + parameter_series + '\'' +
+				'}';
+	}
 }

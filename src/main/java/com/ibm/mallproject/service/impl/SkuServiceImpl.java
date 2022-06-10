@@ -153,6 +153,26 @@ public class SkuServiceImpl implements SkuService {
     }
 
     @Override
+    public List<Map> selectSkuInfoBuy(String sku_id) {
+        //通过id查当前sku表
+        SkuInfo skuInfo = skuMapper.selectSkuById(sku_id);
+        //得到参数的list
+        List<ParamterInfo> list = parameterMapper.selectBySkuId(skuInfo.getParameter_id());
+        List<SkuInfo> list1 = new ArrayList<SkuInfo>();
+        list1.add(skuInfo);
+        HashMap<String,List> map = new HashMap<String,List>();
+        map.put("skuInfo",list1);
+        map.put("paramterInfo",list);
+        List<Map> mapList = new ArrayList<Map>();
+        mapList.add(map);
+        System.err.println(map);
+
+        System.err.println(mapList);
+
+        return mapList;
+    }
+
+    @Override
     public List<SkuInfo> searchSkuName() {
         return skuMapper.searchSkuName();
     }

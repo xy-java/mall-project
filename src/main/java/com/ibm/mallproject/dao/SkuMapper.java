@@ -28,7 +28,6 @@ public interface SkuMapper {
     //通过商品名模糊查询
     List<SkuInfo> queryByNameStatus(String sku_name);
 
-
     //查询所有商品是否上架
     List<SkuInfo> selectSkuByStatus(Integer sku_status);
 

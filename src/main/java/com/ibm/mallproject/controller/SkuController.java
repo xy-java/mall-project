@@ -93,6 +93,13 @@ public class SkuController {
         return skuService.updateStatusById(sku_id,temp)>0 ? "上下架成功" : "上下架失败";
     }
 
+    //通过Id查询的购买详情页
+    @RequestMapping("/selectSkuInfoBuy")
+    @ResponseBody
+    public List<Map> selectSkuInfoBuy(@RequestParam String sku_id){
+        return skuService.selectSkuInfoBuy(sku_id);
+    }
+
     //删除所有
     @RequestMapping("/deleteSkuAll")
     public String deleteSkuAll() {

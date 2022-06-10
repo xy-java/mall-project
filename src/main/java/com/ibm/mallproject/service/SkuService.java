@@ -45,6 +45,10 @@ public interface SkuService {
     List<Map> selectParamter(List<String> sku_id);
 
 
+    //通过id查找
+    List<Map> selectSkuInfoBuy(String sku_id);
+
+
     List<SkuInfo> searchSkuName();
 
 

@@ -8,6 +8,7 @@
 
     </select>
 
+
     <select id="queryByName" parameterType="String" resultType="com.ibm.mallproject.entity.SkuInfo">
         select * from sku_info where
         <if test="sku_name !=null">
