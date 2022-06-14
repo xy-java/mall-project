@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ibm.mallproject.dao.AddressMapper">
+    <insert id="insertAddress" parameterType="com.ibm.mallproject.entity.AddressInfo">
+        insert into address_info(
+            address_id,address_info,user_id,address_status,create_time,address_level1,address_level2,address_level3,derive_name
+        )values(
+            #{address_id,jdbcType=VARCHAR},
+            #{address_info,jdbcType=VARCHAR},
+            #{user_id,jdbcType=VARCHAR},
+            #{address_status,jdbcType=INTEGER},
+            #{create_time,jdbcType=TIMESTAMP},
+            #{address_level1,jdbcType=VARCHAR},
+            #{address_level2,jdbcType=VARCHAR},
+            #{address_level3,jdbcType=VARCHAR},
+            #{derive_name,jdbcType=VARCHAR}
+        )
+    </insert>
+</mapper>
