@@ -11,7 +11,7 @@
  Target Server Version : 80019
  File Encoding         : 65001
 
- Date: 10/06/2022 15:23:19
+ Date: 14/06/2022 15:51:07
 */
 
 SET NAMES utf8mb4;
@@ -30,6 +30,7 @@ CREATE TABLE `address_info`  (
   `address_level1` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '第一级省',
   `address_level2` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '第二级市',
   `address_level3` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '第三级',
+  `derive_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '收货人',
   PRIMARY KEY (`address_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
@@ -65,7 +66,7 @@ CREATE TABLE `city_info`  (
   `parent_id` bigint NULL DEFAULT NULL COMMENT '上级id',
   `level_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'level_id',
   PRIMARY KEY (`city_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10003789 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10003790 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of city_info
@@ -4015,6 +4016,7 @@ CREATE TABLE `user_info`  (
 -- ----------------------------
 -- Records of user_info
 -- ----------------------------
+INSERT INTO `user_info` VALUES ('25e0bb98c5a14d4b', 'user', '123456', '1392055037@qq.com', '2022-06-14 09:05:08', '普通用户');
 INSERT INTO `user_info` VALUES ('945a27d2b1b24c25', 'admin', '123456', '1392055037@qq.com', '2022-05-31 17:20:12', '管理员');
 
 SET FOREIGN_KEY_CHECKS = 1;
