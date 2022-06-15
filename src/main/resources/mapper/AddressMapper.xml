@@ -16,4 +16,12 @@
             #{derive_name,jdbcType=VARCHAR}
         )
     </insert>
+
+    <select id="queryAddress" parameterType="com.ibm.mallproject.entity.AddressInfo" resultType="com.ibm.mallproject.entity.AddressInfo">
+        select * from address_info where user_id = #{user_id,jdbcType=VARCHAR} order by address_status
+    </select>
+
+    <select id="queryStatus" parameterType="String" resultType="Integer">
+        select count(*) from address_info where user_id = #{user_id,jdbcType=VARCHAR} and address_status=  0
+    </select>
 </mapper>

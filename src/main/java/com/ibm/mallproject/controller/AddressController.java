@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -37,7 +38,18 @@ public class AddressController {
 
 		return addressService.insertAddress(addressInfo) > 0 ? "增加成功" : "增加失败";
 	}
+	
+	@RequestMapping("/queryAddress")
+	@ResponseBody
+	public List<AddressInfo> queryAddress(@RequestParam String user_id){
+		return addressService.queryAddress(user_id);
+	}
 
 
+	@RequestMapping("/queryStatus")
+	@ResponseBody
+	public Integer queryStatus(@RequestParam String user_id){
+		return addressService.queryStatus(user_id);
+	}
 
 }

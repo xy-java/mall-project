@@ -29,13 +29,7 @@ class MallProjectApplicationTests {
 
 	@Test
 	void contextLoads() {
-		//SkuInfo skuInfo = new SkuInfo("1",1.1,"name","desc",1,1,"img",new Date(),"a","b");
-		//Integer integer = skuMapper.insertSku(skuInfo);
-		ArrayList<String> strings = new ArrayList<>();
-		strings.add("2a54b5f6d9b24de3");
-		strings.add("335c2717a54643e2");
-		Integer integer = skuMapper.deleteSkuById(strings);
-		System.out.println(integer);
+		System.err.println(CommonUtil.getUUID());
 	}
 
 	@Test
