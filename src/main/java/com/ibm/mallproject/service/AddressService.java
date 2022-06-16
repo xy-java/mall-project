@@ -19,4 +19,6 @@ public interface AddressService {
 	Integer update(AddressInfo addressInfo);
 
 	Integer deleteById(String address_id);
+
+	List<AddressInfo> queryStatusById(String user_id);
 }

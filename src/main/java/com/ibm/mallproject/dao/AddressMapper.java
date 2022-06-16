@@ -13,6 +13,8 @@ public interface AddressMapper {
 
 	List<AddressInfo> queryAddress(String user_id);
 
+	List<AddressInfo> queryStatusById(String user_id);
+
 	Integer queryStatus(String user_id);
 
 	List<AddressInfo> selectById(String address_id);

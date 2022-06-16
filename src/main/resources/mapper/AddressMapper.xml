@@ -25,6 +25,10 @@
         select count(*) from address_info where user_id = #{user_id,jdbcType=VARCHAR} and address_status=  0
     </select>
 
+    <select id="queryStatusById" parameterType="String" resultType="com.ibm.mallproject.entity.AddressInfo">
+        select * from address_info where user_id = #{user_id,jdbcType=VARCHAR} and address_status=  0
+    </select>
+
     <select id="selectById" parameterType="String" resultType="com.ibm.mallproject.entity.AddressInfo">
         select * from address_info where address_id = #{address_id,jdbcType=VARCHAR}
     </select>

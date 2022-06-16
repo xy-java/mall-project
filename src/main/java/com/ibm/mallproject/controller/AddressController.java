@@ -97,4 +97,10 @@ public class AddressController {
 	public String deleteById(@RequestParam String address_id){
 		return addressService.deleteById(address_id)>0 ? "删除成功":"删除失败";
 	}
+
+	@RequestMapping("/queryStatusById")
+	@ResponseBody
+	public List<AddressInfo> queryStatusById(@RequestParam String user_id){
+		return addressService.queryStatusById(user_id);
+	}
 }

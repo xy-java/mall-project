@@ -50,4 +50,9 @@ public class AddressServiceImpl implements AddressService {
 	public Integer deleteById(String address_id) {
 		return addressMapper.deleteById(address_id);
 	}
+
+	@Override
+	public List<AddressInfo> queryStatusById(String user_id) {
+		return addressMapper.queryStatusById(user_id);
+	}
 }
