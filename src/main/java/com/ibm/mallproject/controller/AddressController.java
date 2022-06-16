@@ -26,17 +26,31 @@ public class AddressController {
 	@ResponseBody
 	public String insertAddress(@RequestParam Map<String,String> map){
 		AddressInfo addressInfo = new AddressInfo();
-		addressInfo.setAddress_id(CommonUtil.getUUID());
-		addressInfo.setAddress_info(map.get("address_info"));
-		addressInfo.setCreate_time(new Date());
-		addressInfo.setAddress_status(Integer.valueOf(map.get("address_status")));
-		addressInfo.setAddress_level1(map.get("address_level1"));
-		addressInfo.setAddress_level2(map.get("address_level2"));
-		addressInfo.setAddress_level3(map.get("address_level3"));
-		addressInfo.setUser_id(map.get("user_id"));
-		addressInfo.setDerive_name(map.get("derive_name"));
+		if(map.get("address_status").equals("0")){
+			addressService.updateStatus(map.get("user_id"));
+			addressInfo.setAddress_id(CommonUtil.getUUID());
+			addressInfo.setAddress_info(map.get("address_info"));
+			addressInfo.setCreate_time(new Date());
+			addressInfo.setAddress_status(Integer.valueOf(map.get("address_status")));
+			addressInfo.setAddress_level1(map.get("address_level1"));
+			addressInfo.setAddress_level2(map.get("address_level2"));
+			addressInfo.setAddress_level3(map.get("address_level3"));
+			addressInfo.setUser_id(map.get("user_id"));
+			addressInfo.setDerive_name(map.get("derive_name"));
+			return addressService.insertAddress(addressInfo) > 0 ? "增加成功" : "增加失败";
+		}else{
+			addressInfo.setAddress_id(CommonUtil.getUUID());
+			addressInfo.setAddress_info(map.get("address_info"));
+			addressInfo.setCreate_time(new Date());
+			addressInfo.setAddress_status(Integer.valueOf(map.get("address_status")));
+			addressInfo.setAddress_level1(map.get("address_level1"));
+			addressInfo.setAddress_level2(map.get("address_level2"));
+			addressInfo.setAddress_level3(map.get("address_level3"));
+			addressInfo.setUser_id(map.get("user_id"));
+			addressInfo.setDerive_name(map.get("derive_name"));
+			return addressService.insertAddress(addressInfo) > 0 ? "增加成功" : "增加失败";
+		}
 
-		return addressService.insertAddress(addressInfo) > 0 ? "增加成功" : "增加失败";
 	}
 	
 	@RequestMapping("/queryAddress")
@@ -52,4 +66,35 @@ public class AddressController {
 		return addressService.queryStatus(user_id);
 	}
 
+	@RequestMapping("/selectById")
+	@ResponseBody
+	public List<AddressInfo> selectById(@RequestParam String address_id){
+		return addressService.selectById(address_id);
+	}
+
+	@RequestMapping("/update")
+	@ResponseBody
+	public String update(@RequestParam Map<String,String> map){
+		AddressInfo addressInfo = new AddressInfo();
+		if(map.get("address_status").equals("0")){
+			addressService.updateStatus(map.get("user_id"));
+		}
+		addressInfo.setAddress_id(map.get("address_id"));
+		addressInfo.setAddress_info(map.get("address_info"));
+		addressInfo.setCreate_time(new Date());
+		addressInfo.setAddress_status(Integer.valueOf(map.get("address_status")));
+		addressInfo.setAddress_level1(map.get("address_level1"));
+		addressInfo.setAddress_level2(map.get("address_level2"));
+		addressInfo.setAddress_level3(map.get("address_level3"));
+		addressInfo.setDerive_name(map.get("derive_name"));
+
+		return addressService.update(addressInfo)>0 ? "修改成功":"修改失败";
+
+	}
+
+	@RequestMapping("/deleteById")
+	@ResponseBody
+	public String deleteById(@RequestParam String address_id){
+		return addressService.deleteById(address_id)>0 ? "删除成功":"删除失败";
+	}
 }

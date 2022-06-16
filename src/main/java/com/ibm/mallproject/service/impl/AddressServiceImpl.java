@@ -30,4 +30,24 @@ public class AddressServiceImpl implements AddressService {
 	public Integer queryStatus(String user_id) {
 		return addressMapper.queryStatus(user_id);
 	}
+
+	@Override
+	public List<AddressInfo> selectById(String address_id) {
+		return addressMapper.selectById(address_id);
+	}
+
+	@Override
+	public Integer updateStatus(String user_id) {
+		return addressMapper.updateStatus(user_id);
+	}
+
+	@Override
+	public Integer update(AddressInfo addressInfo) {
+		return addressMapper.update(addressInfo);
+	}
+
+	@Override
+	public Integer deleteById(String address_id) {
+		return addressMapper.deleteById(address_id);
+	}
 }

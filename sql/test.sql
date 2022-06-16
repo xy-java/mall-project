@@ -11,7 +11,7 @@
  Target Server Version : 80019
  File Encoding         : 65001
 
- Date: 15/06/2022 14:26:02
+ Date: 16/06/2022 10:07:54
 */
 
 SET NAMES utf8mb4;
@@ -37,10 +37,9 @@ CREATE TABLE `address_info`  (
 -- ----------------------------
 -- Records of address_info
 -- ----------------------------
-INSERT INTO `address_info` VALUES ('00fd6ddf5aff48eb', '西城绿魁花园', '25e0bb98c5a14d4b', 1, '2022-06-15 12:59:42', '110000', '110100', '110102', '李四');
-INSERT INTO `address_info` VALUES ('7be43bc63500450e', '12345', '25e0bb98c5a14d4b', 1, '2022-06-15 14:08:32', '120000', '120100', '120103', '李四');
+INSERT INTO `address_info` VALUES ('00fd6ddf5aff48eb', '西城绿魁花园', '25e0bb98c5a14d4b', 0, '2022-06-16 09:58:31', '110000', '110100', '110102', '李四');
 INSERT INTO `address_info` VALUES ('cccc18909d974b0e', '我爱我家', '25e0bb98c5a14d4b', 1, '2022-06-15 14:07:49', '110000', '110100', '110106', '王五');
-INSERT INTO `address_info` VALUES ('d280aa9d1d72469c', '东城绿魁花园', '25e0bb98c5a14d4b', 0, '2022-06-15 12:50:25', '110000', '110100', '110101', '张三');
+INSERT INTO `address_info` VALUES ('d280aa9d1d72469c', '东城绿魁花园', '25e0bb98c5a14d4b', 1, '2022-06-15 12:50:25', '110000', '110100', '110101', '张三');
 
 -- ----------------------------
 -- Table structure for cart_info
@@ -70,7 +69,7 @@ CREATE TABLE `city_info`  (
   `parent_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '上级id',
   `level_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'level_id',
   PRIMARY KEY (`city_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10003790 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of city_info

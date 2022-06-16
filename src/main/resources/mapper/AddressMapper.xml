@@ -24,4 +24,25 @@
     <select id="queryStatus" parameterType="String" resultType="Integer">
         select count(*) from address_info where user_id = #{user_id,jdbcType=VARCHAR} and address_status=  0
     </select>
+
+    <select id="selectById" parameterType="String" resultType="com.ibm.mallproject.entity.AddressInfo">
+        select * from address_info where address_id = #{address_id,jdbcType=VARCHAR}
+    </select>
+
+    <update id="updateStatus">
+        update address_info set address_status = "1" where user_id = #{user_id,jdbcType=VARCHAR}
+    </update>
+
+    <update id="update">
+        update address_info set address_info=#{address_info,jdbcType=VARCHAR},address_level1=#{address_level1,jdbcType=VARCHAR},
+                                address_level2 = #{address_level2,jdbcType=VARCHAR}, address_level3 = #{address_level3,jdbcType=VARCHAR},
+                                address_status=#{address_status,jdbcType=INTEGER},create_time = #{create_time,jdbcType=TIMESTAMP},
+                                derive_name =  #{derive_name,jdbcType=VARCHAR}
+        where address_id = #{address_id,jdbcType=VARCHAR}
+
+    </update>
+
+    <delete id="deleteById">
+        delete from address_info where address_id = #{address_id,jdbcType=VARCHAR}
+    </delete>
 </mapper>
