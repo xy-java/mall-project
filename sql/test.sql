@@ -11,7 +11,7 @@
  Target Server Version : 80019
  File Encoding         : 65001
 
- Date: 16/06/2022 10:07:54
+ Date: 16/06/2022 11:12:56
 */
 
 SET NAMES utf8mb4;
@@ -51,6 +51,7 @@ CREATE TABLE `cart_info`  (
   `sku_id` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '商品id',
   `sku_num` int UNSIGNED NOT NULL DEFAULT 0 COMMENT '数量',
   `create_time` datetime(0) NOT NULL COMMENT '创建时间',
+  `address_id` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户地址id',
   PRIMARY KEY (`cart_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
