@@ -11,7 +11,7 @@
  Target Server Version : 80019
  File Encoding         : 65001
 
- Date: 16/06/2022 11:12:56
+ Date: 16/06/2022 18:03:22
 */
 
 SET NAMES utf8mb4;
@@ -37,7 +37,7 @@ CREATE TABLE `address_info`  (
 -- ----------------------------
 -- Records of address_info
 -- ----------------------------
-INSERT INTO `address_info` VALUES ('00fd6ddf5aff48eb', '西城绿魁花园', '25e0bb98c5a14d4b', 0, '2022-06-16 09:58:31', '110000', '110100', '110102', '李四');
+INSERT INTO `address_info` VALUES ('00fd6ddf5aff48eb', '西城绿魁花园', '25e0bb98c5a14d4b', 0, '2022-06-16 17:39:47', '110000', '110100', '110102', '李四');
 INSERT INTO `address_info` VALUES ('cccc18909d974b0e', '我爱我家', '25e0bb98c5a14d4b', 1, '2022-06-15 14:07:49', '110000', '110100', '110106', '王五');
 INSERT INTO `address_info` VALUES ('d280aa9d1d72469c', '东城绿魁花园', '25e0bb98c5a14d4b', 1, '2022-06-15 12:50:25', '110000', '110100', '110101', '张三');
 
@@ -3954,6 +3954,7 @@ CREATE TABLE `paramter_info`  (
 -- ----------------------------
 -- Records of paramter_info
 -- ----------------------------
+INSERT INTO `paramter_info` VALUES ('b335a2d6e5b34321', '2022-06-16 17:45:42', '', '', 'i5-12450H/集显/16G/512G,i7-12650H/RTX 2050/16G/512G,i5-12450H/RTX 2050/16G/512G', '');
 INSERT INTO `paramter_info` VALUES ('b4ff02f06e834f5b', '2022-06-10 13:56:24', '8GB+128GB,8GB+256GB,8GB+520GB', '亮黑,雪白', 'sada', '');
 
 -- ----------------------------
@@ -4001,6 +4002,7 @@ CREATE TABLE `sku_info`  (
 -- ----------------------------
 -- Records of sku_info
 -- ----------------------------
+INSERT INTO `sku_info` VALUES ('1e86413b50244cde', 00005299.00, 'Redmi Book Pro 15 2022', '全新12代英特尔处理器 | Windows 11 家庭中文版 | 可选RTX 2050高性能独立显卡 | 3.2K 90Hz 原色超清屏', 200, 0, '00D8E2A9B74F471A.jpg', '2022-06-16 17:45:42', NULL, 'b335a2d6e5b34321', '电脑', 0);
 INSERT INTO `sku_info` VALUES ('6b35aa76a7954205', 00002191.00, 'Redmi K40S', '骁龙870｜三星 E4直屏', 200, 0, 'EB1E6879DCBD4E4A.jpg', '2022-06-09 09:56:09', NULL, 'b4ff02f06e834f5b', '手机', 0);
 
 -- ----------------------------
