@@ -17,15 +17,14 @@ public class CartInfo {
 	//创建时间
 	private Date create_time;
 
-	public CartInfo() {
+	private String address_id;
+
+	public String getAddress_id() {
+		return address_id;
 	}
 
-	public CartInfo(String cart_id, String user_id, String sku_id, Integer cart_num, Date create_time) {
-		this.cart_id = cart_id;
-		this.user_id = user_id;
-		this.sku_id = sku_id;
-		this.cart_num = cart_num;
-		this.create_time = create_time;
+	public void setAddress_id(String address_id) {
+		this.address_id = address_id;
 	}
 
 	public String getCart_id() {
@@ -66,5 +65,17 @@ public class CartInfo {
 
 	public void setCreate_time(Date create_time) {
 		this.create_time = create_time;
+	}
+
+	@Override
+	public String toString() {
+		return "CartInfo{" +
+				"cart_id='" + cart_id + '\'' +
+				", user_id='" + user_id + '\'' +
+				", sku_id='" + sku_id + '\'' +
+				", cart_num=" + cart_num +
+				", create_time=" + create_time +
+				", address_id='" + address_id + '\'' +
+				'}';
 	}
 }

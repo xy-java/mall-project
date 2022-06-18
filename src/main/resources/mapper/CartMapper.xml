@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ibm.mallproject.dao.CartMapper">
+    <select id="findCartByUserId" parameterType="com.ibm.mallproject.entity.CartInfo" resultType="com.ibm.mallproject.entity.CartInfo">
+        select * from cart_info where user_id = #{user_id,jdbcType=VARCHAR}
+    </select>
+
+    <insert id="insertCart" parameterType="com.ibm.mallproject.entity.CartInfo">
+        insert into cart_info(cart_id,user_id,sku_id,cart_num,create_time,address_id)
+        values (
+            #{cart_id,jdbcType=VARCHAR},
+            #{user_id,jdbcType=VARCHAR},
+            #{sku_id,jdbcType=VARCHAR},
+            #{cart_num,jdbcType=INTEGER},
+            #{create_time,jdbcType=TIMESTAMP},
+            #{address_id,jdbcType=VARCHAR}
+               )
+    </insert>
+
+
+    <delete id="deleteCartById">
+        delete from cart_info where cart_id = #{cart_id,jdbcType=VARCHAR}
+    </delete>
+</mapper>
