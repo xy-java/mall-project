@@ -11,7 +11,7 @@
  Target Server Version : 80019
  File Encoding         : 65001
 
- Date: 18/06/2022 15:59:23
+ Date: 18/06/2022 23:42:52
 */
 
 SET NAMES utf8mb4;
@@ -52,12 +52,20 @@ CREATE TABLE `cart_info`  (
   `cart_num` int UNSIGNED NOT NULL DEFAULT 0 COMMENT '数量',
   `create_time` datetime(0) NOT NULL COMMENT '创建时间',
   `address_id` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户地址id',
+  `sku_version` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '手机版本',
+  `sku_color` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '手机颜色',
+  `sku_cp` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '电脑配置',
+  `sku_series` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '手表配置',
   PRIMARY KEY (`cart_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of cart_info
 -- ----------------------------
+INSERT INTO `cart_info` VALUES ('72156ab8051d46cf', '25e0bb98c5a14d4b', '1e86413b50244cde', 1, '2022-06-18 23:08:30', '00fd6ddf5aff48eb', '', '', 'i5-12450H/集显/16G/512G', '');
+INSERT INTO `cart_info` VALUES ('81f5b77fbd634147', '25e0bb98c5a14d4b', '6b35aa76a7954205', 1, '2022-06-18 23:06:26', '00fd6ddf5aff48eb', '8GB+128GB', '亮黑', 'sada', '');
+INSERT INTO `cart_info` VALUES ('b87c75ced6f941f1', '25e0bb98c5a14d4b', '1e86413b50244cde', 2, '2022-06-18 22:24:46', '00fd6ddf5aff48eb', '', '', 'i7-12650H/RTX 2050/16G/512G', '');
+INSERT INTO `cart_info` VALUES ('dc404ee1706c4ec5', '25e0bb98c5a14d4b', '6b35aa76a7954205', 1, '2022-06-18 22:50:46', '00fd6ddf5aff48eb', '8GB+128GB', '亮黑', 'sada', '');
 
 -- ----------------------------
 -- Table structure for comment_info

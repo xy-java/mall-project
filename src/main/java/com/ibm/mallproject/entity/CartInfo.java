@@ -19,6 +19,45 @@ public class CartInfo {
 
 	private String address_id;
 
+	private String sku_version;
+
+	private String sku_color;
+
+	private String sku_cp;
+	private String sku_series;
+
+	public String getSku_version() {
+		return sku_version;
+	}
+
+	public void setSku_version(String sku_version) {
+		this.sku_version = sku_version;
+	}
+
+	public String getSku_color() {
+		return sku_color;
+	}
+
+	public void setSku_color(String sku_color) {
+		this.sku_color = sku_color;
+	}
+
+	public String getSku_cp() {
+		return sku_cp;
+	}
+
+	public void setSku_cp(String sku_cp) {
+		this.sku_cp = sku_cp;
+	}
+
+	public String getSku_series() {
+		return sku_series;
+	}
+
+	public void setSku_series(String sku_series) {
+		this.sku_series = sku_series;
+	}
+
 	public String getAddress_id() {
 		return address_id;
 	}
@@ -76,6 +115,10 @@ public class CartInfo {
 				", cart_num=" + cart_num +
 				", create_time=" + create_time +
 				", address_id='" + address_id + '\'' +
+				", sku_version='" + sku_version + '\'' +
+				", sku_color='" + sku_color + '\'' +
+				", sku_cp='" + sku_cp + '\'' +
+				", sku_series='" + sku_series + '\'' +
 				'}';
 	}
 }

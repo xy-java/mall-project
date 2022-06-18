@@ -6,14 +6,18 @@
     </select>
 
     <insert id="insertCart" parameterType="com.ibm.mallproject.entity.CartInfo">
-        insert into cart_info(cart_id,user_id,sku_id,cart_num,create_time,address_id)
+        insert into cart_info(cart_id,user_id,sku_id,cart_num,create_time,address_id,sku_version,sku_color,sku_cp,sku_series)
         values (
             #{cart_id,jdbcType=VARCHAR},
             #{user_id,jdbcType=VARCHAR},
             #{sku_id,jdbcType=VARCHAR},
             #{cart_num,jdbcType=INTEGER},
             #{create_time,jdbcType=TIMESTAMP},
-            #{address_id,jdbcType=VARCHAR}
+            #{address_id,jdbcType=VARCHAR},
+            #{sku_version,jdbcType=VARCHAR},
+            #{sku_color,jdbcType=VARCHAR},
+            #{sku_cp,jdbcType=VARCHAR},
+            #{sku_series,jdbcType=VARCHAR}
                )
     </insert>
 
