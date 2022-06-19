@@ -15,6 +15,9 @@ public interface CartService {
 	 * */
 	Integer insertCart(CartInfo cartInfo);
 
+
+	CartInfo selectOneCart(CartInfo cartInfo);
+
 	/**
 	 * 更新购物车商品数量
 	 * */

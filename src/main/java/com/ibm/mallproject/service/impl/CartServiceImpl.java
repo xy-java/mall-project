@@ -29,6 +29,11 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
+	public CartInfo selectOneCart(CartInfo cartInfo) {
+		return cartMapper.selectOneCart(cartInfo);
+	}
+
+	@Override
 	public Integer updateCart(CartInfo cartInfo) {
 		return cartMapper.updateCart(cartInfo);
 	}

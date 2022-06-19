@@ -14,6 +14,7 @@ public interface CartMapper {
 	 * */
 	List<CartInfo> findCartByUserId(String user_id);
 
+	CartInfo selectOneCart(CartInfo cartInfo);
 	/**
 	 * 添加商品到购物车
 	 * */
@@ -28,4 +29,6 @@ public interface CartMapper {
 	 * 删除购物车商品
 	 * */
 	Integer deleteCartById(String cart_id);
+
+
 }

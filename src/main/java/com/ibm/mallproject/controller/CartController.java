@@ -52,20 +52,32 @@ public class CartController {
 		cartInfo.setSku_cp(map.get("sku_cp"));
 		cartInfo.setSku_series(map.get("sku_series"));
 		cartInfo.setCreate_time(new Date());
-		return cartService.insertCart(cartInfo)>0 ? "新增成功" : "新增失败";
+
+		CartInfo cartInfo1 = cartService.selectOneCart(cartInfo);
+		if (cartInfo1 != null) {
+			cartInfo1.setCart_num(cartInfo1.getCart_num() + cartInfo.getCart_num());
+			System.err.println(cartInfo1);
+			return cartService.updateCart(cartInfo1)>0?  "新增成功" : "新增失败";
+		} else {
+			return cartService.insertCart(cartInfo)>0 ? "新增成功" : "新增失败";
+		}
+
+
+	}
+
+
+	@RequestMapping("/deleteCartById")
+	@ResponseBody
+	public String deleteCartById(@RequestParam String cart_id) {
+		return cartService.deleteCartById(cart_id)>0 ? "删除成功" : "删除失败";
 	}
 
 	@RequestMapping("/updateCart")
 	@ResponseBody
 	public String updateCart(@RequestParam Map<String, String> map) {
 		CartInfo cartInfo = new CartInfo();
-
+		cartInfo.setCart_id(map.get("cart_id"));
+		cartInfo.setCart_num(Integer.parseInt(map.get("cart_num")));
 		return cartService.updateCart(cartInfo)>0 ? "修改成功" : "修改失败";
-	}
-
-	@RequestMapping("/deleteCartById")
-	@ResponseBody
-	public String deleteCartById(@RequestParam String cart_id) {
-		return cartService.deleteCartById(cart_id)>0 ? "删除成功" : "删除失败";
 	}
 }

@@ -25,4 +25,24 @@
     <delete id="deleteCartById">
         delete from cart_info where cart_id = #{cart_id,jdbcType=VARCHAR}
     </delete>
+
+    <update id="updateCart" parameterType="com.ibm.mallproject.entity.CartInfo">
+        update cart_info set cart_num = #{cart_num,jdbcType=INTEGER} where cart_id = #{cart_id,jdbcType=VARCHAR}
+    </update>
+
+    <select id="selectOneCart" parameterType="com.ibm.mallproject.entity.CartInfo" resultType="com.ibm.mallproject.entity.CartInfo">
+        select * from cart_info where sku_id=#{sku_id,jdbcType=VARCHAR} and user_id=#{user_id,jdbcType=VARCHAR}
+        <if test="sku_version!=null">
+            and sku_version=#{sku_version,jdbcType=VARCHAR}
+        </if>
+        <if test="sku_color!=null">
+            and sku_color=#{sku_color,jdbcType=VARCHAR}
+        </if>
+        <if test="sku_cp!=null">
+            and sku_cp=#{sku_cp,jdbcType=VARCHAR}
+        </if>
+        <if test="sku_series!=null">
+            and sku_series=#{sku_series,jdbcType=VARCHAR}
+        </if>
+    </select>
 </mapper>

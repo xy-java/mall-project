@@ -11,7 +11,7 @@
  Target Server Version : 80019
  File Encoding         : 65001
 
- Date: 18/06/2022 23:42:52
+ Date: 19/06/2022 18:45:30
 */
 
 SET NAMES utf8mb4;
@@ -62,10 +62,8 @@ CREATE TABLE `cart_info`  (
 -- ----------------------------
 -- Records of cart_info
 -- ----------------------------
-INSERT INTO `cart_info` VALUES ('72156ab8051d46cf', '25e0bb98c5a14d4b', '1e86413b50244cde', 1, '2022-06-18 23:08:30', '00fd6ddf5aff48eb', '', '', 'i5-12450H/集显/16G/512G', '');
-INSERT INTO `cart_info` VALUES ('81f5b77fbd634147', '25e0bb98c5a14d4b', '6b35aa76a7954205', 1, '2022-06-18 23:06:26', '00fd6ddf5aff48eb', '8GB+128GB', '亮黑', 'sada', '');
-INSERT INTO `cart_info` VALUES ('b87c75ced6f941f1', '25e0bb98c5a14d4b', '1e86413b50244cde', 2, '2022-06-18 22:24:46', '00fd6ddf5aff48eb', '', '', 'i7-12650H/RTX 2050/16G/512G', '');
-INSERT INTO `cart_info` VALUES ('dc404ee1706c4ec5', '25e0bb98c5a14d4b', '6b35aa76a7954205', 1, '2022-06-18 22:50:46', '00fd6ddf5aff48eb', '8GB+128GB', '亮黑', 'sada', '');
+INSERT INTO `cart_info` VALUES ('c672a0ca644d4524', '25e0bb98c5a14d4b', '6b35aa76a7954205', 2, '2022-06-19 18:44:24', '00fd6ddf5aff48eb', '8GB+128GB', '雪白', 'sada', '');
+INSERT INTO `cart_info` VALUES ('e33123a970e9462f', '25e0bb98c5a14d4b', '6b35aa76a7954205', 2, '2022-06-19 18:44:15', '00fd6ddf5aff48eb', '8GB+128GB', '亮黑', 'sada', '');
 
 -- ----------------------------
 -- Table structure for comment_info
