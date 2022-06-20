@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.List;
@@ -24,14 +25,28 @@ public class UserController {
 
 	@RequestMapping("/insert")
 	@ResponseBody
-	public String insert(@RequestParam Map<String, String> userMap){
-		//加判断参数非空(未加)
-		Integer flag = userService.insert(userMap);
-		if(flag>0){
-			return "新增成功";
-		}else{
-			return "新增失败";
+	public String insert(@RequestParam Map<String, String> userMap) {
+		if(userMap.get("verifycode").equals(userMap.get("code"))){
+			Integer flag = userService.insert(userMap);
+			if(flag>0){
+				return "新增成功";
+			}else{
+				return "新增失败";
+			}
+		}else {
+			return "验证码错误";
 		}
+	}
+
+	@RequestMapping("/checkPhone")
+	@ResponseBody
+	public String checkPhone(@RequestParam Map<String,String> map){
+			UserInfo userInfo = userService.selectByPhone(map.get("email"));
+			if(userInfo==null){
+				return "未存在";
+			}else{
+				return "已存在";
+			}
 
 	}
 
@@ -112,7 +127,8 @@ public class UserController {
 
 	@RequestMapping("/sendCode")
 	@ResponseBody
-	public String sendCode(@RequestParam String phoneNumber, HttpSession session){
+	public String sendCode(@RequestParam String phoneNumber){
+		//生成验证码
 		if (phoneNumber!=null && phoneNumber!="") {
 			//生成随机4位验证码
 			String code = ValidateCodeUtils.generateValidateCode(4).toString();
@@ -120,39 +136,11 @@ public class UserController {
 			//调用腾讯云提供的短信服务API完成发送短信
 			TengXunSMSUtils.sendShortMessage("在家学习1公众号","1439933",phoneNumber,code);
 			//保存生成的验证码到Session中
-			session.setAttribute(phoneNumber, code);
 
-			return "发送成功";
+			return code;
 		}
 		return "发送失败";
 	}
 
-	@RequestMapping("/enroll")
-	@ResponseBody
-	public String enroll(@RequestParam Map<String,String> map,HttpSession session){
-		String phoneNumber = map.get("phoneNumber");
-		String enrollCode = map.get("code");
-		String codeInSession = session.getAttribute(phoneNumber).toString();
 
-		if (codeInSession != null && codeInSession.equals(enrollCode)) {
-			//判断是不是新用户
-			UserInfo userInfo = userService.selectByPhone(phoneNumber);
-			if(userInfo == null){
-				userInfo.setUser_id(CommonUtil.getUUID());
-				userInfo.setLogin_name(map.get("login_name"));
-				userInfo.setPasswd(map.get("passwd"));
-				userInfo.setCreate_time(new Date());
-				userInfo.setUser_power("用户");
-				userInfo.setEmail(phoneNumber);
-
-				userService.saveUser(userInfo);
-			}
-			//成功注册清除session中的验证码
-			session.removeAttribute(phoneNumber);
-
-			return "注册成功，请重新登录";
-		}
-
-		return "验证码错误";
-	}
 }
