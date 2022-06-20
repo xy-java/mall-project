@@ -28,7 +28,7 @@ import java.util.*;
 public class SkuController {
 
     @Autowired
-    SkuService skuService;
+    private SkuService skuService;
 
     @RequestMapping("/selectSkuByStatus")
     @ResponseBody

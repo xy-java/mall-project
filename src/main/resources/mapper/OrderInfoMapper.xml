@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ibm.mallproject.dao.OrderInfoMapper">
+
+
+    <insert id="insertOrderInfo">
+        insert into order_info (order_id, total_amount, user_id, payment_way, order_status, create_time)
+        VALUES (
+                #{order_id,jdbcType=VARCHAR},
+                #{total_amount,jdbcType=DECIMAL},
+                #{user_id,jdbcType=VARCHAR},
+                #{payment_way,jdbcType=VARCHAR},
+                #{order_status,jdbcType=INTEGER},
+                #{create_time,jdbcType=TIMESTAMP}
+               )
+    </insert>
+    <select id="selectOrderInfoByUserId" resultType="com.ibm.mallproject.entity.OrderInfo">
+        select * from order_info where user_id = #{user_id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteOrderInfoById">
+        delete from order_info where order_id = #{order_id,jdbcType=VARCHAR}
+    </delete>
+</mapper>
