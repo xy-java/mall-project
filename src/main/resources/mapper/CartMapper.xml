@@ -45,4 +45,8 @@
             and sku_series=#{sku_series,jdbcType=VARCHAR}
         </if>
     </select>
+    <select id="selectCartById" resultType="com.ibm.mallproject.entity.CartInfo">
+        select *
+        from cart_info where cart_id = #{cart_id,jdbcType=VARCHAR};
+    </select>
 </mapper>

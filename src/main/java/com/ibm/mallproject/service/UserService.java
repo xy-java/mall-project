@@ -34,4 +34,9 @@ public interface UserService {
 
 	//修改方法查到一条数据
 	UserInfo queryById(String user_id);
+
+	//通过手机号查询
+	UserInfo selectByPhone(String phone);
+
+	Integer saveUser(UserInfo userInfo);
 }

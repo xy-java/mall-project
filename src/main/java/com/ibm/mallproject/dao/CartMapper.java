@@ -30,5 +30,10 @@ public interface CartMapper {
 	 * */
 	Integer deleteCartById(String cart_id);
 
-
+	/**
+	 * 根据购物车id查询
+	 * @param cart_id
+	 * @return
+	 */
+	CartInfo selectCartById(String cart_id);
 }

@@ -87,4 +87,14 @@ public class UserServiceImpl implements UserService {
 	public UserInfo queryById(String user_id) {
 		return userMapper.queryById(user_id);
 	}
+
+	@Override
+	public UserInfo selectByPhone(String phone) {
+		return userMapper.selectByPhone(phone);
+	}
+
+	@Override
+	public Integer saveUser(UserInfo userInfo) {
+		return userMapper.saveUser(userInfo);
+	}
 }

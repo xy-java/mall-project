@@ -18,6 +18,8 @@ public class UserInfo {
 	private Date create_time;
 	//用户权限
 	private String user_power;
+	//手机号
+	private String phone;
 
 	public UserInfo() {
 	}
@@ -29,6 +31,14 @@ public class UserInfo {
 		this.email = email;
 		this.create_time = create_time;
 		this.user_power = user_power;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 	public String getUser_power() {

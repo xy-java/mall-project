@@ -33,10 +33,16 @@ public interface UserMapper {
 
 	//通过用户名和邮箱模糊查询
 	List<UserInfo> queryByName(String login_name,String email);
-	
+
 	//用户名验证
 	Integer queryCount(String login_name,String user_id);
 
 	//修改方法查到一条数据
 	UserInfo queryById(String user_id);
+
+	//通过手机号查询
+	UserInfo selectByPhone(String phone);
+
+
+	Integer saveUser(UserInfo userInfo);
 }

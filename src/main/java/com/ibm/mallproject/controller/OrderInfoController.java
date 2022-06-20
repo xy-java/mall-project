@@ -34,9 +34,11 @@ public class OrderInfoController {
 //    Integer insertOrderInfo(OrderInfo orderInfo);
 
     @RequestMapping("/insertOrderInfo")
-    public String insertOrderInfo(@RequestParam Map<String,String> map){
+    public String insertOrderInfo(@RequestParam Map<String,Object> map){
+
+
         OrderInfo orderInfo = new OrderInfo();
-        orderInfo.setOrder_id(map.get("order_id"));
+        orderInfo.setOrder_id(map.get("order_id").toString());
 
 
         return null;

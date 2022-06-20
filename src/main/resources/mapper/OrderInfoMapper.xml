@@ -6,14 +6,15 @@
 
 
     <insert id="insertOrderInfo">
-        insert into order_info (order_id, total_amount, user_id, payment_way, order_status, create_time)
+        insert into order_info (order_id, total_amount, user_id, payment_way, order_status, create_time,cart_id)
         VALUES (
                 #{order_id,jdbcType=VARCHAR},
                 #{total_amount,jdbcType=DECIMAL},
                 #{user_id,jdbcType=VARCHAR},
                 #{payment_way,jdbcType=VARCHAR},
                 #{order_status,jdbcType=INTEGER},
-                #{create_time,jdbcType=TIMESTAMP}
+                #{create_time,jdbcType=TIMESTAMP},
+                #{cart_id,jdbcType=INTEGER}
                )
     </insert>
     <select id="selectOrderInfoByUserId" resultType="com.ibm.mallproject.entity.OrderInfo">

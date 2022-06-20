@@ -13,6 +13,7 @@
         )
     </insert>
 
+
     <delete id="delete" parameterType="com.ibm.mallproject.entity.UserInfo">
         delete from user_info
     </delete>
@@ -64,4 +65,20 @@
     <select id="queryById" parameterType="com.ibm.mallproject.entity.UserInfo" resultType="com.ibm.mallproject.entity.UserInfo">
         select * from user_info where user_id = #{user_id,jdbcType=VARCHAR}
     </select>
+    <select id="selectByPhone" resultType="com.ibm.mallproject.entity.UserInfo">
+        select * from user_info where phone = #{phone,jdbcType=VARCHAR}
+    </select>
+
+    <insert id="saveUser">
+        insert into user_info(user_id,login_name,passwd,email,user_power,create_time,phone)
+        values (
+                   #{user_id,jdbcType=VARCHAR},
+                   #{login_name,jdbcType=VARCHAR},
+                   #{passwd,jdbcType=VARCHAR},
+                   #{email,jdbcType=VARCHAR},
+                   #{user_power,jdbcType=VARCHAR},
+                   #{create_time,jdbcType=TIMESTAMP},
+                   #{phone,jdbcType=VARCHAR}
+               )
+    </insert>
 </mapper>

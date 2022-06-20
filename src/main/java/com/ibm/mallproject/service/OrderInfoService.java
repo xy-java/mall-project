@@ -1,8 +1,10 @@
 package com.ibm.mallproject.service;
 
 import com.ibm.mallproject.entity.OrderInfo;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName OrderInfoService
@@ -17,7 +19,7 @@ public interface OrderInfoService {
      * @param orderInfo
      * @return
      */
-    Integer insertOrderInfo(OrderInfo orderInfo);
+    Integer insertOrderInfo(Map<String, Object> map);
 
     /**
      * 查询当前用户的所有订单
