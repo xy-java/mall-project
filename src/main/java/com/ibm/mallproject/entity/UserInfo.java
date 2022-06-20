@@ -12,14 +12,13 @@ public class UserInfo {
 	private String login_name;
 	//用户密码
 	private String passwd;
-	//用户邮箱
+	//用户邮箱--手机号
 	private String email;
 	//创建时间
 	private Date create_time;
 	//用户权限
 	private String user_power;
-	//手机号
-	private String phone;
+
 
 	public UserInfo() {
 	}
@@ -33,13 +32,7 @@ public class UserInfo {
 		this.user_power = user_power;
 	}
 
-	public String getPhone() {
-		return phone;
-	}
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
 
 	public String getUser_power() {
 		return user_power;

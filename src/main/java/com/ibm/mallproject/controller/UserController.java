@@ -143,7 +143,7 @@ public class UserController {
 				userInfo.setPasswd(map.get("passwd"));
 				userInfo.setCreate_time(new Date());
 				userInfo.setUser_power("用户");
-				userInfo.setPhone(phoneNumber);
+				userInfo.setEmail(phoneNumber);
 
 				userService.saveUser(userInfo);
 			}
