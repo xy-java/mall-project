@@ -11,7 +11,7 @@
  Target Server Version : 80019
  File Encoding         : 65001
 
- Date: 19/06/2022 18:45:30
+ Date: 20/06/2022 15:01:29
 */
 
 SET NAMES utf8mb4;
@@ -37,8 +37,8 @@ CREATE TABLE `address_info`  (
 -- ----------------------------
 -- Records of address_info
 -- ----------------------------
-INSERT INTO `address_info` VALUES ('00fd6ddf5aff48eb', '西城绿魁花园', '25e0bb98c5a14d4b', 0, '2022-06-16 17:39:47', '110000', '110100', '110102', '李四');
-INSERT INTO `address_info` VALUES ('cccc18909d974b0e', '我爱我家', '25e0bb98c5a14d4b', 1, '2022-06-15 14:07:49', '110000', '110100', '110106', '王五');
+INSERT INTO `address_info` VALUES ('00fd6ddf5aff48eb', '西城绿魁花园', '25e0bb98c5a14d4b', 1, '2022-06-16 17:39:47', '110000', '110100', '110102', '李四');
+INSERT INTO `address_info` VALUES ('cccc18909d974b0e', '我爱我家', '25e0bb98c5a14d4b', 0, '2022-06-20 14:52:42', '110000', '110100', '110106', '王五');
 INSERT INTO `address_info` VALUES ('d280aa9d1d72469c', '东城绿魁花园', '25e0bb98c5a14d4b', 1, '2022-06-15 12:50:25', '110000', '110100', '110101', '张三');
 
 -- ----------------------------
@@ -62,8 +62,7 @@ CREATE TABLE `cart_info`  (
 -- ----------------------------
 -- Records of cart_info
 -- ----------------------------
-INSERT INTO `cart_info` VALUES ('c672a0ca644d4524', '25e0bb98c5a14d4b', '6b35aa76a7954205', 2, '2022-06-19 18:44:24', '00fd6ddf5aff48eb', '8GB+128GB', '雪白', 'sada', '');
-INSERT INTO `cart_info` VALUES ('e33123a970e9462f', '25e0bb98c5a14d4b', '6b35aa76a7954205', 2, '2022-06-19 18:44:15', '00fd6ddf5aff48eb', '8GB+128GB', '亮黑', 'sada', '');
+INSERT INTO `cart_info` VALUES ('b51e8ae45a09422f', '25e0bb98c5a14d4b', '1e86413b50244cde', 1, '2022-06-20 14:46:52', '00fd6ddf5aff48eb', '', '', 'i5-12450H/集显/16G/512G', '');
 
 -- ----------------------------
 -- Table structure for comment_info
@@ -126,9 +125,10 @@ CREATE TABLE `order_info`  (
   `order_id` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '订单id(uuid)',
   `total_amount` decimal(10, 2) UNSIGNED NOT NULL DEFAULT 0.00 COMMENT '总金额',
   `user_id` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户id',
-  `payment_way` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '付款方式',
+  `payment_way` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '付款方式',
   `order_status` int NOT NULL COMMENT '订单状态（1已支付，0未支付）',
   `create_time` datetime(0) NOT NULL COMMENT '创建时间',
+  `cart_id` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '购物车id',
   PRIMARY KEY (`order_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
