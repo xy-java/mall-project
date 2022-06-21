@@ -18,29 +18,14 @@ public class OrderInfo {
 	private Integer order_status;
 	//创建时间
 	private Date create_time;
-	//购物车id
-	private String cart_id;
+	private String address_id;
 
-
-	public OrderInfo() {
+	public String getAddress_id() {
+		return address_id;
 	}
 
-	public String getCart_id() {
-		return cart_id;
-	}
-
-	public void setCart_id(String cart_id) {
-		this.cart_id = cart_id;
-	}
-
-	public OrderInfo(String order_id, Double total_amount, String user_id, String payment_way, Integer order_status, Date create_time, String cart_id) {
-		this.order_id = order_id;
-		this.total_amount = total_amount;
-		this.user_id = user_id;
-		this.payment_way = payment_way;
-		this.order_status = order_status;
-		this.create_time = create_time;
-		this.cart_id = cart_id;
+	public void setAddress_id(String address_id) {
+		this.address_id = address_id;
 	}
 
 	public String getOrder_id() {

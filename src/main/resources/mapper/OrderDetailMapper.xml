@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ibm.mallproject.dao.OrderDetailMapper">
+    <insert id="insertDetail" parameterType="com.ibm.mallproject.entity.OrderDetail">
+        insert into order_detail (detail_id,order_id,create_time,sku_id,order_price,order_num)
+        VALUES (
+                #{detail_id,jdbcType=VARCHAR},
+                #{order_id,jdbcType=VARCHAR},
+                #{create_time,jdbcType=TIMESTAMP},
+                #{sku_id,jdbcType=VARCHAR},
+                #{order_price,jdbcType=DECIMAL},
+                #{order_num,jdbcType=INTEGER}
+                )
+    </insert>
+</mapper>

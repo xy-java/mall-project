@@ -3,10 +3,8 @@ package com.ibm.mallproject.controller;
 import com.ibm.mallproject.entity.OrderInfo;
 import com.ibm.mallproject.service.OrderInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -18,9 +16,9 @@ import java.util.Map;
  * @Version 1.0
  * @Description
  */
-@CrossOrigin
-@RestController
+@Controller
 @RequestMapping("/orderInfo")
+@CrossOrigin
 public class OrderInfoController {
 
     @Autowired
@@ -34,14 +32,9 @@ public class OrderInfoController {
 //    Integer insertOrderInfo(OrderInfo orderInfo);
 
     @RequestMapping("/insertOrderInfo")
+    @ResponseBody
     public String insertOrderInfo(@RequestParam Map<String,Object> map){
-
-
-        OrderInfo orderInfo = new OrderInfo();
-        orderInfo.setOrder_id(map.get("order_id").toString());
-
-
-        return null;
+        return orderInfoService.insertOrderInfo(map) > 0 ? "新增成功" : "新增失败";
     }
 
 //    /**
