@@ -26,6 +26,18 @@ public class UserController {
 	@RequestMapping("/insert")
 	@ResponseBody
 	public String insert(@RequestParam Map<String, String> userMap) {
+		Integer flag = userService.insert(userMap);
+		if(flag>0){
+			return "新增成功";
+		}else{
+			return "新增失败";
+		}
+
+	}
+
+	@RequestMapping("/register")
+	@ResponseBody
+	public String register(@RequestParam Map<String, String> userMap) {
 		if(userMap.get("verifycode").equals(userMap.get("code"))){
 			Integer flag = userService.insert(userMap);
 			if(flag>0){
