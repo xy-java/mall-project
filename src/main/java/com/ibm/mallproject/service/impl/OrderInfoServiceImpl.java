@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -73,27 +74,31 @@ public class OrderInfoServiceImpl implements OrderInfoService {
 
         }else{
             System.err.println(map.get("cart_ids"));
-//            List<String> cart_ids = (List<String>) map.get("cart_ids");
-//            for (int i = 0; i < cart_ids.size(); i++) {
-//                CartInfo cartInfo = cartMapper.selectCartById(cart_ids.get(i));
-//                SkuInfo skuInfo = skuMapper.selectSkuById(cartInfo.getSku_id());
-//                total_amount += skuInfo.getPrice() * cartInfo.getCart_num();
-//                OrderDetail orderDetail1 = new OrderDetail();
-//                orderDetail1.setDetail_id(CommonUtil.getUUID());
-//                orderDetail1.setOrder_id(orderInfo.getOrder_id());
-//                orderDetail1.setSku_id(cartInfo.getSku_id());
-//                orderDetail1.setCreate_time(new Date());
-//                orderDetail1.setOrder_price(skuInfo.getPrice());
-//                orderDetail1.setOrder_num(cartInfo.getCart_num());
-//                orderDetailMapper.insertDetail(orderDetail1);
-//                cartMapper.deleteCartById(cart_ids.get(i));
-//            }
-//            orderInfo.setTotal_amount(total_amount);
-//            List<AddressInfo> address_id = addressMapper.queryAddress(map.get("user_id").toString());
-//            orderInfo.setAddress_id(address_id.get(0).getAddress_id());
-//
-//            return orderInfoMapper.insertOrderInfo(orderInfo);
-            return 0;
+            List<String> cart_ids = new ArrayList<>();
+            for (String cart_id : map.get("cart_ids").toString().split(",")) {
+                cart_ids.add(cart_id);
+            }
+
+            System.err.println(cart_ids);
+            for (int i = 0; i < cart_ids.size(); i++) {
+                CartInfo cartInfo = cartMapper.selectCartById(cart_ids.get(i));
+                SkuInfo skuInfo = skuMapper.selectSkuById(cartInfo.getSku_id());
+                total_amount += skuInfo.getPrice() * cartInfo.getCart_num();
+                OrderDetail orderDetail1 = new OrderDetail();
+                orderDetail1.setDetail_id(CommonUtil.getUUID());
+                orderDetail1.setOrder_id(orderInfo.getOrder_id());
+                orderDetail1.setSku_id(cartInfo.getSku_id());
+                orderDetail1.setCreate_time(new Date());
+                orderDetail1.setOrder_price(skuInfo.getPrice());
+                orderDetail1.setOrder_num(cartInfo.getCart_num());
+                orderDetailMapper.insertDetail(orderDetail1);
+                cartMapper.deleteCartById(cart_ids.get(i));
+            }
+            orderInfo.setTotal_amount(total_amount);
+            List<AddressInfo> address_id = addressMapper.queryAddress(map.get("user_id").toString());
+            orderInfo.setAddress_id(address_id.get(0).getAddress_id());
+
+            return orderInfoMapper.insertOrderInfo(orderInfo);
         }
     }
 

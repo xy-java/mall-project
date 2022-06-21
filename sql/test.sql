@@ -11,7 +11,7 @@
  Target Server Version : 80019
  File Encoding         : 65001
 
- Date: 20/06/2022 15:01:29
+ Date: 21/06/2022 11:30:34
 */
 
 SET NAMES utf8mb4;
@@ -32,7 +32,7 @@ CREATE TABLE `address_info`  (
   `address_level3` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '第三级',
   `derive_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '收货人',
   PRIMARY KEY (`address_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of address_info
@@ -57,12 +57,12 @@ CREATE TABLE `cart_info`  (
   `sku_cp` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '电脑配置',
   `sku_series` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '手表配置',
   PRIMARY KEY (`cart_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of cart_info
 -- ----------------------------
-INSERT INTO `cart_info` VALUES ('b51e8ae45a09422f', '25e0bb98c5a14d4b', '1e86413b50244cde', 1, '2022-06-20 14:46:52', '00fd6ddf5aff48eb', '', '', 'i5-12450H/集显/16G/512G', '');
+INSERT INTO `cart_info` VALUES ('adbc24c1e7a04611', '25e0bb98c5a14d4b', '1e86413b50244cde', 1, '2022-06-21 10:50:49', 'cccc18909d974b0e', '', '', 'i5-12450H/集显/16G/512G', '');
 
 -- ----------------------------
 -- Table structure for comment_info
@@ -77,7 +77,7 @@ CREATE TABLE `comment_info`  (
   `comment_txt` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '评价内容',
   `create_time` datetime(0) NOT NULL COMMENT '创建时间',
   PRIMARY KEY (`comment_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of comment_info
@@ -93,7 +93,7 @@ CREATE TABLE `favor_info`  (
   `sku_id` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '商品id',
   `create_time` datetime(0) NOT NULL COMMENT '创建时间',
   PRIMARY KEY (`favor_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of favor_info
@@ -106,16 +106,18 @@ DROP TABLE IF EXISTS `order_detail`;
 CREATE TABLE `order_detail`  (
   `detail_id` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '订单明细id（uuid）',
   `order_id` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '订单编号',
-  `sku_id` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '商品id',
-  `order_price` decimal(10, 2) UNSIGNED NOT NULL DEFAULT 0.00 COMMENT '购买价格',
-  `order_num` int UNSIGNED NOT NULL DEFAULT 0 COMMENT '购买个数',
   `create_time` datetime(0) NOT NULL COMMENT '创建时间',
+  `sku_id` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '商品id',
+  `order_price` decimal(10, 2) NULL DEFAULT NULL COMMENT '购买价格',
+  `order_num` int NULL DEFAULT NULL COMMENT '购买数量',
   PRIMARY KEY (`detail_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of order_detail
 -- ----------------------------
+INSERT INTO `order_detail` VALUES ('1fd35536eded4aa3', '98de928715c34b29', '2022-06-21 11:29:25', '1e86413b50244cde', 5299.00, 1);
+INSERT INTO `order_detail` VALUES ('575f83c14ab1478e', '98de928715c34b29', '2022-06-21 11:29:25', '1e86413b50244cde', 5299.00, 1);
 
 -- ----------------------------
 -- Table structure for order_info
@@ -128,13 +130,14 @@ CREATE TABLE `order_info`  (
   `payment_way` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '付款方式',
   `order_status` int NOT NULL COMMENT '订单状态（1已支付，0未支付）',
   `create_time` datetime(0) NOT NULL COMMENT '创建时间',
-  `cart_id` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '购物车id',
+  `address_id` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '地址id',
   PRIMARY KEY (`order_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of order_info
 -- ----------------------------
+INSERT INTO `order_info` VALUES ('98de928715c34b29', 10598.00, '25e0bb98c5a14d4b', '在线支付', 0, '2022-06-21 11:29:25', 'cccc18909d974b0e');
 
 -- ----------------------------
 -- Table structure for paramter_info
@@ -148,7 +151,7 @@ CREATE TABLE `paramter_info`  (
   `parameter_cp` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '电脑配置',
   `parameter_series` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '表系列',
   PRIMARY KEY (`parameter_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of paramter_info
@@ -166,7 +169,7 @@ CREATE TABLE `rotation_info`  (
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `rotation_type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '轮播图类型（首页，...）',
   PRIMARY KEY (`rotation_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of rotation_info
@@ -196,7 +199,7 @@ CREATE TABLE `sku_info`  (
   `sku_type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '商品类型',
   `sku_status` int UNSIGNED NOT NULL DEFAULT 0 COMMENT '商品上架状态（0已上架，1未上架）',
   PRIMARY KEY (`sku_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sku_info
@@ -216,7 +219,7 @@ CREATE TABLE `user_info`  (
   `create_time` datetime(0) NOT NULL COMMENT '创建时间',
   `user_power` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户权限（管理员 ， 用户）',
   PRIMARY KEY (`user_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of user_info
