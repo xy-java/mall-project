@@ -24,6 +24,8 @@ public interface OrderInfoMapper {
      */
     Integer insertOrderInfo(OrderInfo orderInfo);
 
+    Integer updateAddress(String address_id,String order_id);
+
     /**
      * 查询当前用户的所有订单
      * @param user_id

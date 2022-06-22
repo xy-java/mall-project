@@ -11,7 +11,7 @@
  Target Server Version : 80019
  File Encoding         : 65001
 
- Date: 21/06/2022 11:30:34
+ Date: 22/06/2022 11:13:31
 */
 
 SET NAMES utf8mb4;
@@ -62,7 +62,6 @@ CREATE TABLE `cart_info`  (
 -- ----------------------------
 -- Records of cart_info
 -- ----------------------------
-INSERT INTO `cart_info` VALUES ('adbc24c1e7a04611', '25e0bb98c5a14d4b', '1e86413b50244cde', 1, '2022-06-21 10:50:49', 'cccc18909d974b0e', '', '', 'i5-12450H/集显/16G/512G', '');
 
 -- ----------------------------
 -- Table structure for comment_info
@@ -116,8 +115,6 @@ CREATE TABLE `order_detail`  (
 -- ----------------------------
 -- Records of order_detail
 -- ----------------------------
-INSERT INTO `order_detail` VALUES ('1fd35536eded4aa3', '98de928715c34b29', '2022-06-21 11:29:25', '1e86413b50244cde', 5299.00, 1);
-INSERT INTO `order_detail` VALUES ('575f83c14ab1478e', '98de928715c34b29', '2022-06-21 11:29:25', '1e86413b50244cde', 5299.00, 1);
 
 -- ----------------------------
 -- Table structure for order_info
@@ -137,7 +134,6 @@ CREATE TABLE `order_info`  (
 -- ----------------------------
 -- Records of order_info
 -- ----------------------------
-INSERT INTO `order_info` VALUES ('98de928715c34b29', 10598.00, '25e0bb98c5a14d4b', '在线支付', 0, '2022-06-21 11:29:25', 'cccc18909d974b0e');
 
 -- ----------------------------
 -- Table structure for paramter_info

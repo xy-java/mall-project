@@ -4,6 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ibm.mallproject.dao.OrderInfoMapper">
 
+    <update id="updateAddress">
+        update order_info set address_id = #{address_id,jdbcType=VARCHAR} where order_id = #{order_id,jdbcType=VARCHAR}
+    </update>
 
     <insert id="insertOrderInfo">
         insert into order_info (order_id, total_amount, user_id, payment_way, order_status, create_time,address_id)

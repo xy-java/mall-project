@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @ClassName OrderInfoServiceImpl
@@ -38,7 +35,7 @@ public class OrderInfoServiceImpl implements OrderInfoService {
     private AddressMapper addressMapper;//查询用户地址
 
     @Override
-    public Integer insertOrderInfo(Map<String, Object> map) {
+    public String insertOrderInfo(Map<String, Object> map) {
         Double total_amount = 0.0;
         OrderInfo orderInfo = new OrderInfo();
         orderInfo.setOrder_id(CommonUtil.getUUID());
@@ -70,10 +67,10 @@ public class OrderInfoServiceImpl implements OrderInfoService {
             orderDetailMapper.insertDetail(orderDetail);
             cartMapper.deleteCartById(cart_id);
 
-            return orderInfoMapper.insertOrderInfo(orderInfo);
+            orderInfoMapper.insertOrderInfo(orderInfo);
+            return orderInfo.getOrder_id();
 
         }else{
-            System.err.println(map.get("cart_ids"));
             List<String> cart_ids = new ArrayList<>();
             for (String cart_id : map.get("cart_ids").toString().split(",")) {
                 cart_ids.add(cart_id);
@@ -98,8 +95,33 @@ public class OrderInfoServiceImpl implements OrderInfoService {
             List<AddressInfo> address_id = addressMapper.queryAddress(map.get("user_id").toString());
             orderInfo.setAddress_id(address_id.get(0).getAddress_id());
 
-            return orderInfoMapper.insertOrderInfo(orderInfo);
+            orderInfoMapper.insertOrderInfo(orderInfo);
+            return orderInfo.getOrder_id();
         }
+    }
+
+    @Override
+    public List<Map<String,String>> selectDetail(String order_id) {
+        List<OrderDetail> orderDetails = orderDetailMapper.selectDetail(order_id);
+        List<Map<String,String>>  list = new ArrayList<>();
+        for (int i = 0; i < orderDetails.size(); i++) {
+            HashMap<String,String> hashMap = new HashMap<>();
+            OrderDetail orderDetail = orderDetailMapper.selectById(orderDetails.get(i).getDetail_id());
+            SkuInfo skuInfo = skuMapper.selectSkuById(orderDetail.getSku_id());
+            hashMap.put("sku_name",skuInfo.getSku_name());
+            hashMap.put("img",skuInfo.getImg());
+            hashMap.put("order_price", String.valueOf(orderDetail.getOrder_price()));
+            hashMap.put("order_num", String.valueOf(orderDetail.getOrder_num()));
+            hashMap.put("detail_id", orderDetail.getDetail_id());
+            list.add(hashMap);
+        }
+
+        return list;
+    }
+
+    @Override
+    public Integer updateAddress(String address_id,String order_id) {
+        return orderInfoMapper.updateAddress(address_id,order_id);
     }
 
     @Override

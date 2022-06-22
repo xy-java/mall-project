@@ -12,4 +12,12 @@
                 #{order_num,jdbcType=INTEGER}
                 )
     </insert>
+
+    <select id="selectDetail" parameterType="String" resultType="com.ibm.mallproject.entity.OrderDetail">
+        select * from order_detail where order_id= #{order_id,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectById" parameterType="String" resultType="com.ibm.mallproject.entity.OrderDetail">
+        select * from order_detail where detail_id= #{detail_id,jdbcType=VARCHAR}
+    </select>
 </mapper>

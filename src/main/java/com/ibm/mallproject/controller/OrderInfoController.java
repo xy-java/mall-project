@@ -1,5 +1,6 @@
 package com.ibm.mallproject.controller;
 
+import com.ibm.mallproject.entity.OrderDetail;
 import com.ibm.mallproject.entity.OrderInfo;
 import com.ibm.mallproject.service.OrderInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,9 +35,22 @@ public class OrderInfoController {
     @RequestMapping("/insertOrderInfo")
     @ResponseBody
     public String insertOrderInfo(@RequestParam Map<String,Object> map){
-        return orderInfoService.insertOrderInfo(map) > 0 ? "新增成功" : "新增失败";
+        return orderInfoService.insertOrderInfo(map);
     }
 
+
+    @RequestMapping("/selectSkuInfo")
+    @ResponseBody
+    public List<Map<String,String>> selectSkuInfo(@RequestParam String order_id){
+        return orderInfoService.selectDetail(order_id);
+    }
+
+
+    @RequestMapping("/updateAddress")
+    @ResponseBody
+    public String updateAddress(@RequestParam String address_id, @RequestParam String order_id){
+        return orderInfoService.updateAddress(address_id,order_id)>0 ? "修改成功":"修改失败";
+    }
 //    /**
 //     * 查询当前用户的所有订单
 //     * @param user_id
