@@ -49,4 +49,12 @@
         select *
         from cart_info where cart_id = #{cart_id,jdbcType=VARCHAR};
     </select>
+
+    <select id="selectCartByIds" resultType="com.ibm.mallproject.entity.CartInfo">
+       select * from cart_info where cart_id in (
+        <foreach collection="list" item="cart_id" separator=",">
+            #{cart_id,jdbcType=VARCHAR}
+        </foreach>
+        )
+    </select>
 </mapper>

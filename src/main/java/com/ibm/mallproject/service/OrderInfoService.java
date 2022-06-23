@@ -23,7 +23,7 @@ public interface OrderInfoService {
     String insertOrderInfo(Map<String, Object> map);
 
 
-    List<Map<String,String>> selectDetail(String order_id);
+    List<Map<String,String>> selectDetail(String cart_id);
 
 
     Integer updateAddress(String address_id,String order_id);

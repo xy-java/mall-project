@@ -12,7 +12,7 @@ import java.util.List;
 public interface OrderDetailMapper {
 	Integer insertDetail(OrderDetail orderDetail);
 
-	List<OrderDetail> selectDetail(String order_id);
+	List<OrderDetail> selectDetail(String cart_id);
 
 	OrderDetail selectById(String detail_id);
 }

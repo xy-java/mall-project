@@ -57,9 +57,9 @@ public class CartController {
 		if (cartInfo1 != null) {
 			cartInfo1.setCart_num(cartInfo1.getCart_num() + cartInfo.getCart_num());
 			System.err.println(cartInfo1);
-			return cartService.updateCart(cartInfo1)>0?  "新增成功" : "新增失败";
+			return cartService.updateCart(cartInfo1)>0?  cartInfo1.getCart_id() : "新增失败";
 		} else {
-			return cartService.insertCart(cartInfo)>0 ? "新增成功" : "新增失败";
+			return cartService.insertCart(cartInfo)>0 ? cartInfo.getCart_id() : "新增失败";
 		}
 
 

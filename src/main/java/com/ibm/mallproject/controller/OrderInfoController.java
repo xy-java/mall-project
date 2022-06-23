@@ -1,5 +1,6 @@
 package com.ibm.mallproject.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.ibm.mallproject.entity.OrderDetail;
 import com.ibm.mallproject.entity.OrderInfo;
 import com.ibm.mallproject.service.OrderInfoService;
@@ -34,15 +35,16 @@ public class OrderInfoController {
 
     @RequestMapping("/insertOrderInfo")
     @ResponseBody
-    public String insertOrderInfo(@RequestParam Map<String,Object> map){
+    public String insertOrderInfo(@RequestBody JSONObject orderInfo) {
+        Map map = orderInfo;
         return orderInfoService.insertOrderInfo(map);
     }
 
 
     @RequestMapping("/selectSkuInfo")
     @ResponseBody
-    public List<Map<String,String>> selectSkuInfo(@RequestParam String order_id){
-        return orderInfoService.selectDetail(order_id);
+    public List<Map<String,String>> selectSkuInfo(@RequestParam String cart_id){
+        return orderInfoService.selectDetail(cart_id);
     }
 
 

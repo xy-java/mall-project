@@ -14,6 +14,8 @@ public interface CartMapper {
 	 * */
 	List<CartInfo> findCartByUserId(String user_id);
 
+	List<CartInfo> selectCartByIds(List<String> cart_id);
+
 	CartInfo selectOneCart(CartInfo cartInfo);
 	/**
 	 * 添加商品到购物车

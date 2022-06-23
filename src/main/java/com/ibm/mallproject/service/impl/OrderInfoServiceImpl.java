@@ -1,5 +1,7 @@
 package com.ibm.mallproject.service.impl;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.ibm.mallproject.dao.*;
 import com.ibm.mallproject.entity.*;
 import com.ibm.mallproject.service.OrderInfoService;
@@ -43,76 +45,52 @@ public class OrderInfoServiceImpl implements OrderInfoService {
         orderInfo.setCreate_time(new Date());
         orderInfo.setOrder_status(0);
         orderInfo.setPayment_way("在线支付");
-        if(map.get("sku_id").toString() != ""){
-            CartInfo cartInfo = new CartInfo();
-            cartInfo.setUser_id(map.get("user_id").toString());
-            cartInfo.setSku_id(map.get("sku_id").toString());
-            cartInfo.setSku_version(map.get("sku_version").toString());
-            cartInfo.setSku_color(map.get("sku_color").toString());
-            cartInfo.setSku_cp(map.get("sku_cp").toString());
-            cartInfo.setSku_series(map.get("sku_series").toString());
-            CartInfo cartInfo1 = cartMapper.selectOneCart(cartInfo);
-            String cart_id = cartInfo1.getCart_id();
-            SkuInfo skuInfo = skuMapper.selectSkuById(map.get("sku_id").toString());
-            orderInfo.setTotal_amount(skuInfo.getPrice() * cartInfo1.getCart_num());
-            orderInfo.setAddress_id(map.get("address_id").toString());
+        orderInfo.setAddress_id(map.get("address_id").toString());
 
-            OrderDetail orderDetail = new OrderDetail();
+        OrderDetail orderDetail = new OrderDetail();
+        List<Map<String,Object>> sku_info = (List<Map<String, Object>>) map.get("sku_info");
+        for (int i = 0; i < sku_info.size(); i++) {
+            Map<String,Object> sku_map = sku_info.get(i);
             orderDetail.setDetail_id(CommonUtil.getUUID());
             orderDetail.setOrder_id(orderInfo.getOrder_id());
-            orderDetail.setSku_id(cartInfo.getSku_id());
+            orderDetail.setSku_id(sku_map.get("sku_id").toString());
             orderDetail.setCreate_time(new Date());
-            orderDetail.setOrder_price(skuInfo.getPrice());
-            orderDetail.setOrder_num(cartInfo1.getCart_num());
+            orderDetail.setOrder_price(Double.valueOf(sku_map.get("order_price").toString()));
+            orderDetail.setOrder_num(Integer.valueOf(sku_map.get("order_num").toString()));
             orderDetailMapper.insertDetail(orderDetail);
-            cartMapper.deleteCartById(cart_id);
-
-            orderInfoMapper.insertOrderInfo(orderInfo);
-            return orderInfo.getOrder_id();
-
-        }else{
-            List<String> cart_ids = new ArrayList<>();
-            for (String cart_id : map.get("cart_ids").toString().split(",")) {
-                cart_ids.add(cart_id);
-            }
-
-            System.err.println(cart_ids);
-            for (int i = 0; i < cart_ids.size(); i++) {
-                CartInfo cartInfo = cartMapper.selectCartById(cart_ids.get(i));
-                SkuInfo skuInfo = skuMapper.selectSkuById(cartInfo.getSku_id());
-                total_amount += skuInfo.getPrice() * cartInfo.getCart_num();
-                OrderDetail orderDetail1 = new OrderDetail();
-                orderDetail1.setDetail_id(CommonUtil.getUUID());
-                orderDetail1.setOrder_id(orderInfo.getOrder_id());
-                orderDetail1.setSku_id(cartInfo.getSku_id());
-                orderDetail1.setCreate_time(new Date());
-                orderDetail1.setOrder_price(skuInfo.getPrice());
-                orderDetail1.setOrder_num(cartInfo.getCart_num());
-                orderDetailMapper.insertDetail(orderDetail1);
-                cartMapper.deleteCartById(cart_ids.get(i));
-            }
-            orderInfo.setTotal_amount(total_amount);
-            List<AddressInfo> address_id = addressMapper.queryAddress(map.get("user_id").toString());
-            orderInfo.setAddress_id(address_id.get(0).getAddress_id());
-
-            orderInfoMapper.insertOrderInfo(orderInfo);
-            return orderInfo.getOrder_id();
+            total_amount += Double.valueOf(sku_map.get("order_price").toString()) * Integer.valueOf(sku_map.get("order_num").toString());
+            //删除购物车
+            cartMapper.deleteCartById(sku_map.get("cart_id").toString());
         }
+        orderInfo.setTotal_amount(total_amount);
+
+        return orderInfoMapper.insertOrderInfo(orderInfo) > 0 ? "success" : "fail";
     }
 
     @Override
-    public List<Map<String,String>> selectDetail(String order_id) {
-        List<OrderDetail> orderDetails = orderDetailMapper.selectDetail(order_id);
+    public List<Map<String,String>> selectDetail(String cart_id) {
+        List<String> cart_ids = new ArrayList<>();
+        for (String cart_id1 : cart_id.split(",")) {
+            cart_ids.add(cart_id1);
+        }
+        List<CartInfo> cartInfo = cartMapper.selectCartByIds(cart_ids);
         List<Map<String,String>>  list = new ArrayList<>();
-        for (int i = 0; i < orderDetails.size(); i++) {
+        for (int i = 0; i < cartInfo.size(); i++) {
             HashMap<String,String> hashMap = new HashMap<>();
-            OrderDetail orderDetail = orderDetailMapper.selectById(orderDetails.get(i).getDetail_id());
-            SkuInfo skuInfo = skuMapper.selectSkuById(orderDetail.getSku_id());
+            SkuInfo skuInfo = skuMapper.selectSkuById(cartInfo.get(i).getSku_id());
             hashMap.put("sku_name",skuInfo.getSku_name());
             hashMap.put("img",skuInfo.getImg());
-            hashMap.put("order_price", String.valueOf(orderDetail.getOrder_price()));
-            hashMap.put("order_num", String.valueOf(orderDetail.getOrder_num()));
-            hashMap.put("detail_id", orderDetail.getDetail_id());
+            hashMap.put("sku_id",skuInfo.getSku_id());
+            hashMap.put("cart_id",cartInfo.get(i).getCart_id());
+
+            hashMap.put("sku_type",skuInfo.getSku_type());
+            hashMap.put("sku_version",cartInfo.get(i).getSku_version());
+            hashMap.put("sku_color",cartInfo.get(i).getSku_color());
+            hashMap.put("sku_cp",cartInfo.get(i).getSku_cp());
+            hashMap.put("sku_series",cartInfo.get(i).getSku_series());
+
+            hashMap.put("order_price", String.valueOf(skuInfo.getPrice()));
+            hashMap.put("order_num", String.valueOf(cartInfo.get(i).getCart_num()));
             list.add(hashMap);
         }
 

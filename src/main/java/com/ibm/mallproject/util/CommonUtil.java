@@ -1,6 +1,11 @@
 package com.ibm.mallproject.util;
 
+import com.alibaba.fastjson.JSONArray;
+
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 public class CommonUtil {
@@ -22,4 +27,6 @@ public class CommonUtil {
 		bos.close();
 		//关闭流
 	}
+
+
 }
