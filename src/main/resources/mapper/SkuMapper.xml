@@ -114,4 +114,10 @@
                 #{sku_status,jdbcType=INTEGER}
         )
     </insert>
+
+    <update id="updateSkuStore" parameterType="com.ibm.mallproject.entity.SkuInfo">
+        update sku_info
+        set store =  store - #{store,jdbcType=INTEGER}
+        where sku_id = #{sku_id,jdbcType=VARCHAR}
+    </update>
 </mapper>

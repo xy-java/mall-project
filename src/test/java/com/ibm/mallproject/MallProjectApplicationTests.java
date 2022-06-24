@@ -1,5 +1,10 @@
 package com.ibm.mallproject;
 
+import com.alibaba.fastjson.JSONObject;
+import com.alipay.api.AlipayClient;
+import com.alipay.api.DefaultAlipayClient;
+import com.alipay.api.request.AlipayTradePagePayRequest;
+import com.alipay.api.response.AlipayTradePagePayResponse;
 import com.ibm.mallproject.dao.SkuMapper;
 import com.ibm.mallproject.entity.SkuInfo;
 import com.ibm.mallproject.service.SkuService;
@@ -29,7 +34,7 @@ class MallProjectApplicationTests {
 
 	@Test
 	void contextLoads() {
-		System.err.println(CommonUtil.getUUID());
+
 	}
 
 	@Test

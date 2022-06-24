@@ -37,6 +37,11 @@ public class SkuServiceImpl implements SkuService {
     }
 
     @Override
+    public Integer updateSkuStore(String sku_id, Integer store) {
+        return skuMapper.updateSkuStore(sku_id, store);
+    }
+
+    @Override
     public List<SkuInfo> queryByName(String sku_name) {
         return skuMapper.queryByName(sku_name);
     }

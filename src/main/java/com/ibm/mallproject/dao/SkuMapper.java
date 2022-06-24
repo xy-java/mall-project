@@ -68,4 +68,7 @@ public interface SkuMapper {
 
     //按销量查询(升降)
     //List<SkuInfo> selectSkuSalcount();
+
+    //通过id修改库存
+    Integer updateSkuStore(String sku_id,  Integer store);
 }

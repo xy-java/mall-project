@@ -42,4 +42,7 @@ public interface OrderInfoService {
      * @return
      */
     Integer deleteOrderInfoById(String order_id);
+
+
+    Integer updateOrderInfoStatus(OrderInfo orderInfo);
 }

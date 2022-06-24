@@ -64,7 +64,7 @@ public class OrderInfoServiceImpl implements OrderInfoService {
         }
         orderInfo.setTotal_amount(total_amount);
 
-        return orderInfoMapper.insertOrderInfo(orderInfo) > 0 ? "success" : "fail";
+        return orderInfoMapper.insertOrderInfo(orderInfo) > 0 ? orderInfo.getOrder_id() : "fail";
     }
 
     @Override
@@ -110,5 +110,10 @@ public class OrderInfoServiceImpl implements OrderInfoService {
     @Override
     public Integer deleteOrderInfoById(String order_id) {
         return orderInfoMapper.deleteOrderInfoById(order_id);
+    }
+
+    @Override
+    public Integer updateOrderInfoStatus(OrderInfo orderInfo) {
+        return orderInfoMapper.updateOrderInfoStatus(orderInfo);
     }
 }

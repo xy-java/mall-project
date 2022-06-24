@@ -11,7 +11,7 @@
  Target Server Version : 80019
  File Encoding         : 65001
 
- Date: 23/06/2022 13:36:59
+ Date: 24/06/2022 13:46:56
 */
 
 SET NAMES utf8mb4;
@@ -62,6 +62,7 @@ CREATE TABLE `cart_info`  (
 -- ----------------------------
 -- Records of cart_info
 -- ----------------------------
+INSERT INTO `cart_info` VALUES ('ecf4151a7a334b7a', '25e0bb98c5a14d4b', '6b35aa76a7954205', 1, '2022-06-24 13:45:57', 'cccc18909d974b0e', '8GB+128GB', '亮黑', 'sada', '');
 
 -- ----------------------------
 -- Table structure for comment_info

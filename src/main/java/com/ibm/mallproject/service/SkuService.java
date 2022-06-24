@@ -16,7 +16,7 @@ import java.util.Map;
 public interface SkuService {
     //查询所有商品是否上架
     List<SkuInfo> selectSkuByStatus(Integer sku_status);
-
+    Integer updateSkuStore(String sku_id,  Integer store);
     //通过商品名模糊查询
     List<SkuInfo> queryByName(String sku_name);
     //通过商品名模糊查询

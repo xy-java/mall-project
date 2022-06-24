@@ -4,10 +4,13 @@ import com.alibaba.fastjson.JSONObject;
 import com.ibm.mallproject.entity.OrderDetail;
 import com.ibm.mallproject.entity.OrderInfo;
 import com.ibm.mallproject.service.OrderInfoService;
+import com.ibm.mallproject.service.SkuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -25,6 +28,8 @@ public class OrderInfoController {
 
     @Autowired
     private OrderInfoService orderInfoService;
+    @Autowired
+    private SkuService skuService;
 
 //    /**
 //     * 用户下单
@@ -40,6 +45,36 @@ public class OrderInfoController {
         return orderInfoService.insertOrderInfo(map);
     }
 
+    @RequestMapping("/paySuccess")
+    @ResponseBody
+    public String paySuccess(@RequestBody JSONObject info){
+        Map map = info;
+        OrderInfo orderInfo = new OrderInfo();
+        orderInfo.setOrder_id(map.get("order_id").toString());
+        //修改订单状态
+        orderInfoService.updateOrderInfoStatus(orderInfo);
+        List<Map<String,Object>> sku_info = (List<Map<String, Object>>) map.get("sku_info");
+        List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
+        for (int i = 0; i < sku_info.size(); i++) {
+            HashMap<String,Object> hashMap = new HashMap<String,Object>();
+            String sku_id = sku_info.get(i).get("sku_id").toString();
+            Integer sku_num = Integer.parseInt(sku_info.get(i).get("order_num").toString());
+            hashMap.put("sku_id",sku_id);
+            hashMap.put("sku_num",sku_num);
+            list.add(hashMap);
+        }
+
+        //遍历list
+        for (int i = 0; i < list.size(); i++) {
+            Map<String,Object> map1 = list.get(i);
+            String sku_id = map1.get("sku_id").toString();
+            Integer sku_num = Integer.parseInt(map1.get("sku_num").toString());
+            skuService.updateSkuStore(sku_id,sku_num);
+        }
+
+        //修改商品库存
+        return null;
+    }
 
     @RequestMapping("/selectSkuInfo")
     @ResponseBody
@@ -68,4 +103,6 @@ public class OrderInfoController {
 //     * @return
 //     */
 //    Integer deleteOrderInfoById(String order_id);
+
+
 }

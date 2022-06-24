@@ -26,4 +26,8 @@
     <delete id="deleteOrderInfoById">
         delete from order_info where order_id = #{order_id,jdbcType=VARCHAR}
     </delete>
+
+    <update id="updateOrderInfoStatus" parameterType="com.ibm.mallproject.entity.OrderInfo">
+        update order_info set order_status = 1 where order_id = #{order_id,jdbcType=VARCHAR}
+    </update>
 </mapper>
