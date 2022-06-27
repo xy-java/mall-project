@@ -93,7 +93,11 @@ public class OrderInfoController {
 //     * @param user_id
 //     * @return
 //     */
-//    List<OrderInfo> selectOrderInfoByUserId(String user_id);
+    @RequestMapping("/selectOrderInfoByUserId")
+    @ResponseBody
+    public List<OrderInfo> selectOrderInfoByUserId(@RequestParam  String user_id){
+        return orderInfoService.selectOrderInfoByUserId(user_id);
+    }
 
 //    //根据订单id查询订单明细
 
@@ -102,7 +106,16 @@ public class OrderInfoController {
 //     * @param order_id
 //     * @return
 //     */
-//    Integer deleteOrderInfoById(String order_id);
+    @RequestMapping("deleteOrderInfoById")
+    @ResponseBody
+    public String deleteOrderInfoById(String order_id){
+        return orderInfoService.deleteOrderInfoById(order_id)>0 ? "删除成功":"删除失败";
+    }
 
+    @RequestMapping("/payOrder")
+    @ResponseBody
+    public String payOrder(@RequestParam String order_id){
+        return orderInfoService.payOrder(order_id);
+    }
 
 }

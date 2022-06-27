@@ -11,7 +11,7 @@
  Target Server Version : 80019
  File Encoding         : 65001
 
- Date: 24/06/2022 13:46:56
+ Date: 27/06/2022 10:20:18
 */
 
 SET NAMES utf8mb4;
@@ -62,7 +62,6 @@ CREATE TABLE `cart_info`  (
 -- ----------------------------
 -- Records of cart_info
 -- ----------------------------
-INSERT INTO `cart_info` VALUES ('ecf4151a7a334b7a', '25e0bb98c5a14d4b', '6b35aa76a7954205', 1, '2022-06-24 13:45:57', 'cccc18909d974b0e', '8GB+128GB', '亮黑', 'sada', '');
 
 -- ----------------------------
 -- Table structure for comment_info
@@ -116,6 +115,10 @@ CREATE TABLE `order_detail`  (
 -- ----------------------------
 -- Records of order_detail
 -- ----------------------------
+INSERT INTO `order_detail` VALUES ('44a2e2de96424ac0', '25060f464722416b', '2022-06-27 10:19:43', '6b35aa76a7954205', 2191.00, 1);
+INSERT INTO `order_detail` VALUES ('cb320818bc624ad3', '4161f1c3030b4f78', '2022-06-27 10:14:03', '1e86413b50244cde', 5299.00, 1);
+INSERT INTO `order_detail` VALUES ('f8c2719f2b4e485d', '547b217332824297', '2022-06-27 10:16:31', '1e86413b50244cde', 5299.00, 1);
+INSERT INTO `order_detail` VALUES ('fa37fa48178a425b', '790fa978153541a7', '2022-06-27 10:13:59', '6b35aa76a7954205', 2191.00, 1);
 
 -- ----------------------------
 -- Table structure for order_info
@@ -135,6 +138,10 @@ CREATE TABLE `order_info`  (
 -- ----------------------------
 -- Records of order_info
 -- ----------------------------
+INSERT INTO `order_info` VALUES ('25060f464722416b', 2191.00, '25e0bb98c5a14d4b', '在线支付', 0, '2022-06-27 10:19:43', 'cccc18909d974b0e');
+INSERT INTO `order_info` VALUES ('4161f1c3030b4f78', 5299.00, '25e0bb98c5a14d4b', '在线支付', 1, '2022-06-27 10:14:03', 'cccc18909d974b0e');
+INSERT INTO `order_info` VALUES ('547b217332824297', 5299.00, '25e0bb98c5a14d4b', '在线支付', 1, '2022-06-27 10:16:31', 'cccc18909d974b0e');
+INSERT INTO `order_info` VALUES ('790fa978153541a7', 2191.00, '25e0bb98c5a14d4b', '在线支付', 1, '2022-06-27 10:13:59', 'cccc18909d974b0e');
 
 -- ----------------------------
 -- Table structure for paramter_info
@@ -201,8 +208,8 @@ CREATE TABLE `sku_info`  (
 -- ----------------------------
 -- Records of sku_info
 -- ----------------------------
-INSERT INTO `sku_info` VALUES ('1e86413b50244cde', 00005299.00, 'Redmi Book Pro 15 2022', '全新12代英特尔处理器 | Windows 11 家庭中文版 | 可选RTX 2050高性能独立显卡 | 3.2K 90Hz 原色超清屏', 200, 0, '00D8E2A9B74F471A.jpg', '2022-06-16 17:45:42', NULL, 'b335a2d6e5b34321', '电脑', 0);
-INSERT INTO `sku_info` VALUES ('6b35aa76a7954205', 00002191.00, 'Redmi K40S', '骁龙870｜三星 E4直屏', 200, 0, 'EB1E6879DCBD4E4A.jpg', '2022-06-09 09:56:09', NULL, 'b4ff02f06e834f5b', '手机', 0);
+INSERT INTO `sku_info` VALUES ('1e86413b50244cde', 00005299.00, 'Redmi Book Pro 15 2022', '全新12代英特尔处理器 | Windows 11 家庭中文版 | 可选RTX 2050高性能独立显卡 | 3.2K 90Hz 原色超清屏', 197, 0, '00D8E2A9B74F471A.jpg', '2022-06-16 17:45:42', NULL, 'b335a2d6e5b34321', '电脑', 0);
+INSERT INTO `sku_info` VALUES ('6b35aa76a7954205', 00002191.00, 'Redmi K40S', '骁龙870｜三星 E4直屏', 197, 0, 'EB1E6879DCBD4E4A.jpg', '2022-06-09 09:56:09', NULL, 'b4ff02f06e834f5b', '手机', 0);
 
 -- ----------------------------
 -- Table structure for user_info
@@ -222,6 +229,7 @@ CREATE TABLE `user_info`  (
 -- Records of user_info
 -- ----------------------------
 INSERT INTO `user_info` VALUES ('25e0bb98c5a14d4b', 'user', '123456', '1392055037@qq.com', '2022-06-14 09:05:08', '普通用户');
+INSERT INTO `user_info` VALUES ('72053464c2474b6a', 'admin', '123456', NULL, '2022-06-25 18:49:26', '管理员');
 INSERT INTO `user_info` VALUES ('945a27d2b1b24c25', 'admin', '123456', '1392055037@qq.com', '2022-05-31 17:20:12', '管理员');
 
 SET FOREIGN_KEY_CHECKS = 1;

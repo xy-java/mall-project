@@ -15,4 +15,6 @@ public interface OrderDetailMapper {
 	List<OrderDetail> selectDetail(String cart_id);
 
 	OrderDetail selectById(String detail_id);
+
+	Integer deleteByOrderId(String order_id);
 }

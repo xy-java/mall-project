@@ -43,4 +43,5 @@ public interface OrderInfoMapper {
     Integer deleteOrderInfoById(String order_id);
 
     Integer updateOrderInfoStatus(OrderInfo orderInfo);
+
 }

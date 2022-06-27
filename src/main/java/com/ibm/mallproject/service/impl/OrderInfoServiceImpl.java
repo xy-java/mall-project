@@ -109,11 +109,30 @@ public class OrderInfoServiceImpl implements OrderInfoService {
 
     @Override
     public Integer deleteOrderInfoById(String order_id) {
+        //删除明细
+        orderDetailMapper.deleteByOrderId(order_id);
         return orderInfoMapper.deleteOrderInfoById(order_id);
     }
 
     @Override
     public Integer updateOrderInfoStatus(OrderInfo orderInfo) {
         return orderInfoMapper.updateOrderInfoStatus(orderInfo);
+    }
+
+    @Override
+    public String payOrder(String order_id) {
+
+        //修改订单状态
+        OrderInfo orderInfo = new OrderInfo();
+        orderInfo.setOrder_id(order_id);
+        orderInfoMapper.updateOrderInfoStatus(orderInfo);
+
+        //修改商品库存
+        List<OrderDetail> orderDetails = orderDetailMapper.selectDetail(order_id);
+        for (int i = 0; i < orderDetails.size(); i++) {
+            skuMapper.updateSkuStore(orderDetails.get(i).getSku_id(),orderDetails.get(i).getOrder_num());
+        }
+
+        return "success";
     }
 }

@@ -20,4 +20,8 @@
     <select id="selectById" parameterType="String" resultType="com.ibm.mallproject.entity.OrderDetail">
         select * from order_detail where detail_id= #{detail_id,jdbcType=VARCHAR}
     </select>
+
+    <delete id="deleteByOrderId">
+        delete from order_detail where order_id = #{order_id,jdbcType=VARCHAR}
+    </delete>
 </mapper>

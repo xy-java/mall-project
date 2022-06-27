@@ -45,4 +45,6 @@ public interface OrderInfoService {
 
 
     Integer updateOrderInfoStatus(OrderInfo orderInfo);
+
+    String payOrder(String order_id);
 }
