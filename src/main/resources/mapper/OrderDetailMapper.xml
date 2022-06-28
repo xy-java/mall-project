@@ -2,14 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ibm.mallproject.dao.OrderDetailMapper">
     <insert id="insertDetail" parameterType="com.ibm.mallproject.entity.OrderDetail">
-        insert into order_detail (detail_id,order_id,create_time,sku_id,order_price,order_num)
+        insert into order_detail (detail_id,order_id,create_time,sku_id,order_price,order_num,sku_version,sku_color,sku_cp,sku_series)
         VALUES (
                 #{detail_id,jdbcType=VARCHAR},
                 #{order_id,jdbcType=VARCHAR},
                 #{create_time,jdbcType=TIMESTAMP},
                 #{sku_id,jdbcType=VARCHAR},
                 #{order_price,jdbcType=DECIMAL},
-                #{order_num,jdbcType=INTEGER}
+                #{order_num,jdbcType=INTEGER},
+                #{sku_version,jdbcType=VARCHAR},
+                #{sku_color,jdbcType=VARCHAR},
+                #{sku_cp,jdbcType=VARCHAR},
+                #{sku_series,jdbcType=VARCHAR}
                 )
     </insert>
 
@@ -24,4 +28,8 @@
     <delete id="deleteByOrderId">
         delete from order_detail where order_id = #{order_id,jdbcType=VARCHAR}
     </delete>
+
+    <select id="selectByOrderId" parameterType="String" resultType="com.ibm.mallproject.entity.OrderDetail">
+        select * from order_detail where order_id= #{order_id,jdbcType=VARCHAR}
+    </select>
 </mapper>

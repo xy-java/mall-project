@@ -11,7 +11,7 @@
  Target Server Version : 80019
  File Encoding         : 65001
 
- Date: 27/06/2022 10:20:18
+ Date: 28/06/2022 13:05:56
 */
 
 SET NAMES utf8mb4;
@@ -38,6 +38,7 @@ CREATE TABLE `address_info`  (
 -- Records of address_info
 -- ----------------------------
 INSERT INTO `address_info` VALUES ('00fd6ddf5aff48eb', '西城绿魁花园', '25e0bb98c5a14d4b', 1, '2022-06-16 17:39:47', '110000', '110100', '110102', '李四');
+INSERT INTO `address_info` VALUES ('6046b79d642e40c3', '周边', '25e0bb98c5a14d4b', 1, '2022-06-28 12:15:03', '130000', '130300', '130306', '小明');
 INSERT INTO `address_info` VALUES ('cccc18909d974b0e', '我爱我家', '25e0bb98c5a14d4b', 0, '2022-06-20 14:52:42', '110000', '110100', '110106', '王五');
 INSERT INTO `address_info` VALUES ('d280aa9d1d72469c', '东城绿魁花园', '25e0bb98c5a14d4b', 1, '2022-06-15 12:50:25', '110000', '110100', '110101', '张三');
 
@@ -109,16 +110,19 @@ CREATE TABLE `order_detail`  (
   `sku_id` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '商品id',
   `order_price` decimal(10, 2) NULL DEFAULT NULL COMMENT '购买价格',
   `order_num` int NULL DEFAULT NULL COMMENT '购买数量',
+  `sku_version` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `sku_color` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `sku_cp` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `sku_series` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`detail_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of order_detail
 -- ----------------------------
-INSERT INTO `order_detail` VALUES ('44a2e2de96424ac0', '25060f464722416b', '2022-06-27 10:19:43', '6b35aa76a7954205', 2191.00, 1);
-INSERT INTO `order_detail` VALUES ('cb320818bc624ad3', '4161f1c3030b4f78', '2022-06-27 10:14:03', '1e86413b50244cde', 5299.00, 1);
-INSERT INTO `order_detail` VALUES ('f8c2719f2b4e485d', '547b217332824297', '2022-06-27 10:16:31', '1e86413b50244cde', 5299.00, 1);
-INSERT INTO `order_detail` VALUES ('fa37fa48178a425b', '790fa978153541a7', '2022-06-27 10:13:59', '6b35aa76a7954205', 2191.00, 1);
+INSERT INTO `order_detail` VALUES ('740c9ade421c47e4', '0d8dadd3a0414060', '2022-06-28 12:15:12', '1e86413b50244cde', 5299.00, 1, '', '', 'i5-12450H/集显/16G/512G', '');
+INSERT INTO `order_detail` VALUES ('77c4220572e74796', '5c5efb92030845e4', '2022-06-28 10:47:43', '1e86413b50244cde', 5299.00, 1, '', '', 'i5-12450H/集显/16G/512G', '');
+INSERT INTO `order_detail` VALUES ('d4b9323bb60f41f1', 'ce864142ebca4198', '2022-06-28 10:47:04', '1e86413b50244cde', 5299.00, 2, '', '', 'i5-12450H/集显/16G/512G', '');
 
 -- ----------------------------
 -- Table structure for order_info
@@ -138,10 +142,9 @@ CREATE TABLE `order_info`  (
 -- ----------------------------
 -- Records of order_info
 -- ----------------------------
-INSERT INTO `order_info` VALUES ('25060f464722416b', 2191.00, '25e0bb98c5a14d4b', '在线支付', 0, '2022-06-27 10:19:43', 'cccc18909d974b0e');
-INSERT INTO `order_info` VALUES ('4161f1c3030b4f78', 5299.00, '25e0bb98c5a14d4b', '在线支付', 1, '2022-06-27 10:14:03', 'cccc18909d974b0e');
-INSERT INTO `order_info` VALUES ('547b217332824297', 5299.00, '25e0bb98c5a14d4b', '在线支付', 1, '2022-06-27 10:16:31', 'cccc18909d974b0e');
-INSERT INTO `order_info` VALUES ('790fa978153541a7', 2191.00, '25e0bb98c5a14d4b', '在线支付', 1, '2022-06-27 10:13:59', 'cccc18909d974b0e');
+INSERT INTO `order_info` VALUES ('0d8dadd3a0414060', 5299.00, '25e0bb98c5a14d4b', '在线支付', 1, '2022-06-28 12:15:12', '6046b79d642e40c3');
+INSERT INTO `order_info` VALUES ('5c5efb92030845e4', 5299.00, '25e0bb98c5a14d4b', '在线支付', 1, '2022-06-28 10:47:43', '00fd6ddf5aff48eb');
+INSERT INTO `order_info` VALUES ('ce864142ebca4198', 10598.00, '25e0bb98c5a14d4b', '在线支付', 0, '2022-06-28 10:47:04', '00fd6ddf5aff48eb');
 
 -- ----------------------------
 -- Table structure for paramter_info
@@ -208,8 +211,8 @@ CREATE TABLE `sku_info`  (
 -- ----------------------------
 -- Records of sku_info
 -- ----------------------------
-INSERT INTO `sku_info` VALUES ('1e86413b50244cde', 00005299.00, 'Redmi Book Pro 15 2022', '全新12代英特尔处理器 | Windows 11 家庭中文版 | 可选RTX 2050高性能独立显卡 | 3.2K 90Hz 原色超清屏', 197, 0, '00D8E2A9B74F471A.jpg', '2022-06-16 17:45:42', NULL, 'b335a2d6e5b34321', '电脑', 0);
-INSERT INTO `sku_info` VALUES ('6b35aa76a7954205', 00002191.00, 'Redmi K40S', '骁龙870｜三星 E4直屏', 197, 0, 'EB1E6879DCBD4E4A.jpg', '2022-06-09 09:56:09', NULL, 'b4ff02f06e834f5b', '手机', 0);
+INSERT INTO `sku_info` VALUES ('1e86413b50244cde', 00005299.00, 'Redmi Book Pro 15 2022', '全新12代英特尔处理器 | Windows 11 家庭中文版 | 可选RTX 2050高性能独立显卡 | 3.2K 90Hz 原色超清屏', 145, 0, '00D8E2A9B74F471A.jpg', '2022-06-16 17:45:42', NULL, 'b335a2d6e5b34321', '电脑', 0);
+INSERT INTO `sku_info` VALUES ('6b35aa76a7954205', 00002191.00, 'Redmi K40S', '骁龙870｜三星 E4直屏', 186, 0, 'EB1E6879DCBD4E4A.jpg', '2022-06-09 09:56:09', NULL, 'b4ff02f06e834f5b', '手机', 0);
 
 -- ----------------------------
 -- Table structure for user_info

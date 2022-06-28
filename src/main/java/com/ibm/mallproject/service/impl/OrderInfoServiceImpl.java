@@ -54,6 +54,10 @@ public class OrderInfoServiceImpl implements OrderInfoService {
             orderDetail.setDetail_id(CommonUtil.getUUID());
             orderDetail.setOrder_id(orderInfo.getOrder_id());
             orderDetail.setSku_id(sku_map.get("sku_id").toString());
+            orderDetail.setSku_series(sku_map.get("sku_series").toString());
+            orderDetail.setSku_version(sku_map.get("sku_version").toString());
+            orderDetail.setSku_color(sku_map.get("sku_color").toString());
+            orderDetail.setSku_cp(sku_map.get("sku_cp").toString());
             orderDetail.setCreate_time(new Date());
             orderDetail.setOrder_price(Double.valueOf(sku_map.get("order_price").toString()));
             orderDetail.setOrder_num(Integer.valueOf(sku_map.get("order_num").toString()));
@@ -134,5 +138,28 @@ public class OrderInfoServiceImpl implements OrderInfoService {
         }
 
         return "success";
+    }
+
+    @Override
+    public List<Map> getDetailList(String order_id) {
+        List<OrderDetail> orderDetails = orderDetailMapper.selectByOrderId(order_id);
+        List<Map> list = new ArrayList<>();
+        for (int i = 0; i < orderDetails.size(); i++) {
+            HashMap<String,String> hashMap = new HashMap<>();
+            SkuInfo skuInfo = skuMapper.selectSkuById(orderDetails.get(i).getSku_id());
+            hashMap.put("sku_name",skuInfo.getSku_name());
+            hashMap.put("img",skuInfo.getImg());
+            hashMap.put("sku_id",skuInfo.getSku_id());
+            hashMap.put("order_price", String.valueOf(orderDetails.get(i).getOrder_price()));
+            hashMap.put("order_num", String.valueOf(orderDetails.get(i).getOrder_num()));
+            hashMap.put("sku_type",skuInfo.getSku_type());
+            hashMap.put("sku_version",orderDetails.get(i).getSku_version());
+            hashMap.put("sku_color",orderDetails.get(i).getSku_color());
+            hashMap.put("sku_cp",orderDetails.get(i).getSku_cp());
+            hashMap.put("sku_series",orderDetails.get(i).getSku_series());
+            hashMap.put("order_id",orderDetails.get(i).getOrder_id());
+            list.add(hashMap);
+        }
+        return list;
     }
 }

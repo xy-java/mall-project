@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName OrderInfoMapper
@@ -43,5 +44,4 @@ public interface OrderInfoMapper {
     Integer deleteOrderInfoById(String order_id);
 
     Integer updateOrderInfoStatus(OrderInfo orderInfo);
-
 }

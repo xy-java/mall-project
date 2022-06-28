@@ -118,4 +118,10 @@ public class OrderInfoController {
         return orderInfoService.payOrder(order_id);
     }
 
+	@RequestMapping("/getDetailList")
+	@ResponseBody
+	public List<Map> getDetailList(@RequestParam String order_id){
+		return orderInfoService.getDetailList(order_id);
+	}
+
 }
