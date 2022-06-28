@@ -11,7 +11,7 @@
  Target Server Version : 80019
  File Encoding         : 65001
 
- Date: 28/06/2022 13:05:56
+ Date: 28/06/2022 13:51:49
 */
 
 SET NAMES utf8mb4;
@@ -38,6 +38,7 @@ CREATE TABLE `address_info`  (
 -- Records of address_info
 -- ----------------------------
 INSERT INTO `address_info` VALUES ('00fd6ddf5aff48eb', '西城绿魁花园', '25e0bb98c5a14d4b', 1, '2022-06-16 17:39:47', '110000', '110100', '110102', '李四');
+INSERT INTO `address_info` VALUES ('5ee9ca5be3e24042', '富力又一城', '2e24c8b6abb743c0', 1, '2022-06-28 13:43:47', '120000', '120100', '120104', 'ss');
 INSERT INTO `address_info` VALUES ('6046b79d642e40c3', '周边', '25e0bb98c5a14d4b', 1, '2022-06-28 12:15:03', '130000', '130300', '130306', '小明');
 INSERT INTO `address_info` VALUES ('cccc18909d974b0e', '我爱我家', '25e0bb98c5a14d4b', 0, '2022-06-20 14:52:42', '110000', '110100', '110106', '王五');
 INSERT INTO `address_info` VALUES ('d280aa9d1d72469c', '东城绿魁花园', '25e0bb98c5a14d4b', 1, '2022-06-15 12:50:25', '110000', '110100', '110101', '张三');
@@ -63,6 +64,8 @@ CREATE TABLE `cart_info`  (
 -- ----------------------------
 -- Records of cart_info
 -- ----------------------------
+INSERT INTO `cart_info` VALUES ('38d58d6109744f05', '25e0bb98c5a14d4b', '1e86413b50244cde', 1, '2022-06-28 13:48:20', 'cccc18909d974b0e', '', '', 'i5-12450H/集显/16G/512G', '');
+INSERT INTO `cart_info` VALUES ('65e17d12c164442c', '25e0bb98c5a14d4b', NULL, 1, '2022-06-28 13:48:31', '', NULL, NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for comment_info
@@ -120,9 +123,6 @@ CREATE TABLE `order_detail`  (
 -- ----------------------------
 -- Records of order_detail
 -- ----------------------------
-INSERT INTO `order_detail` VALUES ('740c9ade421c47e4', '0d8dadd3a0414060', '2022-06-28 12:15:12', '1e86413b50244cde', 5299.00, 1, '', '', 'i5-12450H/集显/16G/512G', '');
-INSERT INTO `order_detail` VALUES ('77c4220572e74796', '5c5efb92030845e4', '2022-06-28 10:47:43', '1e86413b50244cde', 5299.00, 1, '', '', 'i5-12450H/集显/16G/512G', '');
-INSERT INTO `order_detail` VALUES ('d4b9323bb60f41f1', 'ce864142ebca4198', '2022-06-28 10:47:04', '1e86413b50244cde', 5299.00, 2, '', '', 'i5-12450H/集显/16G/512G', '');
 
 -- ----------------------------
 -- Table structure for order_info
@@ -142,9 +142,6 @@ CREATE TABLE `order_info`  (
 -- ----------------------------
 -- Records of order_info
 -- ----------------------------
-INSERT INTO `order_info` VALUES ('0d8dadd3a0414060', 5299.00, '25e0bb98c5a14d4b', '在线支付', 1, '2022-06-28 12:15:12', '6046b79d642e40c3');
-INSERT INTO `order_info` VALUES ('5c5efb92030845e4', 5299.00, '25e0bb98c5a14d4b', '在线支付', 1, '2022-06-28 10:47:43', '00fd6ddf5aff48eb');
-INSERT INTO `order_info` VALUES ('ce864142ebca4198', 10598.00, '25e0bb98c5a14d4b', '在线支付', 0, '2022-06-28 10:47:04', '00fd6ddf5aff48eb');
 
 -- ----------------------------
 -- Table structure for paramter_info
@@ -211,8 +208,8 @@ CREATE TABLE `sku_info`  (
 -- ----------------------------
 -- Records of sku_info
 -- ----------------------------
-INSERT INTO `sku_info` VALUES ('1e86413b50244cde', 00005299.00, 'Redmi Book Pro 15 2022', '全新12代英特尔处理器 | Windows 11 家庭中文版 | 可选RTX 2050高性能独立显卡 | 3.2K 90Hz 原色超清屏', 145, 0, '00D8E2A9B74F471A.jpg', '2022-06-16 17:45:42', NULL, 'b335a2d6e5b34321', '电脑', 0);
-INSERT INTO `sku_info` VALUES ('6b35aa76a7954205', 00002191.00, 'Redmi K40S', '骁龙870｜三星 E4直屏', 186, 0, 'EB1E6879DCBD4E4A.jpg', '2022-06-09 09:56:09', NULL, 'b4ff02f06e834f5b', '手机', 0);
+INSERT INTO `sku_info` VALUES ('1e86413b50244cde', 00005299.00, 'Redmi Book Pro 15 2022', '全新12代英特尔处理器 | Windows 11 家庭中文版 | 可选RTX 2050高性能独立显卡 | 3.2K 90Hz 原色超清屏', 142, 0, '00D8E2A9B74F471A.jpg', '2022-06-16 17:45:42', NULL, 'b335a2d6e5b34321', '电脑', 0);
+INSERT INTO `sku_info` VALUES ('6b35aa76a7954205', 00002191.00, 'Redmi K40S', '骁龙870｜三星 E4直屏', 185, 0, 'EB1E6879DCBD4E4A.jpg', '2022-06-09 09:56:09', NULL, 'b4ff02f06e834f5b', '手机', 0);
 
 -- ----------------------------
 -- Table structure for user_info
@@ -232,7 +229,6 @@ CREATE TABLE `user_info`  (
 -- Records of user_info
 -- ----------------------------
 INSERT INTO `user_info` VALUES ('25e0bb98c5a14d4b', 'user', '123456', '1392055037@qq.com', '2022-06-14 09:05:08', '普通用户');
-INSERT INTO `user_info` VALUES ('72053464c2474b6a', 'admin', '123456', NULL, '2022-06-25 18:49:26', '管理员');
 INSERT INTO `user_info` VALUES ('945a27d2b1b24c25', 'admin', '123456', '1392055037@qq.com', '2022-05-31 17:20:12', '管理员');
 
 SET FOREIGN_KEY_CHECKS = 1;
