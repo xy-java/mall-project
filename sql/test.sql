@@ -11,7 +11,7 @@
  Target Server Version : 80019
  File Encoding         : 65001
 
- Date: 28/06/2022 13:51:49
+ Date: 28/06/2022 14:18:48
 */
 
 SET NAMES utf8mb4;
@@ -160,8 +160,15 @@ CREATE TABLE `paramter_info`  (
 -- ----------------------------
 -- Records of paramter_info
 -- ----------------------------
+INSERT INTO `paramter_info` VALUES ('1c4f0997abfa4386', '2022-06-28 14:12:03', '', '', 'i5-12450H/集显/16G/512G,i5-12450H/MX550/16G/512G,i7-12650H/MX550/16G/512G', '');
+INSERT INTO `paramter_info` VALUES ('3548b1020baf4244', '2022-06-28 14:17:27', '', '', '', '深空蓝,象牙白,典雅黑');
+INSERT INTO `paramter_info` VALUES ('380481e30e6a4000', '2022-06-28 14:13:26', '', '', 'i5-12450H/集显/16G/512G,i5-12450H/MX550/16G/512G,i7-12650H/MX550/16G/512G', '');
+INSERT INTO `paramter_info` VALUES ('8b5e5dbc2ede4e08', '2022-06-28 14:14:50', '6GB+128GB,8GB+128GB,8GB+256GB', '时光蓝,子夜黑,原子银', '', '');
+INSERT INTO `paramter_info` VALUES ('ad7bbb7d9df944c9', '2022-06-28 14:16:27', '', '', '', '曜石黑 黑色氟橡胶表带,流光银 蓝色真皮表带,流光银 棕色真皮表带');
 INSERT INTO `paramter_info` VALUES ('b335a2d6e5b34321', '2022-06-16 17:45:42', '', '', 'i5-12450H/集显/16G/512G,i7-12650H/RTX 2050/16G/512G,i5-12450H/RTX 2050/16G/512G', '');
 INSERT INTO `paramter_info` VALUES ('b4ff02f06e834f5b', '2022-06-10 13:56:24', '8GB+128GB,8GB+256GB,8GB+520GB', '亮黑,雪白', 'sada', '');
+INSERT INTO `paramter_info` VALUES ('c393cbeaf49544e8', '2022-06-28 14:10:55', '', '', 'i5-12450H/集显/16G/512G,i5-12450H/MX550/16G/512G,i7-12650H/MX550/16G/512G', '');
+INSERT INTO `paramter_info` VALUES ('f5cdfd895b4443c5', '2022-06-28 14:15:39', '4GB+128GB,8GB+128GB', '暗影黑,深空蓝', '', '');
 
 -- ----------------------------
 -- Table structure for rotation_info
@@ -208,8 +215,15 @@ CREATE TABLE `sku_info`  (
 -- ----------------------------
 -- Records of sku_info
 -- ----------------------------
-INSERT INTO `sku_info` VALUES ('1e86413b50244cde', 00005299.00, 'Redmi Book Pro 15 2022', '全新12代英特尔处理器 | Windows 11 家庭中文版 | 可选RTX 2050高性能独立显卡 | 3.2K 90Hz 原色超清屏', 142, 0, '00D8E2A9B74F471A.jpg', '2022-06-16 17:45:42', NULL, 'b335a2d6e5b34321', '电脑', 0);
-INSERT INTO `sku_info` VALUES ('6b35aa76a7954205', 00002191.00, 'Redmi K40S', '骁龙870｜三星 E4直屏', 185, 0, 'EB1E6879DCBD4E4A.jpg', '2022-06-09 09:56:09', NULL, 'b4ff02f06e834f5b', '手机', 0);
+INSERT INTO `sku_info` VALUES ('1e86413b50244cde', 00005299.00, 'Redmi Book Pro 15 2022', '全新12代英特尔处理器 | Windows 11 家庭中文版 | 可选RTX 2050高性能独立显卡 | 3.2K 90Hz 原色超清屏', 200, 0, '00D8E2A9B74F471A.jpg', '2022-06-16 17:45:42', NULL, 'b335a2d6e5b34321', '电脑', 0);
+INSERT INTO `sku_info` VALUES ('21f89308273b4c37', 00000399.00, 'Redmi 手表 2', '1.6\"AMOLED大屏 | 117种运动模式 | 24小时心率监测', 200, 0, 'B005C715CC7D4E51.jpg', '2022-06-28 14:17:27', NULL, '3548b1020baf4244', '手表', 0);
+INSERT INTO `sku_info` VALUES ('56bcd2926c6d4e0c', 00006999.00, 'Redmi Book Pro 14 2022', '全新12代英特尔处理器 | Windows 11 家庭中文版 | 2.5K 120Hz高清屏 | 可选MX550独立显卡', 200, 0, '18D8508E7DE24DE3.jpg', '2022-06-28 14:12:03', NULL, '1c4f0997abfa4386', '电脑', 0);
+INSERT INTO `sku_info` VALUES ('56fbc933a44b4392', 00002199.00, 'Redmi Note 11T Pro', '天玑8100｜144Hz高配LCD屏幕｜6400万像素｜VC液冷散热', 200, 0, '99C97EF67BA344CD.jpg', '2022-06-28 14:14:50', NULL, '8b5e5dbc2ede4e08', '手机', 0);
+INSERT INTO `sku_info` VALUES ('64ab619905cf419e', 00004299.00, 'RedmiBook Pro 14 R5', '2.5K超视网膜全面屏 | 一体精雕工艺 | 轻薄本 | 智能互联', 200, 0, 'B39CC1E30D7249C8.jpg', '2022-06-28 14:13:26', NULL, '380481e30e6a4000', '电脑', 0);
+INSERT INTO `sku_info` VALUES ('6b35aa76a7954205', 00002191.00, 'Redmi K40S', '骁龙870｜三星 E4直屏', 200, 0, 'EB1E6879DCBD4E4A.jpg', '2022-06-09 09:56:09', NULL, 'b4ff02f06e834f5b', '手机', 0);
+INSERT INTO `sku_info` VALUES ('a7727c4d780d4e41', 00005799.00, 'Redmi G 2021锐龙版 3050Ti版本', 'RTX™ 3050Ti光追独显与硬核锐龙芯梦幻联合，迎来游戏性能释放新境界。视野再突破，天生为赢而战，全方位为热爱进阶，Redmi G 2021 锐龙版，实力超能打。', 200, 0, '2DAFAEE736D34483.png', '2022-06-28 14:10:55', NULL, 'c393cbeaf49544e8', '电脑', 0);
+INSERT INTO `sku_info` VALUES ('b58d8138370a4c9a', 00001049.00, 'Xiaomi Watch S1', '蓝宝石玻璃镜面 | 不锈钢中框 | 1.43”AMOLED大屏幕', 200, 0, 'F312BAE93AF94C92.png', '2022-06-28 14:16:27', NULL, 'ad7bbb7d9df944c9', '手表', 0);
+INSERT INTO `sku_info` VALUES ('b745d704d9454968', 00000999.00, 'Redmi Note 11SE', '天玑700｜18W快充｜5000mAh大电池｜6.5\"FHD+全高清屏｜双卡双5G｜90Hz 四挡变速高刷屏｜4096级 亮度调节｜全系128GB 大内存｜大功率扬声器｜4800万 高清双摄', 200, 0, 'BE8C48E937834103.jpg', '2022-06-28 14:15:39', NULL, 'f5cdfd895b4443c5', '手机', 0);
 
 -- ----------------------------
 -- Table structure for user_info
