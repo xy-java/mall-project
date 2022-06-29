@@ -9,7 +9,7 @@
     </update>
 
     <insert id="insertOrderInfo">
-        insert into order_info (order_id, total_amount, user_id, payment_way, order_status, create_time,address_id)
+        insert into order_info (order_id, total_amount, user_id, payment_way, order_status, create_time,address_id,isEnd)
         VALUES (
                 #{order_id,jdbcType=VARCHAR},
                 #{total_amount,jdbcType=DECIMAL},
@@ -17,7 +17,8 @@
                 #{payment_way,jdbcType=VARCHAR},
                 #{order_status,jdbcType=INTEGER},
                 #{create_time,jdbcType=TIMESTAMP},
-                #{address_id,jdbcType=VARCHAR}
+                #{address_id,jdbcType=VARCHAR},
+                #{isEnd,jdbcType=INTEGER}
                )
     </insert>
     <select id="selectOrderInfoByUserId" resultType="com.ibm.mallproject.entity.OrderInfo">
@@ -29,5 +30,9 @@
 
     <update id="updateOrderInfoStatus" parameterType="com.ibm.mallproject.entity.OrderInfo">
         update order_info set order_status = 1 where order_id = #{order_id,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateEnd" parameterType="com.ibm.mallproject.entity.OrderInfo">
+        update order_info set isEnd = 1 where order_id = #{order_id,jdbcType=VARCHAR}
     </update>
 </mapper>

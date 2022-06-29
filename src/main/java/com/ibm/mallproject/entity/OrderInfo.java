@@ -20,6 +20,16 @@ public class OrderInfo {
 	private Date create_time;
 	private String address_id;
 
+	private Integer isEnd;
+
+	public Integer getIsEnd() {
+		return isEnd;
+	}
+
+	public void setIsEnd(Integer isEnd) {
+		this.isEnd = isEnd;
+	}
+
 	public String getAddress_id() {
 		return address_id;
 	}

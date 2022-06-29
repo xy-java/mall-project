@@ -124,4 +124,9 @@ public class OrderInfoController {
 		return orderInfoService.getDetailList(order_id);
 	}
 
+    @RequestMapping("/updateEnd")
+    @ResponseBody
+    public String updateEnd(@RequestParam String order_id){
+        return orderInfoService.updateEnd(order_id)>0 ? "修改成功":"修改失败";
+    }
 }

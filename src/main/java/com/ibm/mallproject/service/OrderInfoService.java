@@ -49,4 +49,6 @@ public interface OrderInfoService {
     String payOrder(String order_id);
 
     List<Map> getDetailList(String order_id);
+
+    Integer updateEnd(String order_id);
 }

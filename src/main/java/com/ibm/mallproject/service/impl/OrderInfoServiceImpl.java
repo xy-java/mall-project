@@ -46,6 +46,7 @@ public class OrderInfoServiceImpl implements OrderInfoService {
         orderInfo.setOrder_status(0);
         orderInfo.setPayment_way("在线支付");
         orderInfo.setAddress_id(map.get("address_id").toString());
+        orderInfo.setIsEnd(0);
 
         OrderDetail orderDetail = new OrderDetail();
         List<Map<String,Object>> sku_info = (List<Map<String, Object>>) map.get("sku_info");
@@ -161,5 +162,10 @@ public class OrderInfoServiceImpl implements OrderInfoService {
             list.add(hashMap);
         }
         return list;
+    }
+
+    @Override
+    public Integer updateEnd(String order_id) {
+        return orderInfoMapper.updateEnd(order_id);
     }
 }
