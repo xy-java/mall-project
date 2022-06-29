@@ -11,7 +11,7 @@
  Target Server Version : 80019
  File Encoding         : 65001
 
- Date: 28/06/2022 14:48:27
+ Date: 29/06/2022 13:36:15
 */
 
 SET NAMES utf8mb4;
@@ -38,6 +38,7 @@ CREATE TABLE `address_info`  (
 -- Records of address_info
 -- ----------------------------
 INSERT INTO `address_info` VALUES ('00fd6ddf5aff48eb', '西城绿魁花园', '25e0bb98c5a14d4b', 1, '2022-06-16 17:39:47', '110000', '110100', '110102', '李四');
+INSERT INTO `address_info` VALUES ('32581b8f629540f0', '天津工业大学', 'baadcb013dc4473e', 1, '2022-06-29 13:34:26', '120000', '120100', '120111', '肖扬');
 INSERT INTO `address_info` VALUES ('5ee9ca5be3e24042', '富力又一城', '2e24c8b6abb743c0', 1, '2022-06-28 13:43:47', '120000', '120100', '120104', 'ss');
 INSERT INTO `address_info` VALUES ('6046b79d642e40c3', '周边', '25e0bb98c5a14d4b', 1, '2022-06-28 12:15:03', '130000', '130300', '130306', '小明');
 INSERT INTO `address_info` VALUES ('cccc18909d974b0e', '我爱我家', '25e0bb98c5a14d4b', 0, '2022-06-20 14:52:42', '110000', '110100', '110106', '王五');
@@ -134,6 +135,7 @@ CREATE TABLE `order_info`  (
   `order_status` int NOT NULL COMMENT '订单状态（1已支付，0未支付）',
   `create_time` datetime(0) NOT NULL COMMENT '创建时间',
   `address_id` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '地址id',
+  `isEnd` int NULL DEFAULT NULL COMMENT '是否结束（1 已完成， 0 未完成）',
   PRIMARY KEY (`order_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
