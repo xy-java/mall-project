@@ -1,14 +1,27 @@
 package com.ibm.mallproject.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.ibm.mallproject.entity.OrderDetail;
+import com.alipay.api.AlipayApiException;
+import com.alipay.api.AlipayClient;
+import com.alipay.api.DefaultAlipayClient;
+import com.alipay.api.internal.util.AlipaySignature;
+import com.alipay.api.request.AlipayTradePagePayRequest;
+import com.alipay.api.response.AlipayTradePagePayResponse;
+import com.ibm.mallproject.config.AliPayConfig;
 import com.ibm.mallproject.entity.OrderInfo;
 import com.ibm.mallproject.service.OrderInfoService;
 import com.ibm.mallproject.service.SkuService;
+import com.sun.deploy.net.URLEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -129,4 +142,91 @@ public class OrderInfoController {
     public String updateEnd(@RequestParam String order_id){
         return orderInfoService.updateEnd(order_id)>0 ? "修改成功":"修改失败";
     }
+
+    @RequestMapping("/pay")
+    @ResponseBody
+    public String pay(@RequestBody JSONObject map) throws AlipayApiException {
+        Map map1 = map;
+        if(map1.get("pages").equals("orderPage")){
+            AlipayClient alipayClient = new DefaultAlipayClient(AliPayConfig.server_url,AliPayConfig.app_id,AliPayConfig.merchant_private_key,AliPayConfig.format,AliPayConfig.charset,AliPayConfig.alipayPublicKey,AliPayConfig.sign_type);
+            AlipayTradePagePayRequest request = new AlipayTradePagePayRequest();
+            request.setNotifyUrl("");
+            JSONObject bizContent = new JSONObject();
+            bizContent.put("out_trade_no", map.get("order_id"));
+            bizContent.put("total_amount", map.get("total_amount"));
+            bizContent.put("subject", map.get("order_name"));
+            bizContent.put("product_code", "FAST_INSTANT_TRADE_PAY");
+            JSONArray goodsDetail = new JSONArray();
+            List<Map<String,Object>> sku_info = (List<Map<String, Object>>) map1.get("goods_detail");
+            for (int i = 0; i < sku_info.size(); i++) {
+                JSONObject goods1 = new JSONObject();
+                goods1.put("goods_id", sku_info.get(i).get("sku_id"));
+                goods1.put("goods_name", sku_info.get(i).get("sku_name"));
+                goods1.put("quantity", sku_info.get(i).get("order_num"));
+                goods1.put("price", sku_info.get(i).get("order_price"));
+                goodsDetail.add(goods1);
+            }
+            bizContent.put("goods_detail", goodsDetail);
+            request.setReturnUrl("http://localhost:8081/orderInfo/payFor?goodsDetail="+goodsDetail + "&pages=" + map1.get("pages"));
+            request.setBizContent(bizContent.toString());
+            AlipayTradePagePayResponse response = alipayClient.pageExecute(request);
+            if(response.isSuccess()){
+                return response.getBody();
+            } else {
+                return "调用失败";
+            }
+        }else{
+            AlipayClient alipayClient = new DefaultAlipayClient(AliPayConfig.server_url,AliPayConfig.app_id,AliPayConfig.merchant_private_key,AliPayConfig.format,AliPayConfig.charset,AliPayConfig.alipayPublicKey,AliPayConfig.sign_type);
+            AlipayTradePagePayRequest request = new AlipayTradePagePayRequest();
+            request.setNotifyUrl("");
+            JSONObject bizContent = new JSONObject();
+            bizContent.put("out_trade_no", map.get("order_id"));
+            bizContent.put("total_amount", map.get("total_amount"));
+            bizContent.put("subject", map.get("order_name"));
+            bizContent.put("product_code", "FAST_INSTANT_TRADE_PAY");
+            request.setReturnUrl("http://localhost:8081/orderInfo/payFor?goodsDetail=1" + "&pages=" + map1.get("pages"));
+            request.setBizContent(bizContent.toString());
+            AlipayTradePagePayResponse response = alipayClient.pageExecute(request);
+            if(response.isSuccess()){
+                return response.getBody();
+            } else {
+                return "调用失败";
+            }
+        }
+
+    }
+
+    @RequestMapping("/payFor")
+    public void payFor( HttpServletRequest request, HttpServletResponse response) throws IOException {
+        if(request.getParameter("pages").equals("orderPage")){
+            OrderInfo orderInfo = new OrderInfo();
+            orderInfo.setOrder_id(request.getParameter("out_trade_no"));
+            //修改订单状态
+            orderInfoService.updateOrderInfoStatus(orderInfo);
+            List<Map> sku_info = JSON.parseArray(request.getParameter("goodsDetail"), Map.class);
+            List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
+            for (int i = 0; i < sku_info.size(); i++) {
+                HashMap<String,Object> hashMap = new HashMap<String,Object>();
+                String sku_id = sku_info.get(i).get("goods_id").toString();
+                Integer sku_num = Integer.parseInt(sku_info.get(i).get("quantity").toString());
+                hashMap.put("sku_id",sku_id);
+                hashMap.put("sku_num",sku_num);
+                list.add(hashMap);
+            }
+            //遍历list
+            for (int i = 0; i < list.size(); i++) {
+                Map<String,Object> map1 = list.get(i);
+                String sku_id = map1.get("sku_id").toString();
+                Integer sku_num = Integer.parseInt(map1.get("sku_num").toString());
+                skuService.updateSkuStore(sku_id,sku_num);
+            }
+            response.sendRedirect("http://localhost:8080/");
+        }else if(request.getParameter("pages").equals("orderConfig")){
+            orderInfoService.payOrder(request.getParameter("out_trade_no"));
+            response.sendRedirect("http://localhost:8080/#/orderConfig");
+        }
+    }
+
+
+
 }

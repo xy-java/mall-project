@@ -170,9 +170,7 @@ public class SkuServiceImpl implements SkuService {
         map.put("paramterInfo",list);
         List<Map> mapList = new ArrayList<Map>();
         mapList.add(map);
-        System.err.println(map);
 
-        System.err.println(mapList);
 
         return mapList;
     }
