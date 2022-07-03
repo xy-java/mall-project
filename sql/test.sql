@@ -11,7 +11,7 @@
  Target Server Version : 80019
  File Encoding         : 65001
 
- Date: 03/07/2022 16:54:31
+ Date: 03/07/2022 22:05:42
 */
 
 SET NAMES utf8mb4;
@@ -102,6 +102,25 @@ CREATE TABLE `favor_info`  (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for hive_analys
+-- ----------------------------
+DROP TABLE IF EXISTS `hive_analys`;
+CREATE TABLE `hive_analys`  (
+  `x_info` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `y_info` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of hive_analys
+-- ----------------------------
+INSERT INTO `hive_analys` VALUES ('5', 'date', '2022-07-01');
+INSERT INTO `hive_analys` VALUES ('1', 'num', '手表');
+INSERT INTO `hive_analys` VALUES ('4', 'num', '电脑');
+INSERT INTO `hive_analys` VALUES ('399.0', 'price', '手表');
+INSERT INTO `hive_analys` VALUES ('20696.0', 'price', '电脑');
+
+-- ----------------------------
 -- Table structure for hive_count
 -- ----------------------------
 DROP TABLE IF EXISTS `hive_count`;
@@ -140,7 +159,7 @@ INSERT INTO `order_detail` VALUES ('175be8c8aaef442e', 'ae0d42f1766f4db9', '2022
 INSERT INTO `order_detail` VALUES ('1ad13a9f9e9548c6', '340774ca5ed84bc5', '2022-07-01 13:32:56', '1e86413b50244cde', 5299.00, 1, '', '', 'i5-12450H/集显/16G/512G', '');
 INSERT INTO `order_detail` VALUES ('b7a2889b88114a71', 'fe2b43d85f1f421e', '2022-07-01 17:02:24', '64ab619905cf419e', 4299.00, 1, '', '', 'i5-12450H/集显/16G/512G', '');
 INSERT INTO `order_detail` VALUES ('d5b7c3e8a43c4dea', '340774ca5ed84bc5', '2022-07-01 13:32:56', '1e86413b50244cde', 5299.00, 1, '', '', 'i7-12650H/RTX 2050/16G/512G', '');
-INSERT INTO `order_detail` VALUES ('f0559427d6ee4867', '340774ca5ed84bc5', '2022-07-01 13:32:56', '21f89308273b4c37', 399.00, 1, '', '', '', '深空蓝');
+INSERT INTO `order_detail` VALUES ('f0559427d6ee4867', '340774ca5ed84bc5', '2022-07-02 13:32:56', '21f89308273b4c37', 399.00, 1, '', '', '', '深空蓝');
 
 -- ----------------------------
 -- Table structure for order_info
