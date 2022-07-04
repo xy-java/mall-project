@@ -167,6 +167,7 @@ public class OrderInfoController {
                 goodsDetail.add(goods1);
             }
             bizContent.put("goods_detail", goodsDetail);
+//            request.setReturnUrl("http://localhost:8081/orderInfo/payFor?goodsDetail="+goodsDetail + "&pages=" + map1.get("pages"));
             request.setReturnUrl("http://localhost:8081/orderInfo/payFor?goodsDetail="+goodsDetail + "&pages=" + map1.get("pages"));
             request.setBizContent(bizContent.toString());
             AlipayTradePagePayResponse response = alipayClient.pageExecute(request);
@@ -185,6 +186,7 @@ public class OrderInfoController {
             bizContent.put("subject", map.get("order_name"));
             bizContent.put("product_code", "FAST_INSTANT_TRADE_PAY");
             request.setReturnUrl("http://localhost:8081/orderInfo/payFor?goodsDetail=1" + "&pages=" + map1.get("pages"));
+//            request.setReturnUrl("https://7613-120-243-214-70.jp.ngrok.io/orderInfo/payFor?goodsDetail=1" + "&pages=" + map1.get("pages"));
             request.setBizContent(bizContent.toString());
             AlipayTradePagePayResponse response = alipayClient.pageExecute(request);
             if(response.isSuccess()){
@@ -221,9 +223,11 @@ public class OrderInfoController {
                 skuService.updateSkuStore(sku_id,sku_num);
             }
             response.sendRedirect("http://localhost:8080/");
+//            response.sendRedirect("http://3usjhb.natappfree.cc/");
         }else if(request.getParameter("pages").equals("orderConfig")){
             orderInfoService.payOrder(request.getParameter("out_trade_no"));
             response.sendRedirect("http://localhost:8080/#/orderConfig");
+//            response.sendRedirect("http://3usjhb.natappfree.cc/#/orderConfig");
         }
     }
 
