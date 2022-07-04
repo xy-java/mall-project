@@ -1,19 +1,21 @@
 package com.ibm.mallproject.controller;
 
+import ch.ethz.ssh2.*;
+import com.ibm.mallproject.entity.HiveAnalys;
 import com.ibm.mallproject.entity.UserHiveCount;
+import com.ibm.mallproject.service.HiveAnalysService;
 import com.ibm.mallproject.service.UserHiveCountService;
-import org.apache.hadoop.conf.Configuration;
-import org.apache.sqoop.Sqoop;
-import org.apache.sqoop.hive.HiveConfig;
-import org.apache.sqoop.tool.SqoopTool;
-import org.apache.sqoop.util.OptionsFileUtil;
+import com.ibm.mallproject.util.CommonUtil;
+import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
+import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 
 @Controller
@@ -23,6 +25,8 @@ public class SqoopController {
 
 	@Autowired
 	private UserHiveCountService userHiveCountService;
+	@Autowired
+	private HiveAnalysService hiveAnalysService;
 
 	@RequestMapping("/userCount")
 	@ResponseBody
@@ -30,67 +34,146 @@ public class SqoopController {
 		return userHiveCountService.userCount();
 	}
 
-
-	@RequestMapping("/importDataFromMysql")
+	@RequestMapping("/getTypeDate")
 	@ResponseBody
-	public void importDataFromMysql() throws Exception {
-		// 设置用于拼接存放MapReduce临时java文件的目录的名字的用户名称
-		System.setProperty("user.name", "mapred");
-		// 设置Job执行的用户身份
-		System.setProperty("HADOOP_USER_NAME", "root");
-
-		String[] args = new String[] {
-				"--connect","jdbc:mysql://192.168.0.103:3306/test",
-				"--driver","com.mysql.cj.jdbc.Driver",
-				"-username","root",
-				"-password","123456",
-				"--table","sku_info",
-				"-m","1",
-				"--target-dir","sku_info",
-		};
-		System.setProperty("sqoop.throwOnError","true");
-		String[] expandedArgs = null;
-
-		try {
-			expandedArgs = OptionsFileUtil.expandArguments(args);
-		} catch (Exception e){
-			System.err.println(e.getMessage());
-			System.err.println("Try 'sqoop help' for usage.");
+	public List<Map<String,Integer>> getTypeDate(){
+		List<HiveAnalys> tpyeDate = hiveAnalysService.getTpyeDate();
+		//得到今天的日期
+		List<Map<String,Integer>> dateList = new ArrayList<Map<String,Integer>>();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		LinkedHashMap<String,Integer> linkedMap = new LinkedHashMap<String,Integer>();
+		for (int i = 6; i >= 0; i--) {
+			Date date = DateUtils.addDays(new Date(), -i);
+			String formatDate = sdf.format(date);
+			linkedMap.put(formatDate,0);
 		}
-		com.cloudera.sqoop.tool.SqoopTool tool = (com.cloudera.sqoop.tool.SqoopTool) SqoopTool.getTool("import");
+		dateList.add(linkedMap);
 
-		Configuration conf = new Configuration();
-		conf.set("fs.defaultFS", "hdfs://192.168.32.202:9000");//设置hadoop服务地址
-		Configuration pluginConf = SqoopTool.loadPlugins(conf);
 
-		Sqoop sqoop = new Sqoop(tool, pluginConf);
-		int res = Sqoop.runSqoop(sqoop, expandedArgs);
-		System.out.println(res);
-		System.out.println("执行sqoop结束");
+
+		for (int j = 0; j < tpyeDate.size(); j++) {
+			HiveAnalys hiveAnalys = tpyeDate.get(j);
+			dateList.get(0).put(hiveAnalys.getX_info(), Integer.valueOf(hiveAnalys.getY_info()));
+		}
+		return dateList;
 	}
 
-	@RequestMapping("/exportDataToMysql")
+	@RequestMapping("/getTypeNum")
 	@ResponseBody
-	public void exportDataToMysql() throws Exception {
-		System.out.println(" begin test sqoop");
-		String[] argument = new String[]{
-				"--connect", "jdbc:mysql://192.168.0.103:3306/test",
-				"--username", "root",
-				"--password", "123456",
-				"--table", "user_info",
-				"--hive-import", "--hive-database", "sqooptohive", "--hive-overwrite", "--create-hive-table",
-				"--hive-table", "data_table",
-				"--delete-target-dir",
-				"--target-dir", "/user1",
-		};
-		com.cloudera.sqoop.tool.SqoopTool sqoopTool = (com.cloudera.sqoop.tool.SqoopTool) SqoopTool.getTool("import");
-		Configuration conf = new Configuration();
-		conf.set("fs.default.name", "hdfs://192.168.32.202:9000");
-		Configuration hive = HiveConfig.getHiveConf(conf);
-		Sqoop sqoop = new Sqoop(sqoopTool, SqoopTool.loadPlugins(conf));
-		int res = Sqoop.runSqoop(sqoop, argument);
-		System.out.println(res);
-		System.out.println("执行sqoop结束");
+	public List<Map<String, String>> getTypeNum(){
+		List<HiveAnalys> tpyeNum = hiveAnalysService.getTpyeNum();
+
+		List<Map<String,String>> numList = new ArrayList<Map<String,String>>();
+		String[] type = {"手表","电脑","手机"};
+		for (int i = 0; i < type.length; i++) {
+			Map<String,String> map = new HashMap<String,String>();
+			map.put("name",type[i]);
+			map.put("value","0");
+			numList.add(map);
+		}
+		for (int j = 0; j < tpyeNum.size(); j++) {
+			HiveAnalys hiveAnalys = tpyeNum.get(j);
+			for (int i = 0; i < numList.size(); i++) {
+				if(hiveAnalys.getX_info().equals(numList.get(i).get("name"))){
+					numList.get(i).put("value",hiveAnalys.getY_info());
+				}
+			}
+		}
+		return numList;
+	}
+
+
+	@RequestMapping("/getTypePrice")
+	@ResponseBody
+	public List<Map<String, Double>> getTypePrice(){
+		List<HiveAnalys> tpyePrice = hiveAnalysService.getTpyePrice();
+
+		List<Map<String,Double>> priceList = new ArrayList<Map<String,Double>>();
+		String[] type = {"手表","电脑","手机"};
+		Map<String,Double> map = new HashMap<String,Double>();
+		for (int i = 0; i < type.length; i++) {
+			map.put(type[i],0.0);
+		}
+		priceList.add(map);
+
+		for (int j = 0; j < tpyePrice.size(); j++) {
+			HiveAnalys hiveAnalys = tpyePrice.get(j);
+			priceList.get(0).put(hiveAnalys.getX_info(), Double.valueOf(hiveAnalys.getY_info()));
+		}
+
+		return priceList;
+	}
+
+
+	@RequestMapping("/execLinux")
+	@ResponseBody
+	public String execLinux(){
+		//连接服务器 服务器名称和端口号
+		//xx.xx.xx.xx 就是目标服务器的ip 端口是22
+		Connection connection = new Connection("192.168.32.202",22);
+		//你要上传文件所在地址，linux和window路径不一样看你自己的系统
+		String filePath1 ="C:\\Users\\XiaoYang\\Desktop\\project\\mall-project\\sql\\sqoop.sh";
+		File f = new File(filePath1);
+		Session session = null;
+		SCPOutputStream os = null;
+		try(FileInputStream fis = new FileInputStream(f)) {
+			connection.connect();
+			//yuan服务器用户名和密码
+			boolean isAuthenticated = connection.authenticateWithPassword("root","root");
+			if(!isAuthenticated){
+				System.out.println("连接建立失败");
+				return "执行错误";
+			}
+
+			SCPClient scpClient = new SCPClient(connection);
+			//这个是你要上传文件的目标服务器的文件路径
+			String remoteTargetDirectory = "/root/";
+			SFTPv3Client sftpv3Client = new SFTPv3Client(connection);
+
+//            //判断是否有这个文件夹 如果没有就创建一个
+//            Boolean isdir = f.isDirectory(sftpv3Client, remoteTargetDirectory);
+//            if(!isdir){
+//                sftpv3Client.mkdir(remoteTargetDirectory,0600);
+//            }
+			os = scpClient.put(f.getName(),f.length(),remoteTargetDirectory,null);
+			byte[] b = new byte[4096];
+			int i;
+			while ((i = fis.read(b)) != -1) {
+				os.write(b, 0, i);
+			}
+			session= connection.openSession();//打开一个会话
+			String cmd ="bash /usr/local/hadoop/hadoop-3.2.0/sbin/start-all.sh" + " && "+"chmod u+x " + remoteTargetDirectory + f.getName() + " && " + "bash " + remoteTargetDirectory + f.getName();
+			//执行sqoop脚本
+			System.out.println("linux命令=="+cmd);
+			//获取系统时间
+			long start = System.currentTimeMillis();
+			System.err.println("开始时间："+start);
+			session.execCommand(cmd);//执行命令
+			InputStream is = new StreamGobbler(session.getStdout());
+			BufferedReader brs = new BufferedReader(new InputStreamReader(is));
+			while (true)
+			{
+				String line = brs.readLine();
+				if (line == null)
+				{
+					break;
+				}
+				System.out.println(line);
+			}
+
+			os.flush();
+			fis.close();
+			os.close();
+			session.close();
+			connection.close();
+			long end = System.currentTimeMillis();
+			String time = CommonUtil.convertMillis(end - start);
+			System.err.println("结束时间："+time);
+			return "success";
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return "执行错误";
 	}
 
 }

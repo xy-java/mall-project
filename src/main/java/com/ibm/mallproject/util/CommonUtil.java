@@ -1,8 +1,11 @@
 package com.ibm.mallproject.util;
 
+import ch.ethz.ssh2.Connection;
+import ch.ethz.ssh2.StreamGobbler;
 import com.alibaba.fastjson.JSONArray;
 
 import java.io.*;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -28,5 +31,34 @@ public class CommonUtil {
 		//关闭流
 	}
 
+	public static String convertMillis (long ms) {
+		Integer ss = 1000;
+		Integer mi = ss * 60;
+		Integer hh = mi * 60;
+		Integer dd = hh * 24;
 
+		Long day = ms / dd;
+		Long hour = (ms - day * dd) / hh;
+		Long minute = (ms - day * dd - hour * hh) / mi;
+		Long second = (ms - day * dd - hour * hh - minute * mi) / ss;
+		Long milliSecond = ms - day * dd - hour * hh - minute * mi - second * ss;
+
+		StringBuffer sb = new StringBuffer();
+		if(day > 0) {
+			sb.append(day+"天");
+		}
+		if(hour > 0) {
+			sb.append(hour+"小时");
+		}
+		if(minute > 0) {
+			sb.append(minute+"分");
+		}
+		if(second > 0) {
+			sb.append(second+"秒");
+		}
+		if(milliSecond > 0) {
+			sb.append(milliSecond+"毫秒");
+		}
+		return sb.toString();
+	}
 }

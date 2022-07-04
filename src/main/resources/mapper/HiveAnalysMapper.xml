@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ibm.mallproject.dao.HiveAnalysMapper">
+    <select id="getTpyeDate" resultType="com.ibm.mallproject.entity.HiveAnalys">
+        select *  from hive_analys where type="date"
+    </select>
+
+    <select id="getTpyeNum" resultType="com.ibm.mallproject.entity.HiveAnalys">
+        select *  from hive_analys where type="num"
+    </select>
+
+    <select id="getTpyePrice" resultType="com.ibm.mallproject.entity.HiveAnalys">
+        select *  from hive_analys where type="price"
+    </select>
+</mapper>
