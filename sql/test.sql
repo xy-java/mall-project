@@ -11,7 +11,7 @@
  Target Server Version : 80019
  File Encoding         : 65001
 
- Date: 03/07/2022 22:05:42
+ Date: 04/07/2022 15:59:46
 */
 
 SET NAMES utf8mb4;
@@ -114,11 +114,12 @@ CREATE TABLE `hive_analys`  (
 -- ----------------------------
 -- Records of hive_analys
 -- ----------------------------
-INSERT INTO `hive_analys` VALUES ('5', 'date', '2022-07-01');
-INSERT INTO `hive_analys` VALUES ('1', 'num', '手表');
-INSERT INTO `hive_analys` VALUES ('4', 'num', '电脑');
-INSERT INTO `hive_analys` VALUES ('399.0', 'price', '手表');
-INSERT INTO `hive_analys` VALUES ('20696.0', 'price', '电脑');
+INSERT INTO `hive_analys` VALUES ('2022-07-01', '4', 'date');
+INSERT INTO `hive_analys` VALUES ('2022-07-02', '1', 'date');
+INSERT INTO `hive_analys` VALUES ('手表', '1', 'num');
+INSERT INTO `hive_analys` VALUES ('电脑', '4', 'num');
+INSERT INTO `hive_analys` VALUES ('手表', '399.0', 'price');
+INSERT INTO `hive_analys` VALUES ('电脑', '20696.0', 'price');
 
 -- ----------------------------
 -- Table structure for hive_count
@@ -132,7 +133,7 @@ CREATE TABLE `hive_count`  (
 -- ----------------------------
 -- Records of hive_count
 -- ----------------------------
-INSERT INTO `hive_count` VALUES (1, 21095.00);
+INSERT INTO `hive_count` VALUES (2, 21095.00);
 
 -- ----------------------------
 -- Table structure for order_detail
@@ -284,6 +285,7 @@ CREATE TABLE `user_info`  (
 -- Records of user_info
 -- ----------------------------
 INSERT INTO `user_info` VALUES ('25e0bb98c5a14d4b', 'user', '123456', '1392055037@qq.com', '2022-06-14 09:05:08', '普通用户');
+INSERT INTO `user_info` VALUES ('9106381251b84c14', 'test', '123456', '18956236682', '2022-07-04 13:21:30', '普通用户');
 INSERT INTO `user_info` VALUES ('945a27d2b1b24c25', 'admin', '123456', '1392055037@qq.com', '2022-05-31 17:20:12', '管理员');
 
 SET FOREIGN_KEY_CHECKS = 1;
