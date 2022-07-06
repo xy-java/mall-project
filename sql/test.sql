@@ -11,7 +11,7 @@
  Target Server Version : 80019
  File Encoding         : 65001
 
- Date: 06/07/2022 09:27:06
+ Date: 06/07/2022 10:32:12
 */
 
 SET NAMES utf8mb4;
@@ -117,19 +117,19 @@ CREATE TABLE `hive_analys`  (
 -- ----------------------------
 -- Records of hive_analys
 -- ----------------------------
-INSERT INTO `hive_analys` VALUES ('3', 'date', '2022-06-30');
-INSERT INTO `hive_analys` VALUES ('5', 'date', '2022-07-01');
-INSERT INTO `hive_analys` VALUES ('4', 'date', '2022-07-02');
-INSERT INTO `hive_analys` VALUES ('3', 'date', '2022-07-03');
-INSERT INTO `hive_analys` VALUES ('12', 'date', '2022-07-04');
-INSERT INTO `hive_analys` VALUES ('5', 'date', '2022-07-05');
-INSERT INTO `hive_analys` VALUES ('6', 'date', '2022-07-06');
-INSERT INTO `hive_analys` VALUES ('26', 'num', '手机');
-INSERT INTO `hive_analys` VALUES ('11', 'num', '手表');
-INSERT INTO `hive_analys` VALUES ('19', 'num', '电脑');
-INSERT INTO `hive_analys` VALUES ('48726.0', 'price', '手机');
-INSERT INTO `hive_analys` VALUES ('8289.0', 'price', '手表');
-INSERT INTO `hive_analys` VALUES ('110681.0', 'price', '电脑');
+INSERT INTO `hive_analys` VALUES ('2022-06-30', '3', 'date');
+INSERT INTO `hive_analys` VALUES ('2022-07-01', '5', 'date');
+INSERT INTO `hive_analys` VALUES ('2022-07-02', '4', 'date');
+INSERT INTO `hive_analys` VALUES ('2022-07-03', '3', 'date');
+INSERT INTO `hive_analys` VALUES ('2022-07-04', '12', 'date');
+INSERT INTO `hive_analys` VALUES ('2022-07-05', '5', 'date');
+INSERT INTO `hive_analys` VALUES ('2022-07-06', '7', 'date');
+INSERT INTO `hive_analys` VALUES ('手机', '26', 'num');
+INSERT INTO `hive_analys` VALUES ('手表', '11', 'num');
+INSERT INTO `hive_analys` VALUES ('电脑', '20', 'num');
+INSERT INTO `hive_analys` VALUES ('手机', '48726.0', 'price');
+INSERT INTO `hive_analys` VALUES ('手表', '8289.0', 'price');
+INSERT INTO `hive_analys` VALUES ('电脑', '116480.0', 'price');
 
 -- ----------------------------
 -- Table structure for hive_count
@@ -143,7 +143,7 @@ CREATE TABLE `hive_count`  (
 -- ----------------------------
 -- Records of hive_count
 -- ----------------------------
-INSERT INTO `hive_count` VALUES (3, 167696.00);
+INSERT INTO `hive_count` VALUES (3, 173495.00);
 
 -- ----------------------------
 -- Table structure for order_detail
@@ -214,6 +214,7 @@ INSERT INTO `order_detail` VALUES ('f0559427d6ee4867', '340774ca5ed84bc5', '2022
 INSERT INTO `order_detail` VALUES ('f0714fb6a9724bea', '0bf99597e3bb4c49', '2022-07-07 17:16:07', '6b35aa76a7954205', 2191.00, 1, '8GB+128GB', '亮黑', 'sada', '');
 INSERT INTO `order_detail` VALUES ('fb26d1b79a8d49d4', 'e0a8528c527940d1', '2022-07-06 17:12:50', '56bcd2926c6d4e0c', 6999.00, 1, '', '', 'i5-12450H/集显/16G/512G', '');
 INSERT INTO `order_detail` VALUES ('fb63c7e3499c4c02', 'e0a8528c527940d1', '2022-07-06 17:12:50', 'b58d8138370a4c9a', 1049.00, 1, '', '', '', '流光银 棕色真皮表带');
+INSERT INTO `order_detail` VALUES ('fc91c4e06a704cca', 'f760079d60144477', '2022-07-06 09:42:19', 'a7727c4d780d4e41', 5799.00, 1, '', '', 'i5-12450H/集显/16G/512G', '');
 INSERT INTO `order_detail` VALUES ('ff496913c0e34546', '2c13e190fe5549f6', '2022-07-08 09:20:05', '1e86413b50244cde', 5299.00, 1, '', '', 'i5-12450H/集显/16G/512G', '');
 
 -- ----------------------------
@@ -259,6 +260,7 @@ INSERT INTO `order_info` VALUES ('b0d005d6493c4bbd', 17597.00, 'cff8aa9316954ee4
 INSERT INTO `order_info` VALUES ('b3b7628ad2c94032', 10096.00, '25e0bb98c5a14d4b', '在线支付', 1, '2022-07-05 17:10:27', 'cccc18909d974b0e', 1);
 INSERT INTO `order_info` VALUES ('e0a8528c527940d1', 20494.00, '25e0bb98c5a14d4b', '在线支付', 1, '2022-07-06 17:12:50', '00fd6ddf5aff48eb', 1);
 INSERT INTO `order_info` VALUES ('e9db34acfdf74286', 4398.00, 'cff8aa9316954ee4', '在线支付', 1, '2022-07-04 17:24:30', '4163f7af671d49dc', 0);
+INSERT INTO `order_info` VALUES ('f760079d60144477', 5799.00, '25e0bb98c5a14d4b', '在线支付', 1, '2022-07-06 09:42:19', 'cccc18909d974b0e', 1);
 INSERT INTO `order_info` VALUES ('fcbe090948a146d0', 1049.00, 'b3f9dff4886347fb', '在线支付', 1, '2022-07-01 17:28:33', 'acdae728d3fb4427', 0);
 INSERT INTO `order_info` VALUES ('fe16c9e8161d4ecf', 5799.00, '25e0bb98c5a14d4b', '在线支付', 1, '2022-07-04 16:35:59', 'cccc18909d974b0e', 1);
 INSERT INTO `order_info` VALUES ('fe2b43d85f1f421e', 4299.00, '25e0bb98c5a14d4b', '在线支付', 1, '2022-07-01 17:02:24', 'cccc18909d974b0e', 1);
@@ -342,7 +344,7 @@ INSERT INTO `sku_info` VALUES ('56bcd2926c6d4e0c', 00006999.00, 'Redmi Book Pro 
 INSERT INTO `sku_info` VALUES ('56fbc933a44b4392', 00002199.00, 'Redmi Note 11T Pro', '天玑8100｜144Hz高配LCD屏幕｜6400万像素｜VC液冷散热', 187, 0, '99C97EF67BA344CD.jpg', '2022-06-28 14:14:50', NULL, '8b5e5dbc2ede4e08', '手机', 0);
 INSERT INTO `sku_info` VALUES ('64ab619905cf419e', 00004299.00, 'RedmiBook Pro 14 R5', '2.5K超视网膜全面屏 | 一体精雕工艺 | 轻薄本 | 智能互联', 197, 0, 'B39CC1E30D7249C8.jpg', '2022-06-28 14:13:26', NULL, '380481e30e6a4000', '电脑', 0);
 INSERT INTO `sku_info` VALUES ('6b35aa76a7954205', 00002191.00, 'Redmi K40S', '骁龙870｜三星 E4直屏', 194, 0, 'EB1E6879DCBD4E4A.jpg', '2022-06-09 09:56:09', NULL, 'b4ff02f06e834f5b', '手机', 0);
-INSERT INTO `sku_info` VALUES ('a7727c4d780d4e41', 00005799.00, 'Redmi G 2021锐龙版 3050Ti版本', 'RTX™ 3050Ti光追独显与硬核锐龙芯梦幻联合，迎来游戏性能释放新境界。视野再突破，天生为赢而战，全方位为热爱进阶，Redmi G 2021 锐龙版，实力超能打。', 194, 0, '2DAFAEE736D34483.png', '2022-06-28 14:10:55', NULL, 'c393cbeaf49544e8', '电脑', 0);
+INSERT INTO `sku_info` VALUES ('a7727c4d780d4e41', 00005799.00, 'Redmi G 2021锐龙版 3050Ti版本', 'RTX™ 3050Ti光追独显与硬核锐龙芯梦幻联合，迎来游戏性能释放新境界。视野再突破，天生为赢而战，全方位为热爱进阶，Redmi G 2021 锐龙版，实力超能打。', 193, 0, '2DAFAEE736D34483.png', '2022-06-28 14:10:55', NULL, 'c393cbeaf49544e8', '电脑', 0);
 INSERT INTO `sku_info` VALUES ('b58d8138370a4c9a', 00001049.00, 'Xiaomi Watch S1', '蓝宝石玻璃镜面 | 不锈钢中框 | 1.43”AMOLED大屏幕', 194, 0, 'F312BAE93AF94C92.png', '2022-06-28 14:16:27', NULL, 'ad7bbb7d9df944c9', '手表', 0);
 INSERT INTO `sku_info` VALUES ('b745d704d9454968', 00000999.00, 'Redmi Note 11SE', '天玑700｜18W快充｜5000mAh大电池｜6.5\"FHD+全高清屏｜双卡双5G｜90Hz 四挡变速高刷屏｜4096级 亮度调节｜全系128GB 大内存｜大功率扬声器｜4800万 高清双摄', 193, 0, 'BE8C48E937834103.jpg', '2022-06-28 14:15:39', NULL, 'f5cdfd895b4443c5', '手机', 0);
 
