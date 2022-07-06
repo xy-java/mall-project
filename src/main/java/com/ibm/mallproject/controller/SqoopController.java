@@ -36,10 +36,10 @@ public class SqoopController {
 
 	@RequestMapping("/getTypeDate")
 	@ResponseBody
-	public List<Map<String,Integer>> getTypeDate(){
+	public List<LinkedHashMap<String,Integer>> getTypeDate(){
 		List<HiveAnalys> tpyeDate = hiveAnalysService.getTpyeDate();
 		//得到今天的日期
-		List<Map<String,Integer>> dateList = new ArrayList<Map<String,Integer>>();
+		List<LinkedHashMap<String,Integer>> dateList = new ArrayList<LinkedHashMap<String,Integer>>();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		LinkedHashMap<String,Integer> linkedMap = new LinkedHashMap<String,Integer>();
 		for (int i = 6; i >= 0; i--) {
@@ -49,12 +49,21 @@ public class SqoopController {
 		}
 		dateList.add(linkedMap);
 
+		for (String key : linkedMap.keySet()) {
+			for (HiveAnalys hiveAnalys : tpyeDate) {
+				if(key.equals(hiveAnalys.getX_info())){
+					linkedMap.put(key, Integer.valueOf(hiveAnalys.getY_info()));
+				}
+			}
 
-
-		for (int j = 0; j < tpyeDate.size(); j++) {
-			HiveAnalys hiveAnalys = tpyeDate.get(j);
-			dateList.get(0).put(hiveAnalys.getX_info(), Integer.valueOf(hiveAnalys.getY_info()));
 		}
+		dateList.add(linkedMap);
+
+//		for (int j = 0; j < tpyeDate.size(); j++) {
+//			HiveAnalys hiveAnalys = tpyeDate.get(j);
+//			dateList.get(0).put(hiveAnalys.getX_info(), Integer.valueOf(hiveAnalys.getY_info()));
+//		}
+//		System.err.println(dateList);
 		return dateList;
 	}
 
