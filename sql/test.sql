@@ -11,7 +11,7 @@
  Target Server Version : 80019
  File Encoding         : 65001
 
- Date: 06/07/2022 10:32:12
+ Date: 08/07/2022 08:14:18
 */
 
 SET NAMES utf8mb4;
@@ -37,14 +37,13 @@ CREATE TABLE `address_info`  (
 -- ----------------------------
 -- Records of address_info
 -- ----------------------------
-INSERT INTO `address_info` VALUES ('00fd6ddf5aff48eb', '西城绿魁花园', '25e0bb98c5a14d4b', 1, '2022-06-16 17:39:47', '110000', '110100', '110102', '李四');
+INSERT INTO `address_info` VALUES ('00fd6ddf5aff48eb', '测试地址1', '25e0bb98c5a14d4b', 0, '2022-07-08 07:52:54', '110000', '110100', '110102', '李四');
 INSERT INTO `address_info` VALUES ('32581b8f629540f0', '天津工业大学', 'baadcb013dc4473e', 1, '2022-06-29 13:34:26', '120000', '120100', '120111', '肖扬');
 INSERT INTO `address_info` VALUES ('4163f7af671d49dc', '宾水西道388', 'cff8aa9316954ee4', 0, '2022-07-04 16:42:53', '120000', '120100', '120111', 'wjy');
 INSERT INTO `address_info` VALUES ('5ee9ca5be3e24042', '富力又一城', '2e24c8b6abb743c0', 1, '2022-06-28 13:43:47', '120000', '120100', '120104', 'ss');
-INSERT INTO `address_info` VALUES ('6046b79d642e40c3', '周边', '25e0bb98c5a14d4b', 1, '2022-06-28 12:15:03', '130000', '130300', '130306', '小明');
+INSERT INTO `address_info` VALUES ('6046b79d642e40c3', '测试地址2', '25e0bb98c5a14d4b', 1, '2022-07-08 07:52:35', '130000', '130300', '130306', '小明');
 INSERT INTO `address_info` VALUES ('acdae728d3fb4427', '天津电子信息职业技术学院', 'b3f9dff4886347fb', 0, '2022-07-04 17:00:22', '120000', '120100', '120112', '刘德华');
-INSERT INTO `address_info` VALUES ('cccc18909d974b0e', '我爱我家', '25e0bb98c5a14d4b', 0, '2022-06-20 14:52:42', '110000', '110100', '110106', '王五');
-INSERT INTO `address_info` VALUES ('d280aa9d1d72469c', '东城绿魁花园', '25e0bb98c5a14d4b', 1, '2022-06-15 12:50:25', '110000', '110100', '110101', '张三');
+INSERT INTO `address_info` VALUES ('d280aa9d1d72469c', '测试地址3', '25e0bb98c5a14d4b', 1, '2022-07-08 07:52:50', '110000', '110100', '110101', '张三');
 
 -- ----------------------------
 -- Table structure for cart_info
@@ -117,19 +116,19 @@ CREATE TABLE `hive_analys`  (
 -- ----------------------------
 -- Records of hive_analys
 -- ----------------------------
-INSERT INTO `hive_analys` VALUES ('2022-06-30', '3', 'date');
-INSERT INTO `hive_analys` VALUES ('2022-07-01', '5', 'date');
 INSERT INTO `hive_analys` VALUES ('2022-07-02', '4', 'date');
 INSERT INTO `hive_analys` VALUES ('2022-07-03', '3', 'date');
 INSERT INTO `hive_analys` VALUES ('2022-07-04', '12', 'date');
 INSERT INTO `hive_analys` VALUES ('2022-07-05', '5', 'date');
 INSERT INTO `hive_analys` VALUES ('2022-07-06', '7', 'date');
+INSERT INTO `hive_analys` VALUES ('2022-07-07', '4', 'date');
+INSERT INTO `hive_analys` VALUES ('2022-07-08', '4', 'date');
 INSERT INTO `hive_analys` VALUES ('手机', '26', 'num');
 INSERT INTO `hive_analys` VALUES ('手表', '11', 'num');
-INSERT INTO `hive_analys` VALUES ('电脑', '20', 'num');
+INSERT INTO `hive_analys` VALUES ('电脑', '21', 'num');
 INSERT INTO `hive_analys` VALUES ('手机', '48726.0', 'price');
 INSERT INTO `hive_analys` VALUES ('手表', '8289.0', 'price');
-INSERT INTO `hive_analys` VALUES ('电脑', '116480.0', 'price');
+INSERT INTO `hive_analys` VALUES ('电脑', '121779.0', 'price');
 
 -- ----------------------------
 -- Table structure for hive_count
@@ -143,7 +142,7 @@ CREATE TABLE `hive_count`  (
 -- ----------------------------
 -- Records of hive_count
 -- ----------------------------
-INSERT INTO `hive_count` VALUES (3, 173495.00);
+INSERT INTO `hive_count` VALUES (3, 178794.00);
 
 -- ----------------------------
 -- Table structure for order_detail
@@ -168,12 +167,14 @@ CREATE TABLE `order_detail`  (
 -- ----------------------------
 INSERT INTO `order_detail` VALUES ('0ef755325bd6483f', 'b3b7628ad2c94032', '2022-07-05 17:10:27', '21f89308273b4c37', 399.00, 1, '', '', '', '深空蓝');
 INSERT INTO `order_detail` VALUES ('1231cb07250a49e3', '32510b8a628c48ab', '2022-06-30 17:29:20', 'b745d704d9454968', 999.00, 1, '4GB+128GB', '暗影黑', '', '');
+INSERT INTO `order_detail` VALUES ('1291bdd65fe1470a', '8da6ae644d2f4869', '2022-07-08 07:47:06', '21f89308273b4c37', 399.00, 2, '', '', '', '深空蓝');
 INSERT INTO `order_detail` VALUES ('12ead9ae9e524eb6', 'ff752b9e51cc4808', '2022-07-02 17:27:59', '21f89308273b4c37', 399.00, 1, '', '', '', '深空蓝');
 INSERT INTO `order_detail` VALUES ('148981093c24419a', '32a0067f363e4c54', '2022-07-04 17:23:23', 'a7727c4d780d4e41', 5799.00, 1, '', '', 'i5-12450H/集显/16G/512G', '');
 INSERT INTO `order_detail` VALUES ('175be8c8aaef442e', 'ae0d42f1766f4db9', '2022-07-01 13:34:49', 'a7727c4d780d4e41', 5799.00, 1, '', '', 'i5-12450H/集显/16G/512G', '');
 INSERT INTO `order_detail` VALUES ('186bca097db4450b', '5848ae1b6dbe4334', '2022-07-08 09:20:52', 'b58d8138370a4c9a', 1049.00, 1, '', '', '', '曜石黑 黑色氟橡胶表带');
 INSERT INTO `order_detail` VALUES ('1ad13a9f9e9548c6', '340774ca5ed84bc5', '2022-07-01 13:32:56', '1e86413b50244cde', 5299.00, 1, '', '', 'i5-12450H/集显/16G/512G', '');
 INSERT INTO `order_detail` VALUES ('2633cd1cef754e9c', 'a325ca96dd3e455f', '2022-06-29 17:29:54', '56fbc933a44b4392', 2199.00, 1, '6GB+128GB', '时光蓝', '', '');
+INSERT INTO `order_detail` VALUES ('2c03b0e38ddb4c8a', '01138c69b27b48a2', '2022-07-08 07:31:51', '1e86413b50244cde', 5299.00, 1, '', '', 'i5-12450H/集显/16G/512G', '');
 INSERT INTO `order_detail` VALUES ('3370dbac74c04665', '6da78400b7054f97', '2022-06-28 17:33:55', '6b35aa76a7954205', 2191.00, 1, '8GB+128GB', '亮黑', 'sada', '');
 INSERT INTO `order_detail` VALUES ('355ec43f8e114db7', 'a7de0cbb15194035', '2022-07-05 17:11:44', 'b745d704d9454968', 999.00, 1, '4GB+128GB', '暗影黑', '', '');
 INSERT INTO `order_detail` VALUES ('35bd0d61a6ce4952', 'b3b7628ad2c94032', '2022-07-05 17:10:27', '56fbc933a44b4392', 2199.00, 1, '8GB+128GB', '时光蓝', '', '');
@@ -199,9 +200,11 @@ INSERT INTO `order_detail` VALUES ('99bd2c823c744868', 'b0d005d6493c4bbd', '2022
 INSERT INTO `order_detail` VALUES ('a459f9d121d74677', 'b3b7628ad2c94032', '2022-07-05 17:10:27', '56fbc933a44b4392', 2199.00, 1, '6GB+128GB', '时光蓝', '', '');
 INSERT INTO `order_detail` VALUES ('a59554faa6fb400d', '0bf99597e3bb4c49', '2022-07-07 17:16:07', 'b58d8138370a4c9a', 1049.00, 1, '', '', '', '曜石黑 黑色氟橡胶表带');
 INSERT INTO `order_detail` VALUES ('a99e0e69183f470a', '5848ae1b6dbe4334', '2022-07-08 09:20:52', '56fbc933a44b4392', 2199.00, 1, '6GB+128GB', '时光蓝', '', '');
+INSERT INTO `order_detail` VALUES ('ae1a5814c66d4353', '8da6ae644d2f4869', '2022-07-08 07:47:06', 'a7727c4d780d4e41', 5799.00, 1, '', '', 'i5-12450H/集显/16G/512G', '');
 INSERT INTO `order_detail` VALUES ('b5fd224ba3764c4a', 'e0a8528c527940d1', '2022-07-06 17:12:50', '56bcd2926c6d4e0c', 6999.00, 1, '', '', 'i5-12450H/MX550/16G/512G', '');
 INSERT INTO `order_detail` VALUES ('b7a2889b88114a71', 'fe2b43d85f1f421e', '2022-07-01 17:02:24', '64ab619905cf419e', 4299.00, 1, '', '', 'i5-12450H/集显/16G/512G', '');
 INSERT INTO `order_detail` VALUES ('c1c5fba6c5ed4af6', 'fcbe090948a146d0', '2022-07-01 17:28:33', 'b58d8138370a4c9a', 1049.00, 1, '', '', '', '曜石黑 黑色氟橡胶表带');
+INSERT INTO `order_detail` VALUES ('c3781bb55d7d4c55', '8da6ae644d2f4869', '2022-07-08 07:47:06', '56fbc933a44b4392', 2199.00, 1, '6GB+128GB', '时光蓝', '', '');
 INSERT INTO `order_detail` VALUES ('c40b9e07e9ba4618', '38b5b790233e48cb', '2022-06-28 17:33:13', '6b35aa76a7954205', 2191.00, 2, '8GB+128GB', '亮黑', 'sada', '');
 INSERT INTO `order_detail` VALUES ('c866806fcae4455d', '04d967886de14551', '2022-07-04 17:18:54', 'a7727c4d780d4e41', 5799.00, 1, '', '', 'i5-12450H/集显/16G/512G', '');
 INSERT INTO `order_detail` VALUES ('d019f60c20214801', '00d226b811a741a2', '2022-07-02 17:26:09', '6b35aa76a7954205', 2191.00, 1, '8GB+128GB', '亮黑', 'sada', '');
@@ -237,6 +240,7 @@ CREATE TABLE `order_info`  (
 -- Records of order_info
 -- ----------------------------
 INSERT INTO `order_info` VALUES ('00d226b811a741a2', 2191.00, 'cff8aa9316954ee4', '在线支付', 1, '2022-07-02 17:26:09', '4163f7af671d49dc', 0);
+INSERT INTO `order_info` VALUES ('01138c69b27b48a2', 5299.00, '25e0bb98c5a14d4b', '在线支付', 1, '2022-07-08 07:31:51', 'cccc18909d974b0e', 1);
 INSERT INTO `order_info` VALUES ('04d967886de14551', 5799.00, 'b3f9dff4886347fb', '在线支付', 1, '2022-07-04 17:18:54', 'acdae728d3fb4427', 0);
 INSERT INTO `order_info` VALUES ('0bf99597e3bb4c49', 12430.00, '25e0bb98c5a14d4b', '在线支付', 1, '2022-07-07 17:16:07', 'cccc18909d974b0e', 1);
 INSERT INTO `order_info` VALUES ('25769ac8f4824419', 1049.00, 'cff8aa9316954ee4', '在线支付', 1, '2022-07-03 17:25:31', '4163f7af671d49dc', 0);
@@ -252,6 +256,7 @@ INSERT INTO `order_info` VALUES ('6da78400b7054f97', 8788.00, '25e0bb98c5a14d4b'
 INSERT INTO `order_info` VALUES ('77405b7dcc8e45b6', 2199.00, 'cff8aa9316954ee4', '在线支付', 1, '2022-07-03 17:25:00', '4163f7af671d49dc', 0);
 INSERT INTO `order_info` VALUES ('77655d9eca6f4e1d', 5299.00, 'b3f9dff4886347fb', '在线支付', 1, '2022-07-04 17:20:31', 'acdae728d3fb4427', 0);
 INSERT INTO `order_info` VALUES ('8c7889261cc04a1a', 2997.00, '25e0bb98c5a14d4b', '在线支付', 1, '2022-06-29 17:32:16', 'cccc18909d974b0e', 1);
+INSERT INTO `order_info` VALUES ('8da6ae644d2f4869', 8796.00, '25e0bb98c5a14d4b', '在线支付', 1, '2022-07-08 07:47:06', 'cccc18909d974b0e', 1);
 INSERT INTO `order_info` VALUES ('a325ca96dd3e455f', 2199.00, 'b3f9dff4886347fb', '在线支付', 1, '2022-06-29 17:29:54', 'acdae728d3fb4427', 0);
 INSERT INTO `order_info` VALUES ('a49eee88be614971', 5799.00, '25e0bb98c5a14d4b', '在线支付', 1, '2022-07-04 17:11:06', '00fd6ddf5aff48eb', 1);
 INSERT INTO `order_info` VALUES ('a7de0cbb15194035', 999.00, '25e0bb98c5a14d4b', '在线支付', 1, '2022-07-05 17:11:44', 'cccc18909d974b0e', 1);
@@ -288,7 +293,7 @@ INSERT INTO `paramter_info` VALUES ('3548b1020baf4244', '2022-06-28 14:17:27', '
 INSERT INTO `paramter_info` VALUES ('380481e30e6a4000', '2022-06-28 14:13:26', '', '', 'i5-12450H/集显/16G/512G,i5-12450H/MX550/16G/512G,i7-12650H/MX550/16G/512G', '');
 INSERT INTO `paramter_info` VALUES ('8b5e5dbc2ede4e08', '2022-06-28 14:14:50', '6GB+128GB,8GB+128GB,8GB+256GB', '时光蓝,子夜黑,原子银', '', '');
 INSERT INTO `paramter_info` VALUES ('ad7bbb7d9df944c9', '2022-06-28 14:16:27', '', '', '', '曜石黑 黑色氟橡胶表带,流光银 蓝色真皮表带,流光银 棕色真皮表带');
-INSERT INTO `paramter_info` VALUES ('b335a2d6e5b34321', '2022-06-16 17:45:42', '', '', 'i5-12450H/集显/16G/512G,i7-12650H/RTX 2050/16G/512G,i5-12450H/RTX 2050/16G/512G', '');
+INSERT INTO `paramter_info` VALUES ('b335a2d6e5b34321', '2022-07-08 07:30:02', '', '', 'i5-12450H/集显/16G/512G,i7-12650H/RTX 2050/16G/512G,i5-12450H/RTX 2050/16G/512G', '');
 INSERT INTO `paramter_info` VALUES ('b4ff02f06e834f5b', '2022-06-10 13:56:24', '8GB+128GB,8GB+256GB,8GB+520GB', '亮黑,雪白', 'sada', '');
 INSERT INTO `paramter_info` VALUES ('c393cbeaf49544e8', '2022-06-28 14:10:55', '', '', 'i5-12450H/集显/16G/512G,i5-12450H/MX550/16G/512G,i7-12650H/MX550/16G/512G', '');
 INSERT INTO `paramter_info` VALUES ('f5cdfd895b4443c5', '2022-06-28 14:15:39', '4GB+128GB,8GB+128GB', '暗影黑,深空蓝', '', '');
@@ -308,7 +313,7 @@ CREATE TABLE `rotation_info`  (
 -- ----------------------------
 -- Records of rotation_info
 -- ----------------------------
-INSERT INTO `rotation_info` VALUES ('242dcdbe4c874211', '15CA48B3701D42E5.webp', '2022-06-06 09:48:30', '首页');
+INSERT INTO `rotation_info` VALUES ('242dcdbe4c874211', 'F9A2224C3E964A91.webp', '2022-06-06 09:48:30', '首页');
 INSERT INTO `rotation_info` VALUES ('3e361f116855431a', 'EDBDBC7CF2284FB3.jpg', '2022-06-05 21:27:41', '首页');
 INSERT INTO `rotation_info` VALUES ('5ecc9ed94f6043da', '43AD7FC394304A42.webp', '2022-06-06 09:48:36', '首页');
 INSERT INTO `rotation_info` VALUES ('e5483c508d8344e2', '0916F7372F804A77.jpg', '2022-06-06 09:48:34', '首页');
@@ -338,13 +343,13 @@ CREATE TABLE `sku_info`  (
 -- ----------------------------
 -- Records of sku_info
 -- ----------------------------
-INSERT INTO `sku_info` VALUES ('1e86413b50244cde', 00005299.00, 'Redmi Book Pro 15 2022', '全新12代英特尔处理器 | Windows 11 家庭中文版 | 可选RTX 2050高性能独立显卡 | 3.2K 90Hz 原色超清屏', 192, 0, '00D8E2A9B74F471A.jpg', '2022-06-16 17:45:42', NULL, 'b335a2d6e5b34321', '电脑', 0);
-INSERT INTO `sku_info` VALUES ('21f89308273b4c37', 00000399.00, 'Redmi 手表 2', '1.6\"AMOLED大屏 | 117种运动模式 | 24小时心率监测', 195, 0, 'B005C715CC7D4E51.jpg', '2022-06-28 14:17:27', NULL, '3548b1020baf4244', '手表', 0);
+INSERT INTO `sku_info` VALUES ('1e86413b50244cde', 00005299.00, 'Redmi Book Pro 15 2022', '全新12代英特尔处理器 | Windows 11 家庭中文版 | 可选RTX 2050高性能独立显卡 | 3.2K 90Hz 原色超清屏', 191, 0, '00D8E2A9B74F471A.jpg', '2022-06-16 17:45:42', NULL, 'b335a2d6e5b34321', '电脑', 0);
+INSERT INTO `sku_info` VALUES ('21f89308273b4c37', 00000399.00, 'Redmi 手表 2', '1.6\"AMOLED大屏 | 117种运动模式 | 24小时心率监测', 193, 0, 'B005C715CC7D4E51.jpg', '2022-06-28 14:17:27', NULL, '3548b1020baf4244', '手表', 0);
 INSERT INTO `sku_info` VALUES ('56bcd2926c6d4e0c', 00006999.00, 'Redmi Book Pro 14 2022', '全新12代英特尔处理器 | Windows 11 家庭中文版 | 2.5K 120Hz高清屏 | 可选MX550独立显卡', 195, 0, '18D8508E7DE24DE3.jpg', '2022-06-28 14:12:03', NULL, '1c4f0997abfa4386', '电脑', 0);
-INSERT INTO `sku_info` VALUES ('56fbc933a44b4392', 00002199.00, 'Redmi Note 11T Pro', '天玑8100｜144Hz高配LCD屏幕｜6400万像素｜VC液冷散热', 187, 0, '99C97EF67BA344CD.jpg', '2022-06-28 14:14:50', NULL, '8b5e5dbc2ede4e08', '手机', 0);
+INSERT INTO `sku_info` VALUES ('56fbc933a44b4392', 00002199.00, 'Redmi Note 11T Pro', '天玑8100｜144Hz高配LCD屏幕｜6400万像素｜VC液冷散热', 186, 0, '99C97EF67BA344CD.jpg', '2022-06-28 14:14:50', NULL, '8b5e5dbc2ede4e08', '手机', 0);
 INSERT INTO `sku_info` VALUES ('64ab619905cf419e', 00004299.00, 'RedmiBook Pro 14 R5', '2.5K超视网膜全面屏 | 一体精雕工艺 | 轻薄本 | 智能互联', 197, 0, 'B39CC1E30D7249C8.jpg', '2022-06-28 14:13:26', NULL, '380481e30e6a4000', '电脑', 0);
 INSERT INTO `sku_info` VALUES ('6b35aa76a7954205', 00002191.00, 'Redmi K40S', '骁龙870｜三星 E4直屏', 194, 0, 'EB1E6879DCBD4E4A.jpg', '2022-06-09 09:56:09', NULL, 'b4ff02f06e834f5b', '手机', 0);
-INSERT INTO `sku_info` VALUES ('a7727c4d780d4e41', 00005799.00, 'Redmi G 2021锐龙版 3050Ti版本', 'RTX™ 3050Ti光追独显与硬核锐龙芯梦幻联合，迎来游戏性能释放新境界。视野再突破，天生为赢而战，全方位为热爱进阶，Redmi G 2021 锐龙版，实力超能打。', 193, 0, '2DAFAEE736D34483.png', '2022-06-28 14:10:55', NULL, 'c393cbeaf49544e8', '电脑', 0);
+INSERT INTO `sku_info` VALUES ('a7727c4d780d4e41', 00005799.00, 'Redmi G 2021锐龙版 3050Ti版本', 'RTX™ 3050Ti光追独显与硬核锐龙芯梦幻联合，迎来游戏性能释放新境界。视野再突破，天生为赢而战，全方位为热爱进阶，Redmi G 2021 锐龙版，实力超能打。', 192, 0, '2DAFAEE736D34483.png', '2022-06-28 14:10:55', NULL, 'c393cbeaf49544e8', '电脑', 0);
 INSERT INTO `sku_info` VALUES ('b58d8138370a4c9a', 00001049.00, 'Xiaomi Watch S1', '蓝宝石玻璃镜面 | 不锈钢中框 | 1.43”AMOLED大屏幕', 194, 0, 'F312BAE93AF94C92.png', '2022-06-28 14:16:27', NULL, 'ad7bbb7d9df944c9', '手表', 0);
 INSERT INTO `sku_info` VALUES ('b745d704d9454968', 00000999.00, 'Redmi Note 11SE', '天玑700｜18W快充｜5000mAh大电池｜6.5\"FHD+全高清屏｜双卡双5G｜90Hz 四挡变速高刷屏｜4096级 亮度调节｜全系128GB 大内存｜大功率扬声器｜4800万 高清双摄', 193, 0, 'BE8C48E937834103.jpg', '2022-06-28 14:15:39', NULL, 'f5cdfd895b4443c5', '手机', 0);
 

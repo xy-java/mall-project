@@ -8,17 +8,17 @@ hive=/usr/local/hive/apache-hive-3.1.0-bin/bin/hive
 
 
 #删除对应hive表
-$hive -e "drop table test.user_info"
-$hive -e "drop table test.order_info"
-$hive -e "drop table test.type_num"
-$hive -e "drop table test.type_price"
-$hive -e "drop table test.order_detail"
+$hive -e "drop table if exists test.user_info"
+$hive -e "drop table if exists test.order_info"
+$hive -e "drop table if exists test.type_num"
+$hive -e "drop table if exists test.type_price"
+$hive -e "drop table if exists test.order_detail"
 
-$sqoop import --connect $JDBCURL --username $USERNAME --password $PASSWORD --table user_info --hive-import --hive-table test.user_info --target-dir /test/user_info --delete-target-dir --hive-overwrite --create-hive-table -m 1
-$sqoop import --connect $JDBCURL --username $USERNAME --password $PASSWORD --table order_info --hive-import --hive-table test.order_info --target-dir /test/order_info --delete-target-dir --hive-overwrite --create-hive-table -m 1
-$sqoop import --connect $JDBCURL --username $USERNAME --password $PASSWORD --query "select * from (select b.sku_type,a.order_num,'num' as type from order_detail a,sku_info b where a.sku_id = b.sku_id and a.order_id in (select order_id from order_info where order_status = 1))c where \$CONDITIONS" --hive-import --hive-table test.type_num --target-dir /test/type_num --delete-target-dir --hive-overwrite --create-hive-table -m 1
-$sqoop import --connect $JDBCURL --username $USERNAME --password $PASSWORD --query "select * from (select b.sku_type,a.order_price*a.order_num as price from order_detail a,sku_info b where a.sku_id = b.sku_id and a.order_id in (select order_id from order_info where order_status = 1))c where \$CONDITIONS" --hive-import --hive-table test.type_price --target-dir /test/type_price --delete-target-dir --hive-overwrite --create-hive-table -m 1
-$sqoop import --connect $JDBCURL --username $USERNAME --password $PASSWORD --query "select * from (select * from order_detail where order_id in (select order_id from order_info where order_status = 1))c where \$CONDITIONS" --hive-import --hive-table test.order_detail --target-dir /test/order_detail --delete-target-dir --hive-overwrite --create-hive-table -m 1
+$sqoop import --connect $JDBCURL --username $USERNAME --password $PASSWORD --table user_info --hive-import --input-fields-terminated-by '\t' --hive-table test.user_info --target-dir /test/user_info --delete-target-dir --create-hive-table -m 1
+$sqoop import --connect $JDBCURL --username $USERNAME --password $PASSWORD --table order_info --hive-import --input-fields-terminated-by '\t' --hive-table test.order_info --target-dir /test/order_info --delete-target-dir --create-hive-table -m 1
+$sqoop import --connect $JDBCURL --username $USERNAME --password $PASSWORD --query "select * from(select b.sku_type,a.order_num,'num' as type from order_detail a,sku_info b where a.sku_id = b.sku_id and a.order_id in (select order_id from order_info where order_status = 1))c where  \$CONDITIONS" --hive-import --input-fields-terminated-by '\t' --hive-table test.type_num --target-dir /test/type_num --delete-target-dir --create-hive-table -m 1
+$sqoop import --connect $JDBCURL --username $USERNAME --password $PASSWORD --query "select * from(select b.sku_type,a.order_price*a.order_num as price from order_detail a,sku_info b where a.sku_id = b.sku_id and a.order_id in (select order_id from order_info where order_status = 1))c where \$CONDITIONS" --hive-import --input-fields-terminated-by '\t' --hive-table test.type_price --target-dir /test/type_price --delete-target-dir --create-hive-table -m 1
+$sqoop import --connect $JDBCURL --username $USERNAME --password $PASSWORD --query "select * from(select * from order_detail where order_id in (select order_id from order_info where order_status = 1))c where \$CONDITIONS" --hive-import --input-fields-terminated-by '\t' --hive-table test.order_detail --target-dir /test/order_detail --delete-target-dir --create-hive-table -m 1
 
 
 $hive -e "insert overwrite directory '/result/count' ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' select * from (select count(*) from test.user_info where user_power='普通用户')a ,( select sum(total_amount) from test.order_info where order_status=1 )b"
@@ -29,7 +29,8 @@ $hive -e "insert overwrite directory '/result/type_price' ROW FORMAT DELIMITED F
 $sqoop eval --connect $JDBCURL --username $USERNAME --password $PASSWORD --e "delete from hive_count"
 $sqoop eval --connect $JDBCURL --username $USERNAME --password $PASSWORD --e "delete from hive_analys"
 
-$sqoop export --connect $JDBCURL --username $USERNAME --password $PASSWORD --table hive_count --input-fields-terminated-by '\t' --export-dir /result/count -m 1 
-$sqoop export --connect $JDBCURL --username $USERNAME --password $PASSWORD --table hive_analys --input-fields-terminated-by '\t' --export-dir /result/date -m 1 
-$sqoop export --connect $JDBCURL --username $USERNAME --password $PASSWORD --table hive_analys --input-fields-terminated-by '\t' --export-dir /result/type_num -m 1 
-$sqoop export --connect $JDBCURL --username $USERNAME --password $PASSWORD --table hive_analys --input-fields-terminated-by '\t' --export-dir /result/type_price -m 1 
+$sqoop export --connect $JDBCURL --username $USERNAME --password $PASSWORD --table hive_count --columns count,sumPrice --input-fields-terminated-by '\t' --export-dir /result/count -m 1  
+$sqoop export --connect $JDBCURL --username $USERNAME --password $PASSWORD --table hive_analys --columns x_info,y_info,type --input-fields-terminated-by '\t' --export-dir /result/date -m 1 
+$sqoop export --connect $JDBCURL --username $USERNAME --password $PASSWORD --table hive_analys --columns x_info,y_info,type --input-fields-terminated-by '\t' --export-dir /result/type_num -m 1 
+$sqoop export --connect $JDBCURL --username $USERNAME --password $PASSWORD --table hive_analys --columns x_info,y_info,type --input-fields-terminated-by '\t' --export-dir /result/type_price -m 1 
+ 
