@@ -11,6 +11,7 @@ Gitee 是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN�
 admin-project的后端，商城项目后台
 springboot + mybatis +maven的项目
 
+前端代码在https://github.com/xy-java/admin-project.git
 
 #### 特技
 
